@@ -3,11 +3,9 @@ php:
  - '7.0'
 before_script:
  - composer self-update
- - composer install --no-interaction
+ - composer install
 
-script:
- - php artisan key:generate
- - phpunit
+script: phpunit
 
 deploy:
   provider: heroku
