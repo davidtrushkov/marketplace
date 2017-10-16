@@ -6,3 +6,8 @@ before_script:
  - composer install --prefer-source --no-interaction --dev
 
 script: phpunit
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: "20aea376-bc41-4459-b0aa-041940d8bd8a"
