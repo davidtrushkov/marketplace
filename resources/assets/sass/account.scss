@@ -1,0 +1,21 @@
+.ACCOUNT-CONTENT {
+  .ACCOUNT-HEADER {
+    height: 20vh;
+    margin: -15px 0 50px 0;
+    @extend .MAIN-BACKGROUND-OVERLAY;
+
+    .ACCOUNT-HEADER-FOLD-CONTENT {
+      padding-top: 50px;
+
+      h4, p {
+        color: #ffffff;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      p {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

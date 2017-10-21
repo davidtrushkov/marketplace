@@ -1,0 +1,112 @@
+.navbar-default {
+  background-color: transparent;
+  border-color: transparent;
+
+  .navbar-right {
+    margin-top: 15px;
+  }
+  .navbar-brand {
+    color: #6a6a6a;
+    margin-top: 15px;
+  }
+  .navbar-nav > li > a {
+    color: #6a6a6a;
+    font-size: 16px;
+  }
+  .navbar-brand:hover {
+    color: #ff9538;
+  }
+  .navbar-nav > li > a:hover {
+    color: #ff9538;
+  }
+  .btn-primary {
+    color: #fff;
+    background-color: #1669ba;
+    border-color: #1669ba;
+    padding: 12px 18px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: 20px;
+  }
+  .btn-primary:hover {
+    color: #fff !important;
+    background-color: #2d73ba !important;
+    border-color: #2d73ba !important;
+    padding: 12px 18px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: 20px;
+  }
+  .btn-info {
+    color: #fff;
+    background-color: transparent;
+    border-color: rgba(255,255,255, 0.2);
+    padding: 12px 18px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: 20px;
+  }
+  .btn-info:hover {
+    color: #fff !important;
+    background-color: rgba(255,255,255, 0.2) !important;
+    border-color: rgba(255,255,255, 0.2) !important;
+    padding: 12px 18px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    margin-left: 20px;
+  }
+}
+
+
+
+
+@media (min-width: 768px) {
+  .dropdown-menu {
+    img {
+      margin-right: 8px;
+    }
+  }
+  .dropdown-menu > li > a {
+    color: #6b6b6b;
+    display: block;
+    padding: 10px 10px;
+    clear: both;
+    white-space: nowrap;
+    font-size: 14px;
+    text-transform: uppercase;
+  }
+  .dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    background-color: transparent;
+  }
+  .dropdown ul.dropdown-menu {
+    border-radius: 4px;
+    box-shadow: none;
+    margin-top: 22px;
+    width: 250px;
+    padding: 15px;
+  }
+  .dropdown ul.dropdown-menu:before {
+    content: "";
+    border-bottom: 10px solid #fff;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: -10px;
+    right: 16px;
+    z-index: 10;
+  }
+  .dropdown ul.dropdown-menu:after {
+    content: "";
+    border-bottom: 12px solid #ffffff;
+    border-right: 12px solid transparent;
+    border-left: 12px solid transparent;
+    position: absolute;
+    top: -12px;
+    right: 14px;
+    z-index: 9;
+  }
+}
