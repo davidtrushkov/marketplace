@@ -36,3 +36,13 @@ $input-color-placeholder: lighten($text-color, 30%);
 
 // Panels
 $panel-default-heading-bg: #fff;
+
+
+.MAIN-BACKGROUND-OVERLAY {
+  background: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+  background-image: -ms-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+  background-image: -moz-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+  background-image: -o-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+  background-image: -webkit-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+  background-image: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+}

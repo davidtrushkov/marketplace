@@ -25,8 +25,16 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
-                                <li><a href="">Your Account</a></li>
-                                <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                <li>
+                                    <a href="/account">
+                                        <img src="/images/icons/gears.svg" width="25px"> Your Account
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        <img src="/images/icons/signout.svg" width="25px"> Logout
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     @endif
