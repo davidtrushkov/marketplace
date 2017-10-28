@@ -10,6 +10,7 @@
                 @include('account.partials._navigation')
             </div>
             <div class="col-sm-8">
+                @include('layouts.partials._flash')
                 @yield('account.content')
             </div>
         </div>

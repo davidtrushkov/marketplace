@@ -18,4 +18,66 @@
       }
     }
   }
+
+  .form-control {
+    @extend .FORM-INPUT;
+  }
+
+  #ACCOUNT-SIDE-NAV {
+    .list-group {
+      @extend .SPECIAL-BOX-SHADOW;
+      padding: 0;
+
+      .list-group-item {
+        -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
+        border-radius: 0px;
+        border: none;
+        text-transform: uppercase;
+
+        a {
+          color: #636b6f;
+        }
+        a:hover {
+          text-decoration: none;
+          color: #282828;
+        }
+      }
+
+      .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
+        a {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+
+  .ACCOUNT-FILE-FORM {
+    .panel-title {
+      font-size: 18px;
+      color: #636b6f;
+    }
+  }
+
+  .HEADER-BOX {
+    @extend .SPECIAL-BOX-SHADOW;
+    margin-bottom: 25px;
+    background-color: #f4f4f4;
+    text-transform: uppercase;
+    font-size: 1.3em;
+  }
+
+  .YOUR-FILE-BOX {
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    @extend .SPECIAL-BOX-SHADOW;
+
+    h4 > a {
+      color: inherit;
+    }
+
+    span {
+      margin: 0 5px 0 5px;
+    }
+  }
 }

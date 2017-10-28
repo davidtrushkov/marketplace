@@ -15,6 +15,49 @@ body {
   font-family: "Raleway", Helvetica, Arial, sans-serif;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: #2d73ba !important;
+  border-color: #2d73ba !important;
+  padding: 12px 18px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.no-padding {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.help-block {
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.alert-success {
+  background-color: #45c359;
+  color: #ffffff;
+  margin-bottom: 40px;
+  border-radius: 0;
+  border: none;
+  @extend .SPECIAL-BOX-SHADOW;
+}
+
+.alert-danger {
+  background-color: #c30c15;
+  color: #ffffff;
+  margin-bottom: 40px;
+  border-radius: 0;
+  border: none;
+  @extend .SPECIAL-BOX-SHADOW;
+}
+
+.alert-dismissible .close {
+  color: #ffffff;
+  opacity: 1;
+}
 
 .HOME-PAGE-SECTION {
   height: 80vh;
@@ -88,6 +131,11 @@ body {
       width: 75%;
     }
 
+    .login-link {
+      text-align: center;
+      margin-top: 25px;
+    }
+
     .btn-primary {
       color: #fff;
       background-color: #2d73ba !important;
@@ -97,11 +145,6 @@ body {
       font-size: 16px;
       margin-top: 25px;
       width: 75%;
-    }
-
-    .login-link {
-      text-align: center;
-      margin-top: 25px;
     }
   }
 }

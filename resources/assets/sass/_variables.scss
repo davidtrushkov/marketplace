@@ -46,3 +46,22 @@ $panel-default-heading-bg: #fff;
   background-image: -webkit-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
   background-image: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
 }
+
+.FORM-INPUT {
+  height: 48px;
+  border: 1px solid #cacbcc;
+  font-size: 16px;
+  box-shadow: none;
+  color: #555;
+  margin-bottom: 25px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.SPECIAL-BOX-SHADOW {
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 15px 20px 20px 20px;
+}
