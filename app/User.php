@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+
+	/**
+	 * A user has many files
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+    public function files() {
+    	return $this->hasMany(File::class);
+    }
 }

@@ -8,6 +8,29 @@
   background-image: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
 }
 
+.FORM-INPUT,
+.ACCOUNT-CONTENT .form-control {
+  height: 48px;
+  border: 1px solid #cacbcc;
+  font-size: 16px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: #555;
+  margin-bottom: 25px;
+  border-radius: 2px;
+}
+
+.SPECIAL-BOX-SHADOW,
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group,
+.ACCOUNT-CONTENT .HEADER-BOX,
+.ACCOUNT-CONTENT .YOUR-FILE-BOX,
+.alert-success,
+.alert-danger {
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  padding: 15px 20px 20px 20px;
+}
+
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
  * Copyright 2011-2016 Twitter, Inc.
@@ -8493,8 +8516,100 @@ button.close {
   font-size: 1.3em;
 }
 
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group {
+  padding: 0;
+}
+
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item {
+  border-radius: 0px;
+  border: none;
+  text-transform: uppercase;
+}
+
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item a {
+  color: #636b6f;
+}
+
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item a:hover {
+  text-decoration: none;
+  color: #282828;
+}
+
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active a,
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active:hover a,
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active:focus a {
+  color: #ffffff !important;
+}
+
+.ACCOUNT-CONTENT .ACCOUNT-FILE-FORM .panel-title {
+  font-size: 18px;
+  color: #636b6f;
+}
+
+.ACCOUNT-CONTENT .HEADER-BOX {
+  margin-bottom: 25px;
+  background-color: #f4f4f4;
+  text-transform: uppercase;
+  font-size: 1.3em;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX h4 > a {
+  color: inherit;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX span {
+  margin: 0 5px 0 5px;
+}
+
 body {
   font-family: "Raleway", Helvetica, Arial, sans-serif;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2d73ba !important;
+  border-color: #2d73ba !important;
+  padding: 12px 18px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.no-padding {
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.help-block {
+  margin-top: -15px;
+  margin-bottom: 25px;
+}
+
+.alert-success {
+  background-color: #45c359;
+  color: #ffffff;
+  margin-bottom: 40px;
+  border-radius: 0;
+  border: none;
+}
+
+.alert-danger {
+  background-color: #c30c15;
+  color: #ffffff;
+  margin-bottom: 40px;
+  border-radius: 0;
+  border: none;
+}
+
+.alert-dismissible .close {
+  color: #ffffff;
+  opacity: 1;
 }
 
 .HOME-PAGE-SECTION {
@@ -8571,6 +8686,11 @@ body {
   width: 75%;
 }
 
+.AUTH-CONTAINER-SECTION .auth-box .login-link {
+  text-align: center;
+  margin-top: 25px;
+}
+
 .AUTH-CONTAINER-SECTION .auth-box .btn-primary {
   color: #fff;
   background-color: #2d73ba !important;
@@ -8580,10 +8700,5 @@ body {
   font-size: 16px;
   margin-top: 25px;
   width: 75%;
-}
-
-.AUTH-CONTAINER-SECTION .auth-box .login-link {
-  text-align: center;
-  margin-top: 25px;
 }
 
