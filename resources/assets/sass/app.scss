@@ -32,8 +32,8 @@ body {
 }
 
 .help-block {
-  margin-top: -15px;
-  margin-bottom: 25px;
+  margin-top: -15px !important;
+  margin-bottom: 25px !important;
 }
 
 .alert-success {
@@ -51,6 +51,22 @@ body {
   margin-bottom: 40px;
   border-radius: 0;
   border: none;
+  @extend .SPECIAL-BOX-SHADOW;
+}
+
+.alert-info {
+  background-color: #097dc3;
+  color: #ffffff;
+  margin-bottom: 40px;
+  border-radius: 0;
+  border: none;
+  @extend .SPECIAL-BOX-SHADOW;
+}
+
+.alert-header {
+  background-color: #f4f4f4 !important;
+  color: #636b6f;
+  padding: 10px 15px 10px 15px !important;
   @extend .SPECIAL-BOX-SHADOW;
 }
 

@@ -15,6 +15,6 @@
        {{ $file->live ? 'Live' : 'Not Live' }}
     </span>
     <span>
-        <a href="#">Make changes</a>
+        <a href="{{ route('account.files.edit', $file) }}">Make changes</a>
     </span>
 </div>
