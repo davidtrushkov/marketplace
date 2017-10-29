@@ -5,11 +5,15 @@ namespace App\Http\Controllers\Account;
 use App\File;
 use App\Http\Requests\File\StoreFileRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\File\UpdateFileRequest;
 
 class FileController extends Controller
 {
 
-
+	/**
+	 * Show all files on files page.
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function index() {
 
 		// Grab all the users files that are 'finished'
@@ -18,6 +22,24 @@ class FileController extends Controller
 		return view('account.files.index', compact('files'));
 	}
 
+
+	/**
+	 * Show edit file form.
+	 * @param File $file
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function edit(File $file) {
+
+		// Make sure the user owns the file before we store it in database.
+		$this->authorize('touch', $file);
+
+		// Grab the latest approvals for the file being edites (if any),
+		// to show on edit page what needs approving by admin.
+		$approvals = $file->approvals->first();
+
+		return view('account.files.edit', compact('file', 'approvals'));
+	}
 
 	/**
 	 * Take user to the 'create' file page if they don't have one, and do authorization checking
@@ -69,6 +91,41 @@ class FileController extends Controller
 
 		return redirect()->route('account.files.index')
 			->withSuccess('Your file has been submitted for review.');
+	}
+
+
+	/**
+	 * Update a file, and check if it needs approval from admin (if any changes are made
+	 * (excluding(price and live fields))
+	 * @param File $file
+	 * @param UpdateFileRequest $request
+	 *
+	 * @return mixed
+	 */
+	public function update(File $file, UpdateFileRequest $request) {
+
+		// Make sure the user owns the file before we store it in database.
+		$this->authorize('touch', $file);
+
+		// Data that needs checking for approval by admin.
+		// ** Referencing APPROVAL_PROPERTIES constant in 'File' model
+		$approvalProperties = $request->only(File::APPROVAL_PROPERTIES);
+
+		// If the file needs approval, then we need to create a approval column in database
+		if ($file->needsApproval($approvalProperties)) {
+
+			// Create the approvals column in table with data passed in
+			// ** 'createApprovals' on File model
+			$file->createApproval($approvalProperties);
+
+			return back()->withSuccess('We will review your changes soon.');
+		}
+
+		// If ONLY the 'price' OR/AND 'live' checkbox have been updated, then
+		// update those two and redirect if we dont need approval.
+		$file->update($request->only(['live', 'price']));
+
+		return back()->withSuccess('File Updated');
 	}
 
 
