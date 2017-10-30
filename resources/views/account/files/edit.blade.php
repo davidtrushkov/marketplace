@@ -17,6 +17,16 @@
 
                 <input type="hidden" name="live" value="0">
 
+                <div class="form-group{{ $errors->has('uploads') ? ' has-error' : '' }}">
+                    <div id="file" class="dropzone"></div>
+                    @if ($errors->has('uploads'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('uploads') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
+
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="live" id="live" {{ $file->live ? ' checked' : '' }} value="1">
@@ -72,4 +82,9 @@
             </form>
         </div>
     </div>
+@endsection
+
+
+@section('scripts')
+    @include('account.partials._file_upload')
 @endsection

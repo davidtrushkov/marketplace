@@ -8,6 +8,7 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
+@import "dropzone";
 @import "navigation";
 @import "account";
 
@@ -75,23 +76,78 @@ body {
   opacity: 1;
 }
 
+.dropzone {
+  margin-bottom: 25px;
+  min-height: auto;
+}
+
 .HOME-PAGE-SECTION {
   height: 80vh;
   margin-top: -118px;
+  -webkit-clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 94%, 76% 86%, 50% 100%, 50% 100%, 18% 86%, 0 60%);
+  clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 94%, 76% 86%, 50% 100%, 50% 100%, 18% 86%, 0 60%);
   @extend .MAIN-BACKGROUND-OVERLAY;
 
   h1 {
     color: #FFFFFF;
     font-weight: bold;
+    text-transform: uppercase;
     text-align: center;
-    font-size: 52px;
-    padding: 175px 0 50px 0;
+    font-size: 40px;
+    padding: 300px 0 50px 0;
   }
+}
+
+.browser-mockup {
+  border-top: 2em solid rgba(230, 230, 230, 0.7);
+  box-shadow: 0 0.1em 1em 0 rgba(0, 0, 0, 0.4);
+  position: relative;
+  border-radius: 3px 3px 0 0;
+  left:100%;
 
   img {
     width: 100%;
-    margin-top: -17%;
+    height: 400px;
+    object-fit: cover;
   }
+}
+
+.browser-mockup:before {
+  display: block;
+  position: absolute;
+  content: '';
+  top: -1.25em;
+  left: 1em;
+  width: 0.5em;
+  height: 0.5em;
+  border-radius: 50%;
+  background-color: #f44;
+  box-shadow: 0 0 0 2px #f44, 1.5em 0 0 2px #9b3, 3em 0 0 2px #fb5;
+}
+
+.browser-mockup.with-url:after {
+  display: block;
+  position: absolute;
+  content: '';
+  top: -1.6em;
+  left: 5.5em;
+  width: calc(100% - 6em);
+  height: 1.2em;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.browser-mockup > * {
+  display: block;
+}
+
+.browser-mockup {
+  //margin: 33em;
+  width: 750px;
+  flex: 1;
+  margin-top: -370px;
+  left: 700px;
+  position: fixed;
 }
 
 .AUTH-CONTAINER-SECTION {

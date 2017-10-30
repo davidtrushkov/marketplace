@@ -6,7 +6,7 @@
         <li class="list-group-item {{ isActiveRoute('account.files.index') }}">
             <a href="{{ route('account.files.index') }}">Your files</a>
         </li>
-        <li class="list-group-item{{ Request::is('account/files/*') ? ' active' : '' }}">
+        <li class="list-group-item{{ Request::is('account/files/*/create') ? ' active' : '' }}">
             <a href="{{ route('account.files.create.start') }}">Sell a file</a>
         </li>
     </ul>

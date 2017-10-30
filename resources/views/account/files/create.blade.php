@@ -9,6 +9,15 @@
             <form action="{{ route('account.files.store', $file) }}" method="post">
                 {{ csrf_field() }}
 
+                <div class="form-group{{ $errors->has('uploads') ? ' has-error' : '' }}">
+                    <div id="file" class="dropzone"></div>
+                    @if ($errors->has('uploads'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('uploads') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" autofocus placeholder="Title">
                     @if ($errors->has('title'))
@@ -57,4 +66,8 @@
             </form>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    @include('account.partials._file_upload')
 @endsection
