@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Traits\HasApprovals;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -9,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class File extends Model
 {
 
-	use SoftDeletes;
+	use SoftDeletes, HasApprovals;
 
 	/**
 	 * Fields that can be approved by admin
@@ -86,6 +87,13 @@ class File extends Model
 			return true;
 		}
 
+		// Check the 'uploads' table and see if the file that a user just uploaded to the dropbox
+		// for this particular file is new (approved - false).
+		// ** "unapproved" coming from 'Traits/HasApprovals'
+		if($this->uploads()->unapproved()->count()) {
+			return true;
+		}
+
 		// Else, return false
 		return false;
 	}
@@ -124,5 +132,14 @@ class File extends Model
 	 */
     public function approvals() {
     	return $this->hasMany(FileApproval::class);
+    }
+
+
+	/**
+	 * A file can have many 'uploads'.
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+    public function uploads() {
+    	return $this->hasMany(Upload::class);
     }
 }

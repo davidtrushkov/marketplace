@@ -2,6 +2,13 @@
     <h5>We are currently reviewing the following changes:</h5>
 </div>
 <div class="alert-info">
+    @if(($uploads = $file->uploads()->unapproved()->get())->count())
+        <div>Uploads</div>
+       @foreach($uploads as $upload)
+           <p>{{ $upload->filename }}</p>
+       @endforeach
+    @endif
+
     @if($approvals->title !== $file->title)
         <div>Title</div>
         <p>{{ $approvals->title }}</p>
