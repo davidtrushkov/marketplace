@@ -25,6 +25,13 @@
                             </a>
 
                             <ul class="dropdown-menu" role="menu">
+                                @admin('admin')
+                                <li>
+                                    <a href="#">
+                                        <img src="/images/icons/gears.svg" width="25px"> Admin
+                                    </a>
+                                </li>
+                                @endadmin
                                 <li>
                                     <a href="/account">
                                         <img src="/images/icons/gears.svg" width="25px"> Your Account
