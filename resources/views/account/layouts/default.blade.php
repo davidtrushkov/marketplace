@@ -6,6 +6,7 @@
             @include('account.layouts._stats')
         </div>
         <div class="container">
+            @include('account.partials._email_verification')
             <div class="col-sm-4">
                 @include('account.partials._navigation')
             </div>

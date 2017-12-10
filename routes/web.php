@@ -2,6 +2,16 @@
 
 Auth::routes();
 
+Route::get('register/confirm/{token}', [
+	'uses' => 'Account\EmailController@confirmEmail',
+	'as'   => 'verify.email',
+]);
+
+Route::post('/verification', [
+	'uses' => 'Account\EmailController@confirmEmailAgain',
+	'as'   => 'send.verification.code',
+]);
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function() {
