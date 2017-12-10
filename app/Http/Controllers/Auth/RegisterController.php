@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Notifications\EmailVerification;
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -20,7 +23,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, Notifiable;
 
     /**
      * Where to redirect users after registration.
@@ -48,7 +51,7 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:25',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
         ]);
@@ -62,10 +65,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => bcrypt($data['password']),
-        ]);
+	    $user = User::create([
+		    'name' => $data['name'],
+		    'email' => $data['email'],
+		    'password' => bcrypt($data['password']),
+		    'verified' => 0
+	    ]);
+
+	    $user->notify(new EmailVerification($user));
+
+	    // Flash a info message saying you need to confirm your email.
+	    request()->session()->flash('error', 'Please confirm your email address in your inbox.');
+
+	    return $user;
     }
 }
