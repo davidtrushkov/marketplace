@@ -5,12 +5,13 @@ namespace App;
 use App\Traits\HasApprovals;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class File extends Model
 {
 
-	use SoftDeletes, HasApprovals;
+	use SoftDeletes, HasApprovals, Notifiable;
 
 	/**
 	 * Fields that can be approved by admin
@@ -51,6 +52,58 @@ class File extends Model
 	 */
 	public function getRouteKeyName() {
 		return 'identifier';
+	}
+
+
+	/**
+	 * Merge what ever changes were made from the updated file to the old file, and just grab the "APPROVAL_PROPERTIES" fields
+	 */
+	public function mergeApprovalProperties() {
+		$this->update(array_only($this->approvals->first()->toArray(), self::APPROVAL_PROPERTIES));
+	}
+
+
+	/**
+	 * Delete all approvals for a particular file
+	 */
+	public function deleteAllApprovals() {
+		$this->approvals()->delete();
+	}
+
+	/**
+	 * Approve file to be visible and approve all file uploads for this file
+	 */
+	public function approve() {
+		$this->updateToBeVisible();
+		$this->approveAllUploads();
+	}
+
+
+	/**
+	 * Approve all file uploads for a particular file.
+	 */
+	public function approveAllUploads() {
+		$this->uploads()->update([
+			'approved' => true
+		]);
+	}
+
+
+	/**
+	 * Delete unapproved uploads in the 'uploads' table if a file that has been changed, has been rejected by the admin.
+	 */
+	public function deleteUnapprovedUploads() {
+		$this->uploads()->unapproved()->delete();
+	}
+
+	/**
+	 * Update a file to be visible, or in other words, approved/live
+	 */
+	public function updateToBeVisible() {
+		$this->update([
+			'live' => true,
+			'approved' => true
+		]);
 	}
 
 
@@ -115,6 +168,22 @@ class File extends Model
 	 */
 	protected function currentPropertiesDifferToGiven(array $properties) {
 		return array_only($this->toArray(), self::APPROVAL_PROPERTIES) != $properties;
+	}
+
+
+	/**
+	 * Get the user id from the file being rejected or approved by admin.
+	 * @param $file
+	 *
+	 * @return mixed
+	 */
+	public function filesUser($file) {
+
+		$userId = $file->user->id;
+
+		$user = User::where('id', '=', $userId)->first();
+
+		return $user;
 	}
 
 	/**

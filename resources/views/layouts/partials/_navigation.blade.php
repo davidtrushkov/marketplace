@@ -27,7 +27,7 @@
                             <ul class="dropdown-menu" role="menu">
                                 @admin('admin')
                                 <li>
-                                    <a href="#">
+                                    <a href="{{ route('admin.index') }}">
                                         <img src="/images/icons/gears.svg" width="25px"> Admin
                                     </a>
                                 </li>
