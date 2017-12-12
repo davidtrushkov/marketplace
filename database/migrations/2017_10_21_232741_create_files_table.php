@@ -17,7 +17,7 @@ class CreateFilesTable extends Migration
             $table->increments('id');
             $table->string('identifier')->unique();
             $table->integer('user_id')->unsigned()->index();
-            $table->string('title');
+            $table->string('title', 255);
             $table->string('overview_short', 300);
             $table->text('overview');
             $table->decimal('price', 6, 2);
