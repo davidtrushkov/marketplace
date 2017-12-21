@@ -135,6 +135,18 @@ class File extends Model
 		return $builder->where('finished', true);
 	}
 
+
+	/**
+	 * Return all files where "live", "approved" and "finished" are all true.
+	 * @param Builder $builder
+	 *
+	 * @return $this
+	 */
+	public function scopeReadyToBeShown(Builder $builder) {
+		return $builder->where('finished', true)->where('live', true)->where('approved', true);
+	}
+
+
 	/**
 	 * Check if the file is free. (Equal to 0 in database.)
 	 * @return bool
