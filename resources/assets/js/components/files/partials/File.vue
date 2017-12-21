@@ -8,6 +8,7 @@
                 <h3>{{ file.title }}</h3>
                 <p>{{ file.overview_short }}</p>
                 <small>By {{ file.user.name }}</small>
+                <div><b>${{ file.price }}</b></div>
                 <div v-if="file.uploads.length">
                     Files: {{ file.uploads.length }}
                 </div>
