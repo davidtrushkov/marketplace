@@ -1,5 +1,5 @@
 <div class="col-sm-12 no-padding YOUR-FILE-BOX">
-    <h4><a href="#">{{ $file->title }}</a></h4>
+    <h4><a href="{{ route('files.show', $file) }}">{{ $file->title }}</a></h4>
     <h5>{{ str_limit($file->overview_short, 150) }}</h5>
     <hr>
     <span>

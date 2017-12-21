@@ -9,14 +9,34 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+import VueRouter from 'vue-router'
+Vue.use(VueRouter)
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
+//Vue.component('files-index', require('./components/files/Index.vue'));
+
+const FileIndex = require('./components/files/Index.vue');
+
+const routes = [
+    {
+        path: '/files',
+        name: 'files.index',
+        component: FileIndex
+    }
+];
+
+
+const router = new VueRouter({
+    mode: 'history',
+    routes
+});
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });

@@ -56,6 +56,25 @@ class File extends Model
 
 
 	/**
+	 * Check to see if the user is an admin or the user owns this file.
+	 * Also if its 'live' and 'approved'
+	 * @return bool
+	 */
+	public function visible() {
+
+		if (auth()->user()->isAdmin()) {
+			return true;
+		}
+
+		if (auth()->user()->isTheSameAs($this->user)) {
+			return true;
+		}
+
+		return $this->live && $this->approved;
+	}
+
+
+	/**
 	 * Merge what ever changes were made from the updated file to the old file, and just grab the "APPROVAL_PROPERTIES" fields
 	 */
 	public function mergeApprovalProperties() {
@@ -115,7 +134,6 @@ class File extends Model
 	public function scopeFinished(Builder $builder) {
 		return $builder->where('finished', true);
 	}
-
 
 	/**
 	 * Check if the file is free. (Equal to 0 in database.)

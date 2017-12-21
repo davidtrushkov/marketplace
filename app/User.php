@@ -78,4 +78,23 @@ class User extends Authenticatable
     public function files() {
     	return $this->hasMany(File::class);
     }
+
+
+	/**
+	 * Check if user is admin.
+	 */
+    public function isAdmin() {
+	    $this->hasRole('admin');
+    }
+
+
+	/**
+	 * Check to see if the user is the same as the user passed in.
+	 * @param User $user
+	 *
+	 * @return bool
+	 */
+	public function isTheSameAs(User $user) {
+		return $this->id === $user->id;
+	}
 }
