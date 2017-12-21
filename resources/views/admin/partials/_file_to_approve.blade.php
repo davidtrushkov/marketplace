@@ -3,7 +3,7 @@
     <h5>{{ str_limit($file->overview_short, 150) }}</h5>
     <hr>
     <span>
-         <a href="">Preview file</a>
+         <a href="{{ route('admin.files.show', $file) }}">Preview file</a>
     </span>
     <span>
          <a href="#" onclick="event.preventDefault(); document.getElementById('approve-{{ $file->id }}').submit();">Approve</a>

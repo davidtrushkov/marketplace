@@ -15,6 +15,7 @@
 
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ route('files.index') }}">Files</a></li>
                     @if (Auth::guest())
                         <li><a href="{{ route('login') }}" class="btn btn-info">Sign In</a></li>
                         <li><a href="{{ route('register') }}" class="btn btn-primary">Start Selling</a></li>
