@@ -6,6 +6,7 @@ use App\File;
 use App\Http\Requests\File\StoreFileRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\File\UpdateFileRequest;
+use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
@@ -34,7 +35,7 @@ class FileController extends Controller
 		// Make sure the user owns the file before we store it in database.
 		$this->authorize('touch', $file);
 
-		// Grab the latest approvals for the file being edites (if any),
+		// Grab the latest approvals for the file being edited (if any),
 		// to show on edit page what needs approving by admin.
 		$approvals = $file->approvals->first();
 
@@ -82,7 +83,12 @@ class FileController extends Controller
 		$this->authorize('touch', $file);
 
 		// Update the fields that we 'only' need
-		$file->fill($request->only(['title', 'overview', 'overview_short', 'price']));
+		$file->fill($request->only(['avatar', 'title', 'overview', 'overview_short', 'price']));
+
+		if (request('avatar')) {
+			// Upload cover photo
+			$this->uploadAvatar($request, $file);
+		}
 
 		// Set "finished" to true in database
 		$file->finished = true;
@@ -107,6 +113,13 @@ class FileController extends Controller
 		// Make sure the user owns the file before we store it in database.
 		$this->authorize('touch', $file);
 
+		if (request('avatar')) {
+			// Upload cover photo
+			$this->uploadAvatar($request, $file);
+			$file->save();
+		}
+
+
 		// Data that needs checking for approval by admin.
 		// ** Referencing APPROVAL_PROPERTIES constant in 'File' model
 		$approvalProperties = $request->only(File::APPROVAL_PROPERTIES);
@@ -119,6 +132,11 @@ class FileController extends Controller
 			$file->createApproval($approvalProperties);
 
 			return back()->withSuccess('We will review your changes soon.');
+		}
+
+		if (request('avatar')) {
+			// Upload cover photo
+			$this->uploadAvatar($request, $file);
 		}
 
 		// If ONLY the 'price' OR/AND 'live' checkbox have been updated, then
@@ -141,5 +159,39 @@ class FileController extends Controller
 			'price' => 0,
 			'finished' => false
 		]);
+	}
+
+
+	/**
+	 * Upload the files cover photo.
+	 * @param Request $request
+	 * @param $file
+	 */
+	protected function uploadAvatar(Request $request, $file) {
+
+		// Get the current file uploaded
+		$avatar = request()->file('avatar');
+
+		// Validate the file
+		$this->validate($request, [
+			'avatar' => 'nullable|mimes:jpeg,jpg,png|max:1024'
+		]);
+
+		// Get the file name
+		$avatarName = sha1($avatar->getClientOriginalName());
+
+		// Get the file extension
+		$avatarExtension = $avatar->getClientOriginalExtension();
+
+		// Combine the image name and extension
+		$image = "{$avatarName}.{$avatarExtension}";
+
+		// Move the file to a path with the image name
+		$request->file('avatar')->move(
+			base_path() . '/public/images/files/cover/', $image
+		);
+
+		// Set the files avatar to the image
+		$file->avatar = $image;
 	}
 }

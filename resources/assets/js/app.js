@@ -20,23 +20,23 @@ Vue.use(VueRouter)
 
 //Vue.component('files-index', require('./components/files/Index.vue'));
 
-const FileIndex = require('./components/files/Index.vue');
+// const FileIndex = require('./components/files/Index.vue');
 
-const routes = [
-    {
-        path: '/files',
-        name: 'files.index',
-        component: FileIndex
-    }
-];
-
-
-const router = new VueRouter({
-    mode: 'history',
-    routes
-});
-
-const app = new Vue({
-    el: '#app',
-    router
-});
+// const routes = [
+//     {
+//         path: '/files',
+//         name: 'files.index',
+//         component: FileIndex
+//     }
+// ];
+//
+//
+// const router = new VueRouter({
+//     mode: 'history',
+//     routes
+// });
+//
+// const app = new Vue({
+//     el: '#app',
+//     router
+// });

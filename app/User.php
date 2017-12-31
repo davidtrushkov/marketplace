@@ -81,6 +81,14 @@ class User extends Authenticatable
 
 
 	/**
+	 * A user can have many sales.
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function sales() {
+		return $this->hasMany(Sale::class);
+	}
+
+	/**
 	 * Check if user is admin.
 	 */
     public function isAdmin() {

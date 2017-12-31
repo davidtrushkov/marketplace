@@ -1,7 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:600);@charset "UTF-8";
+@charset "UTF-8";
 
 .MAIN-BACKGROUND-OVERLAY,
 .ACCOUNT-CONTENT .ACCOUNT-HEADER,
+.MAIN-FILES-CONTAINER,
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER,
 .HOME-PAGE-SECTION,
 .AUTH-CONTAINER-SECTION {
   background: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
@@ -24,6 +26,7 @@
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group,
 .ACCOUNT-CONTENT .HEADER-BOX,
 .ACCOUNT-CONTENT .YOUR-FILE-BOX,
+.MAIN-FILES-CONTAINER .FILES-BOX,
 .alert-success,
 .alert-danger,
 .alert-info,
@@ -8963,8 +8966,112 @@ button.close {
   margin: 0 5px 0 5px;
 }
 
+.ACCOUNT-CONTENT .YOUR-FILE-BOX .trix-editor {
+  padding-top: 25px;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX trix-editor {
+  min-height: 400px;
+  margin-top: 10px;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX trix-toolbar span {
+  margin: 0;
+}
+
+.MAIN-FILES-CONTAINER {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.MAIN-FILES-CONTAINER .FILES-BOX {
+  padding: 0;
+  background-color: #fff;
+  margin-bottom: 35px;
+}
+
+.MAIN-FILES-CONTAINER .FILES-BOX img {
+  width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.MAIN-FILES-CONTAINER .FILES-BOX h4 {
+  color: #333333;
+}
+
+.MAIN-FILES-CONTAINER .FILES-BOX a {
+  color: inherit;
+}
+
+.MAIN-FILES-CONTAINER .FILES-BOX .image {
+  position: relative;
+  width: 100%;
+}
+
+.MAIN-FILES-CONTAINER .FILES-BOX .price-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 16px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #FFFFFF;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-COVER-IMAGE {
+  width: 100%;
+  height: auto;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-OVERVIEW-SHORT {
+  padding-top: 30px;
+  font-size: 16px;
+  line-height: 1.4em;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX {
+  background-color: #ffffff;
+  padding: 15px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX h3 {
+  margin-top: 0;
+  color: #6b6b6b;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX .btn-primary {
+  color: #fff;
+  background-color: #ec5252 !important;
+  border-color: #ec5252 !important;
+  padding: 12px 18px;
+  border-radius: 2px;
+  font-size: 18px;
+  width: 100%;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
 body {
-  font-family: "Raleway", Helvetica, Arial, sans-serif;
+  font-family: sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .btn-primary {
@@ -8984,7 +9091,6 @@ body {
 }
 
 .help-block {
-  margin-top: -15px !important;
   margin-bottom: 25px !important;
 }
 

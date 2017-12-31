@@ -6,8 +6,20 @@
             sell a file
         </div>
         <div class="col-sm-12 no-padding YOUR-FILE-BOX">
-            <form action="{{ route('account.files.store', $file) }}" method="post">
+            <form action="{{ route('account.files.store', $file) }}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
+
+                <input id="trix" type="hidden" name="overview" value="{{ old('overview') }}">
+
+                <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
+                    <label>Your files cover photo</label>
+                    <input type="file" name="avatar">
+                    @if($errors->has('avatar'))
+                        <span class="help-block">{{ $errors->first('avatar') }}</span>
+                    @endif
+                </div>
+
+                <br /><br />
 
                 <div class="form-group{{ $errors->has('uploads') ? ' has-error' : '' }}">
                     <div id="file" class="dropzone"></div>
@@ -19,7 +31,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" autofocus placeholder="Title">
+                    <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" autofocus placeholder="Title" max="100">
                     @if ($errors->has('title'))
                         <span class="help-block">
                             <strong>{{ $errors->first('title') }}</strong>
@@ -40,13 +52,15 @@
                     <input type="text" class="form-control" id="price" name="price" value="{{ old('price') }}" placeholder="Price">
                     @if ($errors->has('price'))
                         <span class="help-block">
-                   <strong>{{ $errors->first('price') }}</strong>
-               </span>
+                            <strong>{{ $errors->first('price') }}</strong>
+                        </span>
                     @endif
                 </div>
 
-                <div class="form-group{{ $errors->has('overview') ? ' has-error' : '' }}">
-                    <textarea class="form-control" name="overview" id="overview" rows="6" style="height: auto;" placeholder="Overview">{{ old('overview') }}</textarea>
+                <div class="form-group{{ $errors->has('overview') ? ' has-error' : '' }} trix-editor">
+                    {{--<textarea class="form-control" name="overview" id="overview" rows="6" style="height: auto;" placeholder="Overview">{{ old('overview') }}</textarea>--}}
+                    <trix-editor input="trix" placeholder="Overview"></trix-editor>
+                    <br />
                     @if ($errors->has('overview'))
                         <span class="help-block">
                             <strong>{{ $errors->first('overview') }}</strong>
