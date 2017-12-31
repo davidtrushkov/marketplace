@@ -7,9 +7,13 @@ use App\Http\Controllers\Controller;
 
 class FileController extends Controller
 {
+	const PERPAGE = 4;
 
 	public function index() {
-		return view('files.index');
+
+		$files = File::with(['user', 'uploads'])->readyToBeShown()->latest()->paginate(self::PERPAGE);
+
+		return view('files.index', compact('files'));
 	}
 
 	public function show(File $file) {

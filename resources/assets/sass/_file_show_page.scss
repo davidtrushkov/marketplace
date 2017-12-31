@@ -1,0 +1,44 @@
+#SINGLE-FILE-SHOW {
+  .SINGLE-FILE-HEADER {
+    @extend .MAIN-BACKGROUND-OVERLAY;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #FFFFFF;
+
+    .SINGLE-FILE-COVER-IMAGE {
+      width: 100%;
+      height: auto;
+    }
+
+    .SINGLE-FILE-OVERVIEW-SHORT {
+      padding-top: 30px;
+      font-size: 16px;
+      line-height: 1.4em;
+    }
+
+    .SINGLE-FILE-CART-BOX {
+      background-color: #ffffff;
+      padding: 15px;
+
+      h3 {
+        margin-top: 0;
+        color: #6b6b6b;
+      }
+
+      .btn-primary {
+        color: #fff;
+        background-color: #ec5252 !important;
+        border-color: #ec5252 !important;
+        padding: 12px 18px;
+        border-radius: 2px;
+        font-size: 18px;
+        width: 100%;
+      }
+    }
+  }
+
+  .SINGLE-FILE-CONTENT {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}

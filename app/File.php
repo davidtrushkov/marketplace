@@ -19,7 +19,7 @@ class File extends Model
 	const APPROVAL_PROPERTIES = [
 		'title',
 		'overview_short',
-		'overview',
+		'overview'
 	];
 
 	protected $fillable = [
@@ -30,6 +30,7 @@ class File extends Model
 		'live',
 		'approved',
 		'finished',
+		'avatar'
 	];
 
 	/**
@@ -62,12 +63,14 @@ class File extends Model
 	 */
 	public function visible() {
 
-		if (auth()->user()->isAdmin()) {
-			return true;
-		}
+		if (auth()->user()) {
+			if ( auth()->user()->isAdmin() ) {
+				return true;
+			}
 
-		if (auth()->user()->isTheSameAs($this->user)) {
-			return true;
+			if ( auth()->user()->isTheSameAs( $this->user ) ) {
+				return true;
+			}
 		}
 
 		return $this->live && $this->approved;
@@ -152,7 +155,7 @@ class File extends Model
 	 * @return bool
 	 */
 	public function isFree() {
-		return $this->price === 0;
+		return $this->price < 0.01;
 	}
 
 
@@ -216,6 +219,35 @@ class File extends Model
 		return $user;
 	}
 
+
+	/**
+	 * Calculate the commission of a file sale.
+	 * @return float|int
+	 */
+	public function calculateCommission() {
+		return (config('marketplace.sales.commission') / 100) * $this->price;
+	}
+
+
+	/**
+	 * Get uploaded files when user starts to download the files
+	 * @return mixed
+	 */
+	public function getUploadList() {
+		// Access the 'uploads' relationship, make sure the files are 'approved' and pluck the "path" attribute coming from 'Upload' Model
+		return $this->uploads()->approved()->get()->pluck('path')->toArray();
+	}
+
+	/**
+	 * Check that the sale matches the sale passed in into this method.
+	 * @param Sale $sale
+	 *
+	 * @return mixed
+	 */
+	public function matchesSale(Sale $sale) {
+		return $this->sales->contains($sale);
+	}
+
 	/**
 	 * A file belongs to a user.
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -241,4 +273,13 @@ class File extends Model
     public function uploads() {
     	return $this->hasMany(Upload::class);
     }
+
+
+	/**
+	 * A file can have many sales.
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function sales() {
+		return $this->hasMany(Sale::class);
+	}
 }

@@ -36,7 +36,7 @@ class StoreFileRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'             => 'required|max:255',
+            'title'             => 'required|max:100',
 	        'overview_short'    => 'required|max:300',
 	        'overview'          => 'required',
 	        'price'             => 'required|numeric',
@@ -55,7 +55,7 @@ class StoreFileRequest extends FormRequest
     public function messages() {
     	return [
     		'title.required'          => 'The file title is required',
-		    'title.max'               => 'The title can\'t be more than 255 characters',
+		    'title.max'               => 'The title can\'t be more than 100 characters',
 		    'overview_short.required' => 'The short overview is required',
 		    'overview_short.max'      => 'The short overview can\'t be more than 300 characters',
 		    'overview.required'       => 'The overview is required',

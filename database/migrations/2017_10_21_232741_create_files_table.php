@@ -24,6 +24,7 @@ class CreateFilesTable extends Migration
             $table->boolean('live')->default(false);
             $table->boolean('approved')->default(false);
             $table->boolean('finished')->default(false);
+	        $table->string('avatar')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

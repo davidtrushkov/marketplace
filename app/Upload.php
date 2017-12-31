@@ -34,4 +34,13 @@ class Upload extends Model
 	public function user() {
 		return $this->belongsTo(User::class);
 	}
+
+
+	/**
+	 * Access the full path of a filename
+	 * @return string
+	 */
+	public function getPathAttribute() {
+		return storage_path('app/files/' . $this->file->identifier . '/' . $this->filename);
+	}
 }

@@ -79,5 +79,20 @@
     span {
       margin: 0 5px 0 5px;
     }
+
+    .trix-editor {
+      padding-top: 25px;
+    }
+
+    trix-editor {
+      min-height: 400px;
+      margin-top: 10px;
+    }
+
+    trix-toolbar {
+      span {
+        margin: 0;
+      }
+    }
   }
 }
