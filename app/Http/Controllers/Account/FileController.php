@@ -119,7 +119,6 @@ class FileController extends Controller
 			$file->save();
 		}
 
-
 		// Data that needs checking for approval by admin.
 		// ** Referencing APPROVAL_PROPERTIES constant in 'File' model
 		$approvalProperties = $request->only(File::APPROVAL_PROPERTIES);
@@ -132,11 +131,6 @@ class FileController extends Controller
 			$file->createApproval($approvalProperties);
 
 			return back()->withSuccess('We will review your changes soon.');
-		}
-
-		if (request('avatar')) {
-			// Upload cover photo
-			$this->uploadAvatar($request, $file);
 		}
 
 		// If ONLY the 'price' OR/AND 'live' checkbox have been updated, then
@@ -172,10 +166,10 @@ class FileController extends Controller
 		// Get the current file uploaded
 		$avatar = request()->file('avatar');
 
-		// Validate the file
-		$this->validate($request, [
-			'avatar' => 'nullable|mimes:jpeg,jpg,png|max:1024'
-		]);
+//		// Validate the file
+//		$this->validate($request, [
+//			'avatar' => 'nullable|mimes:jpeg,jpg,png|max:1024'
+//		]);
 
 		// Get the file name
 		$avatarName = sha1($avatar->getClientOriginalName());

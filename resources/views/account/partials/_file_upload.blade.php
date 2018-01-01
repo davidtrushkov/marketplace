@@ -1,12 +1,14 @@
 <script>
     let drop = new Dropzone('#file', {
-        createImageThumbnails: false,
+        createImageThumbnails: true,
         addRemoveLinks: true,
         url: '{{ route('upload.store', $file) }}',
         headers: {
             'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         }
     });
+
+    console.log(drop);
 
     // Keep the uploaded files on the page on page refresh
     // (if for example errors occur, we want the files still to be there)
