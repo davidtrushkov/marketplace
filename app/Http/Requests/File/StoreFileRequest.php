@@ -36,6 +36,7 @@ class StoreFileRequest extends FormRequest
     public function rules()
     {
         return [
+	        'avatar'            => 'nullable|mimes:jpeg,jpg,png|max:1024',
             'title'             => 'required|max:100',
 	        'overview_short'    => 'required|max:300',
 	        'overview'          => 'required',
@@ -54,6 +55,7 @@ class StoreFileRequest extends FormRequest
 
     public function messages() {
     	return [
+    		'avatar.max'              => 'The cover image may not be greater than 1MB (1024 kilobytes).',
     		'title.required'          => 'The file title is required',
 		    'title.max'               => 'The title can\'t be more than 100 characters',
 		    'overview_short.required' => 'The short overview is required',
