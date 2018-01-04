@@ -14,10 +14,13 @@ Route::post('/verification', [
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/account/connect', 'Account\MarketPlaceConnectController@index')->name('account.connect');
+Route::get('/account/connect/complete', 'Account\MarketPlaceConnectController@store')->name('account.complete');
+
 Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function() {
 	Route::get('/', 'AccountController@index')->name('account');
 
-	Route::group(['prefix' => '/files'], function() {
+	Route::group(['prefix' => '/files', 'middleware' => ['needs.marketplace']], function() {
 		Route::get('/', 'FileController@index')->name('account.files.index');
 		Route::get('/{file}/edit', 'FileController@edit')->name('account.files.edit');
 		Route::patch('/{file}', 'FileController@update')->name('account.files.update');
@@ -48,6 +51,7 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['au
 
 Route::group(['prefix' => '/{file}/checkout', 'namespace' => 'Checkout'], function() {
 	Route::post('/free', 'CheckoutController@free')->name('checkout.free');
+	Route::post('/payment', 'CheckoutController@payment')->name('checkout.payment');
 });
 
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');
