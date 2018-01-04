@@ -2,6 +2,6 @@
 
 return [
 	'sales' => [
-		'commission' => 20
+		'commission' => 40,
 	]
 ];

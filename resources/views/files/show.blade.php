@@ -13,13 +13,7 @@
                             <h3>FREE</h3>
                             @include('files.partials._checkout_form_free')
                         @else
-                            <h3>${{ $file->price }}</h3>
-                        @endif
-
-                        @if(!$file->isFree())
-                            <form>
-                                <button type="submit" class="btn btn-primary">Buy Now</button>
-                            </form>
+                            @include('files.partials._checkout_form')
                         @endif
                     </div>
                 </div>
