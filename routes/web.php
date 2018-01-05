@@ -17,8 +17,6 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/account/connect', 'Account\MarketPlaceConnectController@index')->name('account.connect');
 Route::get('/account/connect/complete', 'Account\MarketPlaceConnectController@store')->name('account.complete');
 
-Route::post('/stripe/webhook', 'Checkout\WebHooksController@handle');
-
 Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function() {
 	Route::get('/', 'AccountController@index')->name('account');
 
