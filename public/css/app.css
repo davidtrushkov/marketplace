@@ -8962,6 +8962,10 @@ button.close {
   color: inherit;
 }
 
+.ACCOUNT-CONTENT .YOUR-FILE-BOX a {
+  color: inherit;
+}
+
 .ACCOUNT-CONTENT .YOUR-FILE-BOX span {
   margin: 0 5px 0 5px;
 }

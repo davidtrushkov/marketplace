@@ -43,8 +43,11 @@ class CreateSale implements ShouldQueue
     {
         $sale = new Sale;
 
+	    $isUser = auth()->user() ? auth()->user()->id : NULL;
+
         $sale->fill([
         	'identifier' => uniqid(true),
+	        'bought_user_id' => $isUser,
 	        'buyer_email' => $this->email,
 	        'sale_price' => $this->file->price,
 	        'sale_commission' => $this->file->calculateCommission()

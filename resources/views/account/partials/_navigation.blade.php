@@ -12,6 +12,12 @@
     </ul>
 
     <ul class="list-group">
+        <li class="list-group-item {{ isActiveRoute('bought.files') }}">
+            <a href="{{ route('bought.files') }}">Bought Files</a>
+        </li>
+    </ul>
+
+    <ul class="list-group">
         <li class="list-group-item">
             General
         </li>
