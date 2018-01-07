@@ -17,6 +17,7 @@ class CreateSalesTable extends Migration
             $table->increments('id');
             $table->string('identifier')->unique();
             $table->integer('user_id')->unsigned()->index()->nullable();
+	        $table->integer('bought_user_id')->unsigned()->index()->nullable();
 	        $table->integer('file_id')->unsigned()->index()->nullable();
 	        $table->string('buyer_email');
 	        $table->decimal('sale_price', 6, 2);
@@ -25,6 +26,7 @@ class CreateSalesTable extends Migration
 
 	        $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
 	        $table->foreign('file_id')->references('id')->on('files')->onDelete('set null');
+	        $table->foreign('bought_user_id')->references('id')->on('users')->onDelete('set null');
         });
     }
 

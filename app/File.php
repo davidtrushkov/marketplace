@@ -248,6 +248,7 @@ class File extends Model
 		return $this->sales->contains($sale);
 	}
 
+
 	/**
 	 * A file belongs to a user.
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
 class Sale extends Model
@@ -9,6 +10,7 @@ class Sale extends Model
     protected $fillable = [
     	'identifier',
 	    'buyer_email',
+	    'bought_user_id',
 	    'sale_price',
 	    'sale_commission'
     ];
@@ -38,4 +40,16 @@ class Sale extends Model
 	public function file() {
 		return $this->belongsTo(File::class);
 	}
+
+
+	/**
+	 * Get the user where the 'bought_user_id' is the currently signed in user.
+	 * @param Builder $builder
+	 *
+	 * @return $this
+	 */
+	public function scopeBoughtUserId(Builder $builder) {
+		return $builder->where('bought_user_id', '=', auth()->user()->id);
+	}
+
 }

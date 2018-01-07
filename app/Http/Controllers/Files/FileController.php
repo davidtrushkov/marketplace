@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Files;
 
 use App\File;
 use App\Http\Controllers\Controller;
+use App\Sale;
 
 class FileController extends Controller
 {
@@ -26,6 +27,10 @@ class FileController extends Controller
 
 		$uploads = $file->uploads()->approved()->get();
 
-		return view('files.show',compact('file', 'uploads'));
+		// Check and see if the file_id on the sales table = to the current file id beign shown and the 'bought_user_id' = the the current user id signed in
+		// Checking to see if the currently signed in user owns the file being passed in.
+		$currentUserOwnsThisFile = Sale::where('file_id', '=', $file->id)->where('bought_user_id', '=', auth()->user()->id)->count();
+
+		return view('files.show',compact('file', 'uploads', 'currentUserOwnsThisFile'));
 	}
 }
