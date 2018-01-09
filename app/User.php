@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Traits\HasRoles;
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -104,5 +105,30 @@ class User extends Authenticatable
 	 */
 	public function isTheSameAs(User $user) {
 		return $this->id === $user->id;
+	}
+
+
+	/**
+	 * Get a currently signed in users sales sum overall.
+	 * @return mixed
+	 */
+	public function saleValueOverLifetime() {
+		return $this->sales->sum('sale_price');
+	}
+
+
+	/**
+	 * Grab the sales for month from now, and get users sales.
+	 * @return mixed
+	 */
+	public function saleValueThisMonth() {
+
+		// Grab the date right now.
+		$now = Carbon::now();
+
+		return $this->sales()->whereBetween('created_at', [
+			$now->startOfMonth(),
+			$now->copy()->endOfMonth()
+		])->get()->sum('sale_price');
 	}
 }

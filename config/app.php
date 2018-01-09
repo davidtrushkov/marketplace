@@ -179,6 +179,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 	    App\Providers\RoleServiceProvider::class,
 	    App\Providers\PaymentGatewayServiceProvider::class,
+	    App\Providers\ComposerServiceProvider::class,
     ],
 
     /*

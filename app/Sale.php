@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
@@ -52,4 +53,25 @@ class Sale extends Model
 		return $builder->where('bought_user_id', '=', auth()->user()->id);
 	}
 
+
+	/**
+	 * Sum up all the sales commissions.
+	 * @return mixed
+	 */
+	public static function lifetimeCommission() {
+		return static::get()->sum('sale_commission');
+	}
+
+
+	/** Grab the sales for month from now, and get all sales.
+	 * @return mixed
+	 */
+	public static function commissionThisMonth() {
+		$now = Carbon::now();
+
+		return static::whereBetween('created_at', [
+			$now->startOfMonth(),
+			$now->copy()->endOfMonth()
+		])->get()->sum('sale_commission');
+	}
 }
