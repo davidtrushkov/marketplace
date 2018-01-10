@@ -9138,6 +9138,15 @@ p {
   min-height: auto;
 }
 
+.user-avatar {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 5px;
+}
+
 .HOME-PAGE-SECTION {
   height: 80vh;
   margin-top: -118px;

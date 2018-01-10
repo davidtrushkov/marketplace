@@ -18,7 +18,7 @@ Vue.use(VueRouter)
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-//Vue.component('files-index', require('./components/files/Index.vue'));
+Vue.component('avatar-upload', require('./components/AvatarUpload.vue'));
 
 // const FileIndex = require('./components/files/Index.vue');
 
@@ -35,8 +35,8 @@ Vue.use(VueRouter)
 //     mode: 'history',
 //     routes
 // });
-//
-// const app = new Vue({
-//     el: '#app',
-//     router
-// });
+
+const app = new Vue({
+    el: '#app',
+    //router
+});

@@ -168,6 +168,7 @@ return [
          * Package Service Providers...
          */
 	    Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+	    Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -227,8 +228,7 @@ return [
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class,
-
+        'View' => Illuminate\Support\Facades\View::class
     ],
 
 ];

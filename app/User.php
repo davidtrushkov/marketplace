@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'verified', 'token', 'stripe_id', 'stripe_key'
+        'name', 'email', 'password', 'verified', 'token', 'stripe_id', 'stripe_key', 'avatar_id'
     ];
 
     /**
@@ -87,6 +87,30 @@ class User extends Authenticatable
 	 */
 	public function sales() {
 		return $this->hasMany(Sale::class);
+	}
+
+
+	/**
+	 * A user has one avatar image.
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function avatar() {
+		return $this->hasOne(Image::class, 'id', 'avatar_id');
+	}
+
+
+	/**
+	 * Return an avatar path.
+	 * @return null
+	 */
+	public function avatarPath() {
+		// Check to see if users avatar doesn't exist.
+		if (!$this->avatar_id) {
+			return null;
+		}
+
+		// Use a path helper called 'path' located on Image model.
+		return $this->avatar->path();
 	}
 
 	/**

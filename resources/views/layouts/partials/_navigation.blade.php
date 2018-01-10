@@ -22,6 +22,9 @@
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                @if(auth()->user()->avatarPath())
+                                    <img src="{{ auth()->user()->avatarPath() }}" alt="User avatar" class="user-avatar">
+                                @endif
                                 {{ Auth::user()->name }}
                             </a>
 

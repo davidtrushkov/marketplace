@@ -17,9 +17,12 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::get('/account/connect', 'Account\MarketPlaceConnectController@index')->name('account.connect');
 Route::get('/account/connect/complete', 'Account\MarketPlaceConnectController@store')->name('account.complete');
 
+Route::post('/account/avatar', 'Account\AvatarController@store')->name('account.avatar.store');
+
 Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function() {
 	Route::get('/', 'AccountController@index')->name('account');
 	Route::get('/bought/files', 'AccountController@boughtIndex')->name('bought.files');
+	Route::patch('/update/settings', 'AccountController@update')->name('account.update.settings');
 
 	Route::group(['prefix' => '/files', 'middleware' => ['needs.marketplace']], function() {
 		Route::get('/', 'FileController@index')->name('account.files.index');
