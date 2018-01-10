@@ -49,6 +49,7 @@
             fileChange(e) {
                 this.upload(e).then((response) => {
                     this.avatar = response.data.data;
+                    console.log(this.avatar);
                 }).catch((error) => {
                     if (error.response.status === 422) {
                         console.log(error.response.data);
@@ -56,6 +57,7 @@
                         return
                     }
 
+                    console.log('I got errors');
                     this.errors = 'Something went wrong. Try again.'
                 });
             }

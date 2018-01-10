@@ -49519,6 +49519,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.upload(e).then(function (response) {
                 _this.avatar = response.data.data;
+                console.log(_this.avatar);
             }).catch(function (error) {
                 if (error.response.status === 422) {
                     console.log(error.response.data);
@@ -49526,6 +49527,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     return;
                 }
 
+                console.log('I got errors');
                 _this.errors = 'Something went wrong. Try again.';
             });
         }
