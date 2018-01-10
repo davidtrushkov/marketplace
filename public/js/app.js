@@ -49468,7 +49468,7 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload_js__ = __webpack_require__(48);
 //
 //
 //
@@ -49512,12 +49512,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload__["a" /* default */]],
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload_js__["a" /* default */]],
     methods: {
         fileChange: function fileChange(e) {
             var _this = this;
 
             this.upload(e).then(function (response) {
+                console.log('tetete');
                 _this.avatar = response.data.data;
                 console.log(_this.avatar);
             }).catch(function (error) {
@@ -49559,16 +49560,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         upload: function upload(e) {
             var _this = this;
 
+            console.log('Reached upload method');
             this.uploading = true;
 
             return axios.post(this.endpoint, this.packageUploads(e)).then(function (response) {
                 _this.uploading = false;
-                return response;
-                //return Promise.resolve(response)
+                return Promise.resolve(response);
             }).catch(function (error) {
                 _this.uploading = false;
-                return response.error;
-                //return Promise.reject(error)
+                return Promise.reject(error);
             });
         },
         packageUploads: function packageUploads(e) {

@@ -16,16 +16,15 @@ export default {
     methods: {
         upload (e) {
 
+            console.log('Reached upload method');
             this.uploading = true;
 
             return axios.post(this.endpoint, this.packageUploads(e)).then((response) => {
                 this.uploading = false;
-                return response;
-                //return Promise.resolve(response)
+                return Promise.resolve(response)
             }).catch((error) => {
                 this.uploading = false;
-                return response.error;
-                //return Promise.reject(error)
+                return Promise.reject(error)
             })
         },
         packageUploads (e) {

@@ -27,7 +27,7 @@
 </style>
 
 <script>
-    import upload from '../mixins/upload'
+    import upload from '../mixins/upload.js'
 
     export default {
         props: [
@@ -48,6 +48,7 @@
         methods: {
             fileChange(e) {
                 this.upload(e).then((response) => {
+                    console.log('tetete');
                     this.avatar = response.data.data;
                     console.log(this.avatar);
                 }).catch((error) => {
