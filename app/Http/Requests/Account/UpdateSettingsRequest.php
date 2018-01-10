@@ -30,12 +30,12 @@ class UpdateSettingsRequest extends FormRequest
 		$user = auth()->user();
 
 		return [
-//			'avatar_id' => [
-//				'nullable',
-//				Rule::exists('images', 'id')->where(function($q) use ($request) {
-//					$q->where('user_id', $request->user()->id);
-//				})
-//			],
+			'avatar_id' => [
+				'nullable',
+				Rule::exists('images', 'id')->where(function($q) use ($request) {
+					$q->where('user_id', $request->user()->id);
+				})
+			],
 			'name' => 'required|string|max:25|unique:users,name,'.$user->id,
 		];
 	}
