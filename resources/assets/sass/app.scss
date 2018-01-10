@@ -87,6 +87,14 @@ h1, h2, h3, h4, h5, h6, p {
   min-height: auto;
 }
 
+.user-avatar {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  object-fit: cover;
+  margin-right: 5px;
+}
+
 .HOME-PAGE-SECTION {
   height: 80vh;
   margin-top: -118px;
