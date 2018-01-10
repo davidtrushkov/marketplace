@@ -2,7 +2,7 @@
 
 return [
 	'path' => [
-		'relative' => public_path($relative = 'images/avatar'),
+		'relative' => $relative = 'images/avatar',
 		'absolute' => $relative
 	]
 ];
