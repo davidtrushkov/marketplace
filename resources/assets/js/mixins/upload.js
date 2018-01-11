@@ -20,10 +20,13 @@ export default {
             this.uploading = true;
 
             return axios.post(this.endpoint, this.packageUploads(e)).then((response) => {
+                console.log('Hit axios post request with success');
                 this.uploading = false;
                 return Promise.resolve(response)
             }).catch((error) => {
                 this.uploading = false;
+                console.log('Hit axios post request with error');
+                console.log(error);
                 return Promise.reject(error)
             })
         },
