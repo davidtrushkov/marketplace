@@ -24,14 +24,14 @@ class StoreAvatarFormRequest extends FormRequest
     public function rules()
     {
         return [
-	        'image' => 'image|max:1024'
+	        'avatar' => 'image|max:1024'
         ];
     }
 
     public function messages() {
     	return [
-    		'image.image' => 'Not a valid image.',
-		    'image.max' => 'Maximum size of image can only be 1MB.'
+    		'avatar.image' => 'Not a valid image.',
+		    'avatar.max' => 'Maximum size of image can only be 1MB.'
 	    ];
     }
 }

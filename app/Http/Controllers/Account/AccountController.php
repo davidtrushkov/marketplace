@@ -37,11 +37,7 @@ class AccountController extends Controller
 	 */
     public function update(UpdateSettingsRequest $request) {
 
-    	if (request('avatar_id')) {
-		    $request->user()->update($request->only(['name', 'avatar_id']));
-	    } else {
-		    $request->user()->update($request->only(['name']));
-	    }
+	    $request->user()->update($request->only(['name']));
 
 	    return redirect()->back()->withSuccess('Settings updated.');
     }
