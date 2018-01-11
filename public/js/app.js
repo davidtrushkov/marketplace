@@ -49468,7 +49468,6 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload__ = __webpack_require__(48);
 //
 //
 //
@@ -49497,13 +49496,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     props: ['currentAvatar'],
     data: function data() {
         return {
+            uploading: false,
             errors: [],
             avatar: {
                 id: null,
@@ -49512,73 +49510,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload__["a" /* default */]],
     methods: {
         fileChange: function fileChange(e) {
             var _this = this;
 
-            this.upload(e).then(function (response) {
+            return axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
+                _this.uploading = false;
                 _this.avatar = response.data.data;
+
+                return Promise.resolve(response);
             }).catch(function (error) {
+                _this.uploading = false;
                 if (error.response.status === 422) {
                     _this.errors = error.response.data;
                     return;
                 }
 
                 _this.errors = 'Something went wrong. Try again.';
-            });
-        }
-    }
-});
 
-/***/ }),
-/* 48 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ({
-    props: {
-        endpoint: {
-            type: String
-        },
-        sendAs: {
-            type: String,
-            default: 'file'
-        }
-    },
-    data: function data() {
-        return {
-            uploading: false
-        };
-    },
-
-    methods: {
-        upload: function upload(e) {
-            var _this = this;
-
-            this.uploading = true;
-
-            return axios.post(this.endpoint, this.packageUploads(e)).then(function (response) {
-                _this.uploading = false;
-
-                return response;
-                //return Promise.resolve(response)
-            }).catch(function (error) {
-                _this.uploading = false;
-
-                return error;
-                //return Promise.reject(error)
+                return Promise.reject(error);
             });
         },
         packageUploads: function packageUploads(e) {
             var fileData = new FormData();
-            fileData.append(this.sendAs, e.target.files[0]);
+            fileData.append('image', e.target.files[0]);
             return fileData;
         }
     }
 });
 
 /***/ }),
+/* 48 */,
 /* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -49591,16 +49553,12 @@ var render = function() {
       "div",
       { staticClass: "form-group", class: { "has-error": _vm.errors.errors } },
       [
-        _c(
-          "label",
-          { staticClass: "control-label", attrs: { for: _vm.sendAs } },
-          [_vm._v("Avatar")]
-        ),
+        _c("label", { staticClass: "control-label" }, [_vm._v("Avatar")]),
         _vm._v(" "),
         _vm.uploading
           ? _c("div", [_vm._v("Processing")])
           : _c("input", {
-              attrs: { type: "file", name: _vm.sendAs },
+              attrs: { type: "file", name: "image" },
               on: { change: _vm.fileChange }
             }),
         _vm._v(" "),
