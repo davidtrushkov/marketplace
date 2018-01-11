@@ -49514,25 +49514,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fileChange: function fileChange(e) {
             var _this = this;
 
-            axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
+            var fileData = new FormData();
+            fileData.append('image', e.target.files[0]);
+
+            axios.post('/account/avatar', fileData).then(function (response) {
                 _this.uploading = false;
                 _this.avatar = response.data.data;
             }).catch(function (error) {
                 _this.uploading = false;
                 console.log('Got errors...');
-                //                    if (error.response.status === 422) {
-                //                        this.errors = error.response.data;
-                //                        return
-                //                    }
-
+                if (error.response.status === 422) {
+                    _this.errors = error.response.data;
+                    return;
+                }
                 _this.errors = 'Something went wrong. Try again.';
             });
-        },
-        packageUploads: function packageUploads(e) {
-            var fileData = new FormData();
-            fileData.append('image', e.target.files[0]);
-            console.log(fileData);
-            return fileData;
         }
     }
 });

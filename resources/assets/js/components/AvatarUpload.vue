@@ -41,25 +41,21 @@
         },
         methods: {
             fileChange(e) {
-                axios.post('/account/avatar', this.packageUploads(e)).then((response) => {
+                let fileData = new FormData();
+                fileData.append('image', e.target.files[0]);
+
+                axios.post('/account/avatar', fileData).then((response) => {
                     this.uploading = false;
                     this.avatar = response.data.data;
                 }).catch((error) => {
                     this.uploading = false;
                     console.log('Got errors...');
-//                    if (error.response.status === 422) {
-//                        this.errors = error.response.data;
-//                        return
-//                    }
-
+                    if (error.response.status === 422) {
+                        this.errors = error.response.data;
+                        return
+                    }
                     this.errors = 'Something went wrong. Try again.';
                 })
-            },
-            packageUploads (e) {
-                let fileData = new FormData();
-                fileData.append('image', e.target.files[0]);
-                console.log(fileData);
-                return fileData;
             }
         }
     }

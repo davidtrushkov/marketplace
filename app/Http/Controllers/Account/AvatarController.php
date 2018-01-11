@@ -42,8 +42,6 @@ class AvatarController extends Controller
              ->encode( 'png' )
              ->save( config( 'image.path.absolute' ) . $path = '/' . uniqid( true ) . '.png' );
 
-	    var_dump('yesssss');
-	    
 	    // create the image record
 	    $image = new Image;
 	    $image->path = $path;
