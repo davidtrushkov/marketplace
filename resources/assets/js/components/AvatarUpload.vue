@@ -44,18 +44,15 @@
                 axios.post('/account/avatar', this.packageUploads(e)).then((response) => {
                     this.uploading = false;
                     this.avatar = response.data.data;
-
-                    //return Promise.resolve(response)
                 }).catch((error) => {
                     this.uploading = false;
+                    console.log('Got errors...');
 //                    if (error.response.status === 422) {
 //                        this.errors = error.response.data;
 //                        return
 //                    }
 
                     this.errors = 'Something went wrong. Try again.';
-
-                    //return Promise.reject(error)
                 })
             },
             packageUploads (e) {

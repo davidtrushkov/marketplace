@@ -7,10 +7,9 @@
         <div class="panel-body">
             <form action="{{ route('account.update.settings') }}" method="post">
                 {{ csrf_field() }}
-                {{ method_field('PATCH') }}
 
                 <div class="form-group">
-                    <avatar-upload endpoint="{{ route('account.avatar.store') }}" send-as="image" current-avatar="{{ Auth::user()->avatarPath() }}"></avatar-upload>
+                    <avatar-upload current-avatar="{{ Auth::user()->avatarPath() }}"></avatar-upload>
                 </div>
 
                 <br />

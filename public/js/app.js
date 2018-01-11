@@ -49517,18 +49517,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
                 _this.uploading = false;
                 _this.avatar = response.data.data;
-
-                //return Promise.resolve(response)
             }).catch(function (error) {
                 _this.uploading = false;
+                console.log('Got errors...');
                 //                    if (error.response.status === 422) {
                 //                        this.errors = error.response.data;
                 //                        return
                 //                    }
 
                 _this.errors = 'Something went wrong. Try again.';
-
-                //return Promise.reject(error)
             });
         },
         packageUploads: function packageUploads(e) {
