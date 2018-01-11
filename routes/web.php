@@ -50,7 +50,12 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['au
 			Route::delete('/{file}', 'FileUpdatedController@destroy')->name('admin.files.updated.destroy');
 		});
 	});
+
+	Route::get('/users/all', 'AdminController@users')->name('admin.users.all');
+	Route::post('impersonate/{id}', 'AdminController@impersonate')->name('admin.impersonate');
 });
+
+Route::delete('impersonate/delete', 'Admin\AdminController@destroyImpersonate')->name('admin.impersonate.delete');
 
 Route::group(['prefix' => '/{file}/checkout', 'namespace' => 'Checkout'], function() {
 	Route::post('/free', 'CheckoutController@free')->name('checkout.free');

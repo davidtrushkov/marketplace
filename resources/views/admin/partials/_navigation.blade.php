@@ -8,3 +8,11 @@
         </li>
     </ul>
 </div>
+
+<div id="ACCOUNT-SIDE-NAV">
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="{{ route('admin.users.all') }}">Users</a>
+        </li>
+    </ul>
+</div>
