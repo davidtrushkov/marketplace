@@ -16,7 +16,6 @@ export default {
     methods: {
         upload (e) {
 
-            console.log('Reached upload method');
             this.uploading = true;
 
             return axios.post(this.endpoint, this.packageUploads(e)).then((response) => {
@@ -30,9 +29,13 @@ export default {
                 return Promise.reject(error)
             })
         },
-        packageUploads (e) {
+        packageUploads(e) {
 
-            let fileData = new FormData();
+            var fileData = new FormData();
+
+            console.log(fileData);
+            console.log(this.sendAs);
+            console.log(e.target.files[0]);
 
             fileData.append(this.sendAs, e.target.files[0]);
 
