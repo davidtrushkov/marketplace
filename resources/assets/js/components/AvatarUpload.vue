@@ -3,7 +3,7 @@
         <div class="form-group" :class="{ 'has-error': errors.errors }">
             <label class="control-label">Avatar</label>
             <div v-if="uploading">Processing</div>
-            <input v-else type="file" v-on:change="fileChange" name="image">
+            <input v-else type="file" name="image" @change="fileChange">
 
             <div v-if="errors.errors">
                 <span class="has-errors" v-for="x in errors.errors">
