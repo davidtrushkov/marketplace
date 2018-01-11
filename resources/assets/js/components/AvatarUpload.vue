@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="form-group" :class="{ 'has-error': errors.errors }">
-            <label :for="sendAs" class="control-label">Avatar</label>
+            <label class="control-label">Avatar</label>
             <div v-if="uploading">Processing</div>
-            <input v-else type="file" v-on:change="fileChange" :name="sendAs">
+            <input v-else type="file" v-on:change="fileChange" name="image">
 
             <div v-if="errors.errors">
                 <span class="has-errors" v-for="x in errors.errors">
@@ -27,12 +27,11 @@
 </style>
 
 <script>
-    import upload from '../mixins/upload';
-
     export default {
         props: ['currentAvatar'],
         data () {
             return {
+                uploading: false,
                 errors: [],
                 avatar: {
                     id: null,
@@ -40,19 +39,29 @@
                 }
             }
         },
-        mixins: [upload],
         methods: {
             fileChange(e) {
-                this.upload(e).then((response) => {
+                return axios.post('/account/avatar', this.packageUploads(e)).then((response) => {
+                    this.uploading = false;
                     this.avatar = response.data.data;
+
+                    return Promise.resolve(response)
                 }).catch((error) => {
+                    this.uploading = false;
                     if (error.response.status === 422) {
                         this.errors = error.response.data;
                         return
                     }
 
-                    this.errors = 'Something went wrong. Try again.'
-                });
+                    this.errors = 'Something went wrong. Try again.';
+
+                    return Promise.reject(error)
+                })
+            },
+            packageUploads (e) {
+                let fileData = new FormData();
+                fileData.append('image', e.target.files[0]);
+                return fileData;
             }
         }
     }
