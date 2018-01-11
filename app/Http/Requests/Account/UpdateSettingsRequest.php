@@ -2,10 +2,7 @@
 
 namespace App\Http\Requests\Account;
 
-use App\User;
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
 
 class UpdateSettingsRequest extends FormRequest
 {
@@ -24,18 +21,11 @@ class UpdateSettingsRequest extends FormRequest
 	 *
 	 * @return array
 	 */
-	public function rules(Request $request)
+	public function rules()
 	{
-
 		$user = auth()->user();
 
 		return [
-			'avatar_id' => [
-				'nullable',
-				Rule::exists('images', 'id')->where(function($q) use ($request) {
-					$q->where('user_id', $request->user()->id);
-				})
-			],
 			'name' => 'required|string|max:25|unique:users,name,'.$user->id,
 		];
 	}

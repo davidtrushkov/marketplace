@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Account;
 
-use App\Image;
-use Intervention\Image\ImageManager;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\StoreAvatarFormRequest;
 
@@ -12,47 +10,45 @@ class AvatarController extends Controller
 
 
 	/**
-	 * @var ImageManager
-	 */
-	protected $imageManager;
-
-
-	/**
-	 * AvatarController constructor.
+	 * Create and store image in database for user avatar.
 	 *
-	 * @param ImageManager $imageManager
-	 */
-    public function __construct(ImageManager $imageManager) {
-	    $this->imageManager = $imageManager;
-    }
-
-
-	/**
-	 * Create image and store in database for user avatar.
 	 * @param StoreAvatarFormRequest $request
 	 *
-	 * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
     public function store(StoreAvatarFormRequest $request) {
 
-	    $processedImage = $this->imageManager->make( $request->file( 'image' )->getPathName() )
-             ->fit( 100, 100, function ( $c ) {
-                 $c->aspectRatio();
-             } )
-             ->encode( 'png' )
-             ->save( config( 'image.path.absolute' ) . $path = '/' . uniqid( true ) . '.png' );
+    	if (request('avatar')) {
 
-	    // create the image record
-	    $image = new Image;
-	    $image->path = $path;
-	    $image->user()->associate( $request->user() );
-	    $image->save();
+		    // Get the current user
+		    $user = auth()->user();
 
-    	return response([
-    		'data' => [
-    			'id' => $image->id,
-			    'path' => '/images/avatar'.$path
-		    ]
-	    ], 200);
+		    // Get the current file uploaded
+		    $avatar = request()->file( 'avatar' );
+
+		    // Get the file name
+		    $avatarName = sha1( $avatar->getClientOriginalName() );
+
+		    // Get the file extension
+		    $avatarExtension = $avatar->getClientOriginalExtension();
+
+		    // Combine the image name and extension
+		    $image = "{$avatarName}.{$avatarExtension}";
+
+		    // Move the file to a path with the image name
+		    $request->file( 'avatar' )->move(
+			    base_path() . '/public/images/avatars/', $image
+		    );
+
+		    // Set the users avatar to the image
+		    $user->avatar = $image;
+
+		    // Save the image to database
+		    $user->save();
+
+		    return back();
+	    } else {
+    		return back();
+	    }
     }
 }

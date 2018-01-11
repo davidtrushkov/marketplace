@@ -95,6 +95,13 @@ h1, h2, h3, h4, h5, h6, p {
   margin-right: 5px;
 }
 
+.user-avatar-xl {
+  border-radius: 50%;
+  height: 75px;
+  width: 75px;
+  object-fit: cover;
+}
+
 .HOME-PAGE-SECTION {
   height: 80vh;
   margin-top: -118px;
