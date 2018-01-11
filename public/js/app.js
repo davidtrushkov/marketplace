@@ -49468,7 +49468,7 @@ module.exports = function normalizeComponent (
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload_js__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mixins_upload__ = __webpack_require__(48);
 //
 //
 //
@@ -49512,23 +49512,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload_js__["a" /* default */]],
+    mixins: [__WEBPACK_IMPORTED_MODULE_0__mixins_upload__["a" /* default */]],
     methods: {
         fileChange: function fileChange(e) {
             var _this = this;
 
             this.upload(e).then(function (response) {
-                console.log('tetete');
                 _this.avatar = response.data.data;
-                console.log(_this.avatar);
             }).catch(function (error) {
                 if (error.response.status === 422) {
-                    console.log(error.response.data);
                     _this.errors = error.response.data;
                     return;
                 }
 
-                console.log('I got errors');
                 _this.errors = 'Something went wrong. Try again.';
             });
         }
@@ -49562,27 +49558,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.uploading = true;
 
-            return axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
-                console.log('Hit axios post request with success');
+            return axios.post(this.endpoint, this.packageUploads(e)).then(function (response) {
                 _this.uploading = false;
+
                 return Promise.resolve(response);
             }).catch(function (error) {
                 _this.uploading = false;
-                console.log('Hit axios post request with error');
-                console.log(error);
+
                 return Promise.reject(error);
             });
         },
         packageUploads: function packageUploads(e) {
-
             var fileData = new FormData();
-
-            console.log(fileData);
-            console.log(this.sendAs);
-            console.log(e.target.files[0]);
-
             fileData.append(this.sendAs, e.target.files[0]);
-
             return fileData;
         }
     }
