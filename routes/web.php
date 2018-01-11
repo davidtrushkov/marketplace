@@ -2,7 +2,7 @@
 
 Auth::routes();
 
-Route::post('/post/avatar', 'Account\AvatarController@store');
+Route::post('/avatar', 'Account\AvatarController@store');
 
 Route::get('register/confirm/{token}', [
 	'uses' => 'Account\EmailController@confirmEmail',

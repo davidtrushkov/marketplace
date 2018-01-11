@@ -44,7 +44,7 @@
                 let fileData = new FormData();
                 fileData.append('image', e.target.files[0]);
 
-                axios.post('/post/avatar', fileData).then((response) => {
+                axios.post('/avatar', fileData).then((response) => {
                     this.uploading = false;
                     this.avatar = response.data.data;
                 }).catch((error) => {

@@ -49517,7 +49517,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var fileData = new FormData();
             fileData.append('image', e.target.files[0]);
 
-            axios.post('/post/avatar', fileData).then(function (response) {
+            axios.post('/avatar', fileData).then(function (response) {
                 _this.uploading = false;
                 _this.avatar = response.data.data;
             }).catch(function (error) {
