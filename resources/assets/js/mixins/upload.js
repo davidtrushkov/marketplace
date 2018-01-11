@@ -18,7 +18,7 @@ export default {
 
             this.uploading = true;
 
-            return axios.post(this.endpoint, this.packageUploads(e)).then((response) => {
+            return axios.post('/account/avatar', this.packageUploads(e)).then((response) => {
                 console.log('Hit axios post request with success');
                 this.uploading = false;
                 return Promise.resolve(response)

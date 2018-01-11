@@ -49562,7 +49562,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             this.uploading = true;
 
-            return axios.post(this.endpoint, this.packageUploads(e)).then(function (response) {
+            return axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
                 console.log('Hit axios post request with success');
                 _this.uploading = false;
                 return Promise.resolve(response);
