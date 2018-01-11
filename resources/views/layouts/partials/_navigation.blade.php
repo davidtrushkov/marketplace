@@ -20,6 +20,17 @@
                         <li><a href="{{ route('login') }}" class="btn btn-info">Sign In</a></li>
                         <li><a href="{{ route('register') }}" class="btn btn-primary">Start Selling</a></li>
                     @else
+                        @if(session()->has('impersonate'))
+                            <li>
+                                <a href="#" onclick="event.preventDefault(); document.getElementById('impersonating').submit();">
+                                    Stop Impersonating
+                                </a>
+                            </li>
+                            <form action="{{ route('admin.impersonate.delete') }}" method="post" id="impersonating" class="hidden">
+                                {{ csrf_field() }}
+                                {{ method_field('DELETE') }}
+                            </form>
+                        @endif
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                 @if(auth()->user()->avatar)
