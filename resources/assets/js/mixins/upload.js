@@ -15,30 +15,21 @@ export default {
     },
     methods: {
         upload (e) {
+            this.uploading = true
 
-            this.uploading = true;
+            return axios.post(this.endpoint, this.packageUploads(e)).then((response) => {
+                this.uploading = false
 
-            return axios.post('/account/avatar', this.packageUploads(e)).then((response) => {
-                console.log('Hit axios post request with success');
-                this.uploading = false;
                 return Promise.resolve(response)
             }).catch((error) => {
-                this.uploading = false;
-                console.log('Hit axios post request with error');
-                console.log(error);
+                this.uploading = false
+
                 return Promise.reject(error)
             })
         },
-        packageUploads(e) {
-
-            var fileData = new FormData();
-
-            console.log(fileData);
-            console.log(this.sendAs);
-            console.log(e.target.files[0]);
-
-            fileData.append(this.sendAs, e.target.files[0]);
-
+        packageUploads (e) {
+            let fileData = new FormData()
+            fileData.append(this.sendAs, e.target.files[0])
             return fileData
         }
     }

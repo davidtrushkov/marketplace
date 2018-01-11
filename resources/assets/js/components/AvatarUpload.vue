@@ -27,12 +27,10 @@
 </style>
 
 <script>
-    import upload from '../mixins/upload.js'
+    import upload from '../mixins/upload';
 
     export default {
-        props: [
-            'currentAvatar'
-        ],
+        props: ['currentAvatar'],
         data () {
             return {
                 errors: [],
@@ -42,23 +40,17 @@
                 }
             }
         },
-        mixins: [
-            upload
-        ],
+        mixins: [upload],
         methods: {
             fileChange(e) {
                 this.upload(e).then((response) => {
-                    console.log('tetete');
                     this.avatar = response.data.data;
-                    console.log(this.avatar);
                 }).catch((error) => {
                     if (error.response.status === 422) {
-                        console.log(error.response.data);
                         this.errors = error.response.data;
                         return
                     }
 
-                    console.log('I got errors');
                     this.errors = 'Something went wrong. Try again.'
                 });
             }

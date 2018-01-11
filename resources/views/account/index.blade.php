@@ -5,7 +5,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">User Info</div>
         <div class="panel-body">
-            <form action="{{ route('account.update.settings') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('account.update.settings') }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('PATCH') }}
 
