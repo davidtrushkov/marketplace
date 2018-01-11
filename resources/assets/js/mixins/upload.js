@@ -20,11 +20,13 @@ export default {
             return axios.post(this.endpoint, this.packageUploads(e)).then((response) => {
                 this.uploading = false
 
-                return Promise.resolve(response)
+                return response;
+                //return Promise.resolve(response)
             }).catch((error) => {
                 this.uploading = false
 
-                return Promise.reject(error)
+                return error;
+                //return Promise.reject(error)
             })
         },
         packageUploads (e) {

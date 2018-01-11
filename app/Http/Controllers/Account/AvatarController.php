@@ -51,7 +51,7 @@ class AvatarController extends Controller
     	return response([
     		'data' => [
     			'id' => $image->id,
-			    'path' => '/images/avatar/'.$path
+			    'path' => '/images/avatar'.$path
 		    ]
 	    ], 200);
     }

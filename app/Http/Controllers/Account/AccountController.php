@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Account;
 use App\Http\Requests\Account\UpdateSettingsRequest;
 use App\Sale;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
