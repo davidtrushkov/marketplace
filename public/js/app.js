@@ -991,7 +991,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(50);
+module.exports = __webpack_require__(49);
 
 
 /***/ }),
@@ -48939,7 +48939,7 @@ var normalizeComponent = __webpack_require__(46)
 /* script */
 var __vue_script__ = __webpack_require__(47)
 /* template */
-var __vue_template__ = __webpack_require__(49)
+var __vue_template__ = __webpack_require__(48)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -49514,34 +49514,34 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         fileChange: function fileChange(e) {
             var _this = this;
 
-            return axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
+            axios.post('/account/avatar', this.packageUploads(e)).then(function (response) {
                 _this.uploading = false;
                 _this.avatar = response.data.data;
 
-                return Promise.resolve(response);
+                //return Promise.resolve(response)
             }).catch(function (error) {
                 _this.uploading = false;
-                if (error.response.status === 422) {
-                    _this.errors = error.response.data;
-                    return;
-                }
+                //                    if (error.response.status === 422) {
+                //                        this.errors = error.response.data;
+                //                        return
+                //                    }
 
                 _this.errors = 'Something went wrong. Try again.';
 
-                return Promise.reject(error);
+                //return Promise.reject(error)
             });
         },
         packageUploads: function packageUploads(e) {
             var fileData = new FormData();
             fileData.append('image', e.target.files[0]);
+            console.log(fileData);
             return fileData;
         }
     }
 });
 
 /***/ }),
-/* 48 */,
-/* 49 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -49601,7 +49601,7 @@ if (false) {
 }
 
 /***/ }),
-/* 50 */
+/* 49 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
