@@ -40,5 +40,49 @@
   .SINGLE-FILE-CONTENT {
     padding-top: 50px;
     padding-bottom: 50px;
+
+    .UPLOAD-FILENAME {
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+      -ms-word-break: break-all;
+      word-break: break-all;
+      word-break: break-word;
+      -ms-hyphens: auto;
+      -moz-hyphens: auto;
+      -webkit-hyphens: auto;
+      hyphens: auto;
+    }
+
+    hr {
+      margin-top: 0;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+  }
+
+  .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER {
+    padding: 25px;
+    background-color: #ffffff;
+    margin-bottom: 35px;
+    @extend .SPECIAL-BOX-SHADOW;
+
+    .OTHER-FILES-BY-USER-BOX:hover {
+      opacity: 0.8;
+    }
+
+    h4 {
+      padding-bottom: 20px;
+    }
+
+    a:hover {
+      text-decoration: none;
+    }
+
+    p {
+      padding-top: 10px;
+      color: #636b6f;
+    }
   }
 }

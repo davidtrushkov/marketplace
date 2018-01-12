@@ -27,6 +27,7 @@
 .ACCOUNT-CONTENT .HEADER-BOX,
 .ACCOUNT-CONTENT .YOUR-FILE-BOX,
 .MAIN-FILES-CONTAINER .FILES-BOX,
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER,
 .alert-success,
 .alert-danger,
 .alert-info,
@@ -8994,7 +8995,7 @@ button.close {
   margin-bottom: 35px;
 }
 
-.MAIN-FILES-CONTAINER .FILES-BOX img {
+.MAIN-FILES-CONTAINER .FILES-BOX .img-box {
   width: 100%;
   height: 200px;
   -o-object-fit: cover;
@@ -9061,6 +9062,48 @@ button.close {
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT {
   padding-top: 50px;
   padding-bottom: 50px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT .UPLOAD-FILENAME {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT hr {
+  margin-top: 0;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT a:hover {
+  text-decoration: none;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER {
+  padding: 25px;
+  background-color: #ffffff;
+  margin-bottom: 35px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER .OTHER-FILES-BY-USER-BOX:hover {
+  opacity: 0.8;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER h4 {
+  padding-bottom: 20px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER a:hover {
+  text-decoration: none;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER p {
+  padding-top: 10px;
+  color: #636b6f;
 }
 
 body {

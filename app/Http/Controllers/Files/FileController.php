@@ -25,12 +25,17 @@ class FileController extends Controller
 			return abort(404);
 		}
 
-		$uploads = $file->uploads()->approved()->get();
+		$uploads = $file->uploads()->approved()->latest()->get();
 
-		// Check and see if the file_id on the sales table = to the current file id beign shown and the 'bought_user_id' = the the current user id signed in
-		// Checking to see if the currently signed in user owns the file being passed in.
-		$currentUserOwnsThisFile = Sale::where('file_id', '=', $file->id)->where('bought_user_id', '=', auth()->user()->id)->count();
+		if (auth()->user()) {
+			// Check and see if the file_id on the sales table = to the current file id beign shown and the 'bought_user_id' = the the current user id signed in
+			// Checking to see if the currently signed in user owns the file being passed in.
+			$currentUserOwnsThisFile = Sale::where( 'file_id', '=', $file->id )->where( 'bought_user_id', '=', auth()->user()->id )->count();
+		}
 
-		return view('files.show',compact('file', 'uploads', 'currentUserOwnsThisFile'));
+		// Get the users courses for this particular file, excluding the one that is being shown.
+		$otherUsersCourses = File::where('user_id', '=', $file->user_id)->where('id', '!=', $file->id)->take(3)->latest()->get();
+
+		return view('files.show',compact('file', 'uploads', 'currentUserOwnsThisFile', 'otherUsersCourses'));
 	}
 }

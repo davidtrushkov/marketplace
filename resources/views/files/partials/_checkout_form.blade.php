@@ -13,7 +13,7 @@
             data-currency="usd"
     >
     </script>
-    @if($currentUserOwnsThisFile > 0)
+    @if(auth()->user() && $currentUserOwnsThisFile > 0)
         <br />
         <p class="text-danger"><i>You already own this file</i></p>
     @endif
