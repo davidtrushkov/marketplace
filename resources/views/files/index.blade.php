@@ -11,14 +11,19 @@
                         <a href="{{ $file->identifier }}">
                             <div class="col-sm-4 col-md-3 no-padding">
                                 <div class="image">
-                                    <img src="/images/files/cover/{{ isset($file->avatar) ? $file->avatar : '' }}" alt="{{ $file->title }} cover image" />
-                                    <span class="label label-success price-tag">${{ $file->price }}</span>
+                                    <img class="img-box" src="/images/files/cover/{{ isset($file->avatar) ? $file->avatar : '' }}" alt="{{ $file->title }} cover image" />
+                                    <span class="label label-success price-tag">{{ $file->price > 0 ? '$' . $file->price : 'Free' }}</span>
                                 </div>
                             </div>
                             <div class="col-sm-8 col-md-9">
                                 <h4>{{ $file->title }}</h4>
                                 <p>{{ str_limit($file->overview_short, 175) }}</p>
-                                <small>By {{ $file->user->name }}</small>
+                                <small>
+                                    @if($file->user->avatar)
+                                        <img src="/images/avatars/{{ $file->user->avatar }}" alt="User avatar" class="user-avatar">
+                                    @endif
+                                    {{ $file->user->name }}
+                                </small>
                             </div>
                         </a>
                     </div>

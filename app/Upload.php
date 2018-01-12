@@ -43,4 +43,25 @@ class Upload extends Model
 	public function getPathAttribute() {
 		return storage_path('app/files/' . $this->file->identifier . '/' . $this->filename);
 	}
+
+
+	/**
+	 * Convert file size into readable names.
+	 * @param $size
+	 * @param int $precision
+	 *
+	 * @return int|string
+	 */
+	public static function formatBytes($size, $precision = 2) {
+		if ($size > 0) {
+			$size = (int) $size;
+			$base = log($size) / log(1024);
+			$suffixes = array(' bytes', ' KB', ' MB', ' GB', ' TB');
+
+			return round(pow(1024, $base - floor($base)), $precision) . $suffixes[floor($base)];
+		} else {
+			return $size;
+		}
+	}
+
 }
