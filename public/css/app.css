@@ -28,6 +28,7 @@
 .ACCOUNT-CONTENT .YOUR-FILE-BOX,
 .MAIN-FILES-CONTAINER .FILES-BOX,
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER,
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-BOX,
 .alert-success,
 .alert-danger,
 .alert-info,
@@ -9031,25 +9032,43 @@ button.close {
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-COVER-IMAGE {
   width: 100%;
   height: auto;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-OVERVIEW-SHORT {
-  padding-top: 30px;
+  padding-top: 20px;
   font-size: 16px;
   line-height: 1.4em;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER h1 {
+  font-size: 28px;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX {
   background-color: #ffffff;
   padding: 15px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX h3 {
   margin-top: 0;
   color: #6b6b6b;
+  font-weight: 800;
+  padding-bottom: 15px;
 }
 
-#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX .btn-primary {
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX .stripe-button-el span {
+  background-image: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: transparent !important;
+  text-shadow: none !important;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX .stripe-button-el {
   color: #fff;
   background-color: #ec5252 !important;
   border-color: #ec5252 !important;
@@ -9057,6 +9076,9 @@ button.close {
   border-radius: 2px;
   font-size: 18px;
   width: 100%;
+  background-image: none !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT {
@@ -9104,6 +9126,62 @@ button.close {
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER p {
   padding-top: 10px;
   color: #636b6f;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-BOX {
+  background-color: #ffffff;
+  margin-bottom: 50px;
+  margin-top: 75px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX {
+  margin: 20px 0 40px 0;
+  border-left: 1px solid #ccc;
+  padding-left: 10px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .comment:not(:first-child) {
+  margin: 20px 0 30px 50px;
+  border-left: 4px solid #ccc;
+  padding-left: 20px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .inner-contents {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .reply-box {
+  margin-right: 40px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .user-details {
+  padding-top: 5px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .user-details .name {
+  font-weight: bold;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX p {
+  margin-bottom: 0;
+  padding-left: 45px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX h5 {
+  margin-top: 0;
+  padding-left: 10px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .REPLY-BOX-BUTTONS {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .REPLY-BOX-BUTTONS form {
+  padding-left: 10px;
 }
 
 body {

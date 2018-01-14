@@ -283,4 +283,13 @@ class File extends Model
 	public function sales() {
 		return $this->hasMany(Sale::class);
 	}
+
+
+	/**
+	 * A file has many comments
+	 * @return \Illuminate\Database\Eloquent\Relations\MorphMany
+	 */
+	public function comments() {
+		return $this->morphMany(Comment::class, 'commentable');
+	}
 }

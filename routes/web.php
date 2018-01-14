@@ -68,3 +68,12 @@ Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->nam
 Route::get('/files', 'Files\FileController@index')->name('files.index');
 Route::get('/{file}', 'Files\FileController@show')->name('files.show');
 Route::get('/{file}/{sale}/download', 'Files\FileDownloadController@show')->name('files.download');
+
+Route::group(['middleware' => ['auth']], function() {
+	Route::post('/store/comment/{id}', 'Files\FileController@storeComment')->name('store.comment');
+	Route::post('/store/comment/reply/{file}/{id}', 'Files\FileController@storeReply')->name('store.comment.reply');
+
+	Route::group(['middleware' => ['auth', 'admin']], function() {
+		Route::delete('/destroy/comment/{id}/{fileId}', 'Files\FileController@destroyComment')->name('destroy.comment');
+	});
+});

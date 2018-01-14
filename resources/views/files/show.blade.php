@@ -60,18 +60,54 @@
 
             </div>
         </div>
+
         @if(!$otherUsersCourses->isEmpty())
-        <div class="container SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER">
-            <h4>Other files by {{ $file->user->name }}</h4>
-            @foreach($otherUsersCourses as $userCourses)
-                <div class="col-sm-4 OTHER-FILES-BY-USER-BOX">
-                    <a href="{{ $userCourses->identifier }}">
-                        <img src="/images/files/cover/{{ isset($userCourses->avatar) ? $userCourses->avatar : '' }}" alt="{{ $userCourses->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
-                        <p>{{ $userCourses->title }}</p>
-                    </a>
+            <div class="container">
+                <div class="container SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER">
+                    <h4>Other files by {{ $file->user->name }}</h4>
+                    @foreach($otherUsersCourses as $userCourses)
+                        <div class="col-sm-4 OTHER-FILES-BY-USER-BOX">
+                            <a href="{{ $userCourses->identifier }}">
+                                <img src="/images/files/cover/{{ isset($userCourses->avatar) ? $userCourses->avatar : '' }}" alt="{{ $userCourses->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
+                                <p>{{ $userCourses->title }}</p>
+                            </a>
+                        </div>
+                    @endforeach
                 </div>
-            @endforeach
-        </div>
+            </div>
         @endif
+
+        <div class="container">
+            <div class="col-sm-8 col-md-6 no-padding SINGLE-FILE-CONTENT-COMMENT-BOX">
+                @if(auth()->user())
+                    <form action="{{ route('store.comment', $file->id) }}#replyContainer" method="post">
+                        {{ csrf_field() }}
+                        <div class="form-group{{ $errors->has('body') ? ' has-error' : '' }}">
+                            <textarea class="form-control" name="body" rows="6" placeholder="Comment...">{{ old('overview') }}</textarea>
+                            @if ($errors->has('body'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('body') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+                            <div class="g-recaptcha" data-sitekey="6Lf5m0AUAAAAAN5qHz_zQ0PDCUJB_vviLBpHFr11"></div>
+                            @if ($errors->has('g-recaptcha-response'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <button type="submit" class="btn btn-info pull-right">Submit</button>
+                    </form>
+                @else
+                    <a href="/login">Login to post comments</a>
+                @endif
+            </div>
+           @include('files.partials._comment')
+        </div>
+
     </div>
 @endsection
