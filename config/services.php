@@ -38,4 +38,8 @@ return [
     'stripe_connect' => [
 	    'key' => env('STRIPE_CONNECT_KEY'),
     ],
+
+	'recaptcha' => [
+		'secret' => env('RECAPTCHA_SECRET')
+	]
 ];

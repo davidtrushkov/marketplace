@@ -11,3 +11,6 @@
 <link href="/css/app.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/trix/0.11.1/trix.css" rel="stylesheet">
+
+<script src="/js/app.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>

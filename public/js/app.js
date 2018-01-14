@@ -1044,6 +1044,10 @@ var app = new Vue({
   //router
 });
 
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
 /***/ }),
 /* 12 */
 /***/ (function(module, exports, __webpack_require__) {

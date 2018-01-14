@@ -31,3 +31,13 @@ $factory->define(App\File::class, function (Faker $faker) {
 		'updated_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
 	];
 });
+
+
+
+$factory->define(App\Comment::class, function (Faker $faker) {
+
+	return [
+		'body' => $faker->sentence,
+		'user_id' => App\User::all()->random()->id,
+	];
+});
