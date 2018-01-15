@@ -72,6 +72,19 @@
     margin-bottom: 20px;
     @extend .SPECIAL-BOX-SHADOW;
 
+    #priceDescription {
+      padding-bottom: 10px;
+
+      p {
+        margin-bottom: 3px;
+      }
+
+      span {
+        margin: 0;
+        font-weight: bold;
+      }
+    }
+
     h4 > a {
       color: inherit;
     }

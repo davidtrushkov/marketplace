@@ -71,7 +71,7 @@ class FileController extends Controller
 
 
 	/**
-	 * Update the file in database
+	 * Store the file in database
 	 * @param File $file
 	 * @param StoreFileRequest $request
 	 *
@@ -165,11 +165,6 @@ class FileController extends Controller
 
 		// Get the current file uploaded
 		$avatar = request()->file('avatar');
-
-//		// Validate the file
-//		$this->validate($request, [
-//			'avatar' => 'nullable|mimes:jpeg,jpg,png|max:1024'
-//		]);
 
 		// Get the file name
 		$avatarName = sha1($avatar->getClientOriginalName());

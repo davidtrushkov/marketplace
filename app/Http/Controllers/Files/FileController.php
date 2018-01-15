@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers\Files;
 
-use App\Comment;
 use App\File;
-use App\Http\Controllers\Controller;
-use App\Rules\Recaptcha;
 use App\Sale;
+use App\Comment;
+use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class FileController extends Controller
-{
+class FileController extends Controller  {
+
 	const PERPAGE = 15;
 
+
+	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function index() {
 
 		$files = File::with(['user', 'uploads'])->readyToBeShown()->latest()->paginate(self::PERPAGE);
@@ -22,7 +26,12 @@ class FileController extends Controller
 	}
 
 
-
+	/**
+	 * @param Request $request
+	 * @param File $file
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|void
+	 */
 	public function show(Request $request, File $file) {
 
 		// If the file is not visible, abort
@@ -40,7 +49,7 @@ class FileController extends Controller
 		}
 
 		// Get the users courses for this particular file, excluding the one that is being shown.
-		$otherUsersCourses = File::where('user_id', '=', $file->user_id)->where('id', '!=', $file->id)->take(3)->latest()->get();
+		$otherUsersCourses = File::where('user_id', '=', $file->user_id)->where('id', '!=', $file->id)->approved()->take(3)->latest()->get();
 
 		$page = $request->get('page', 1);
 
@@ -50,7 +59,6 @@ class FileController extends Controller
 		                   ->latest()
 		                   ->forPage($page, self::PERPAGE)
 		                   ->get();
-
 
 		if ($file->comments->count() > 0) {
 			$comments = new LengthAwarePaginator(
@@ -66,7 +74,12 @@ class FileController extends Controller
 	}
 
 
-
+	/**
+	 * @param Request $request
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
 	public function storeComment(Request $request, $id) {
 
 
@@ -86,6 +99,13 @@ class FileController extends Controller
 	}
 
 
+	/**
+	 * @param Request $request
+	 * @param $file
+	 * @param $id
+	 *
+	 * @return mixed
+	 */
 	public function storeReply(Request $request, $file, $id) {
 
 		$this->validate($request, [
