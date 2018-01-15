@@ -8960,6 +8960,19 @@ button.close {
   margin-bottom: 20px;
 }
 
+.ACCOUNT-CONTENT .YOUR-FILE-BOX #priceDescription {
+  padding-bottom: 10px;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX #priceDescription p {
+  margin-bottom: 3px;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX #priceDescription span {
+  margin: 0;
+  font-weight: bold;
+}
+
 .ACCOUNT-CONTENT .YOUR-FILE-BOX h4 > a {
   color: inherit;
 }

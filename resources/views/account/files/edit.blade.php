@@ -73,14 +73,43 @@
                         @endif
                     </div>
 
+
+                    <div id="priceDescription" class="hidden">
+                        <p>You get $<span id="total_price"></span></p>
+                        <p>We get $<span id="total_price_for_us"></span></p>
+                    </div>
+
                     <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                        <input type="text" class="form-control" id="price" name="price" value="{{ old('price') ? old('price') : $file->price }}" placeholder="Price">
+                        <input type="text" class="form-control" id="file-price" name="price" value="{{ old('price') ? old('price') : $file->price }}" placeholder="Price">
                         @if ($errors->has('price'))
                             <span class="help-block">
-                       <strong>{{ $errors->first('price') }}</strong>
-                   </span>
+                                <strong>{{ $errors->first('price') }}</strong>
+                            </span>
                         @endif
                     </div>
+
+                    <script>
+                        function precisionRound(number, precision) {
+                            let factor = Math.pow(10, precision);
+                            return Math.round(number * factor) / factor;
+                        }
+
+                        $('#file-price').keyup(function() {
+                            $("#priceDescription").removeClass("hidden");
+                            let price = $("#file-price").val();
+
+                            let configPrice = .{{ config('marketplace.sales.remaining') }};
+                            let your_price = price * configPrice;
+                            let your_total = precisionRound(your_price, 2);
+
+                            let remainingPrice = .{{ config('marketplace.sales.commission') }};
+                            let our_price = price * remainingPrice;
+                            let our_total = precisionRound(our_price, 2);
+
+                            $("#total_price").html(your_total);
+                            $("#total_price_for_us").html(our_total);
+                        });
+                    </script>
 
                     <div class="form-group{{ $errors->has('overview') ? ' has-error' : '' }} trix-editor">
                         {{--<textarea class="form-control" name="overview" id="overview" rows="6" style="height: auto;" placeholder="Overview">{{ old('overview') ? old('overview') : $file->overview }}</textarea>--}}
