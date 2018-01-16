@@ -40,14 +40,14 @@ class PreviewGalleryController extends Controller {
 		$upload = $this->storeUpload($file, $uploadedFile);
 
 		// Get the image, and make it using Image Intervention
-		$img = Image::make($request->file('file'));
-
-		// Insert the image above with the watermarked image, and center the watermark
-		$img->insert('images/home/watermark.png', 'center');
-
-
-		// Save the image in the 'public/images/previews' directory
-		$img->save(base_path() . '/public/images/previews/'.$upload->filename);
+//		$img = Image::make($request->file('file'));
+//
+//		// Insert the image above with the watermarked image, and center the watermark
+//		$img->insert('images/home/watermark.png', 'center');
+//
+//
+//		// Save the image in the 'public/images/previews' directory
+//		$img->save(base_path() . '/public/images/previews/'.$upload->filename);
 
 		// Store the files on the default Laravel 'Storage' (on disk)
 		Storage::disk('local')->putFileAs(
