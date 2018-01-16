@@ -40,8 +40,8 @@ class PreviewGalleryController extends Controller {
 		$upload = $this->storeUpload($file, $uploadedFile);
 
 		// Get the image, and make it using Image Intervention
-//		$img = Image::make($request->file('file'));
-//
+		$img = Image::make($request->file('file'));
+
 //		// Insert the image above with the watermarked image, and center the watermark
 //		$img->insert('images/home/watermark.png', 'center');
 //
