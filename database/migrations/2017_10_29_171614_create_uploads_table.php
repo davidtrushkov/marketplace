@@ -20,6 +20,7 @@ class CreateUploadsTable extends Migration
             $table->string('filename');
             $table->bigInteger('size');
             $table->boolean('approved')->default(false);
+            $table->boolean('preview')->default(false);
             $table->softDeletes();
             $table->timestamps();
 

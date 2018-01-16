@@ -65,6 +65,9 @@ Route::group(['prefix' => '/{file}/checkout', 'namespace' => 'Checkout'], functi
 Route::post('/{file}/upload', 'Upload\UploadController@store')->name('upload.store');
 Route::delete('/{file}/upload/{upload}', 'Upload\UploadController@destroy')->name('upload.destroy');
 
+Route::post('/{file}/preview/upload', 'Upload\PreviewGalleryController@store')->name('upload.preview.store');
+Route::delete('/{file}/destroy/{upload}', 'Upload\PreviewGalleryController@destroy')->name('preview.destroy');
+
 Route::get('/files', 'Files\FileController@index')->name('files.index');
 Route::get('/{file}', 'Files\FileController@show')->name('files.show');
 Route::get('/{file}/{sale}/download', 'Files\FileDownloadController@show')->name('files.download');

@@ -9,8 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 
-class UploadController extends Controller
-{
+class UploadController extends Controller {
 
 	/**
 	 * UploadController constructor.
@@ -94,7 +93,11 @@ class UploadController extends Controller
     }
 
 
-
+	/**
+	 * Delete the upload.
+	 * @param File $file
+	 * @param Upload $upload
+	 */
     public function destroy(File $file, Upload $upload) {
 
 	    // Make sure the user owns the file before we store it in database.
@@ -106,6 +109,10 @@ class UploadController extends Controller
 //	    if($file->uploads->count() === 1) {
 //		    return response()->json(null, 422);
 //	    }
+
+	    $image_url = $upload->filename;
+
+	    Storage::delete('files/'.$file->identifier.'/'.$image_url);
 
 	    $upload->delete();
     }

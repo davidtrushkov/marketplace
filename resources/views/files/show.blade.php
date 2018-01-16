@@ -31,8 +31,23 @@
                 </div>
             </div>
         </div>
+        @if ($uploadPreviews->count() > 0)
+            <div class="SINGLE-FILE-PREVIEW-GALLERY">
+                <div class="container">
+                    <div class="col-sm-12" id="lightgallery">
+                        <h4 class="description-header">Preview Uploads</h4>
+                        @foreach($uploadPreviews->take(12) as $preview)
+                            <div class="item col-sm-2 col-md-1 no-padding" data-src="/images/previews/{{ $preview->filename }}">
+                                <img src="/images/previews/{{ $preview->filename }}" width="100%" />
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        @endif
         <div class="container SINGLE-FILE-CONTENT">
             <div class="col-sm-8">
+                <h4 class="description-header">Description</h4>
                 <p>{!! $file->overview !!}</p>
             </div>
             <div class="col-sm-4">

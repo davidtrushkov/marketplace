@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Account;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Account\StoreAvatarFormRequest;
 
-class AvatarController extends Controller
-{
-
+class AvatarController extends Controller {
 
 	/**
 	 * Create and store image in database for user avatar.
@@ -22,6 +20,9 @@ class AvatarController extends Controller
 
 		    // Get the current user
 		    $user = auth()->user();
+
+		    // Delete the old avatar in the public images directory
+		    \File::delete(public_path() . '/images/avatars/'.$user->avatar);
 
 		    // Get the current file uploaded
 		    $avatar = request()->file( 'avatar' );

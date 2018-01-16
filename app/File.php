@@ -235,7 +235,7 @@ class File extends Model
 	 */
 	public function getUploadList() {
 		// Access the 'uploads' relationship, make sure the files are 'approved' and pluck the "path" attribute coming from 'Upload' Model
-		return $this->uploads()->approved()->get()->pluck('path')->toArray();
+		return $this->uploads()->approved()->withoutPreviewFiles()->get()->pluck('path')->toArray();
 	}
 
 	/**

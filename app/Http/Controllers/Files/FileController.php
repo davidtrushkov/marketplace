@@ -40,7 +40,9 @@ class FileController extends Controller  {
 			return abort(404);
 		}
 
-		$uploads = $file->uploads()->approved()->latest()->get();
+		$uploads = $file->uploads()->approved()->withoutPreviewFiles()->latest()->get();
+
+		$uploadPreviews = $file->uploads()->approved()->withPreviewFiles()->latest()->get();
 
 		if (auth()->user()) {
 			// Check and see if the file_id on the sales table = to the current file id beign shown and the 'bought_user_id' = the the current user id signed in
@@ -70,7 +72,7 @@ class FileController extends Controller  {
 			);
 		}
 
-		return view('files.show',compact('file', 'uploads', 'currentUserOwnsThisFile', 'otherUsersCourses', 'comments'));
+		return view('files.show',compact('file', 'uploads', 'uploadPreviews', 'currentUserOwnsThisFile', 'otherUsersCourses', 'comments'));
 	}
 
 

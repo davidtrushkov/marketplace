@@ -15,4 +15,13 @@ trait HasApprovals {
 	public function scopeUnapproved(Builder $builder) {
 		return $builder->where('approved', false);
 	}
+
+
+	public function scopeWithoutPreviewFiles(Builder $builder) {
+		return $builder->where('preview', false);
+	}
+
+	public function scopeWithPreviewFiles(Builder $builder) {
+		return $builder->where('preview', true);
+	}
 }
