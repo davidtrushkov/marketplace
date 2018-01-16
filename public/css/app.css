@@ -9036,6 +9036,12 @@ button.close {
   font-size: 16px;
 }
 
+#SINGLE-FILE-SHOW .description-header {
+  padding-bottom: 10px;
+  color: #6b6b6b;
+  font-weight: 700;
+}
+
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -9092,6 +9098,24 @@ button.close {
   background-image: none !important;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-PREVIEW-GALLERY {
+  padding: 35px 0 35px 0;
+  background-color: #efefef;
+  border-bottom: 2px solid #e4e4e4;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-PREVIEW-GALLERY #lightgallery img {
+  width: 100%;
+  height: 85px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-PREVIEW-GALLERY #lightgallery .item:hover {
+  opacity: 0.8;
+  cursor: pointer;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT {

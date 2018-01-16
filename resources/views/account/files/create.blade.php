@@ -22,6 +22,7 @@
                 <br /><br />
 
                 <div class="form-group{{ $errors->has('uploads') ? ' has-error' : '' }}">
+                    <label>Uploads</label>
                     <div id="file" class="dropzone"></div>
                     @if ($errors->has('uploads'))
                         <span class="help-block">
@@ -29,6 +30,20 @@
                         </span>
                     @endif
                 </div>
+                <p>Upload the files you are selling in here.</p>
+                <br /><br />
+
+                <div class="form-group{{ $errors->has('preview_images') ? ' has-error' : '' }}">
+                    <label>Preview Gallery Images</label>
+                    <div id="file-preview_images" class="dropzone"></div>
+                    @if ($errors->has('preview_images'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('preview_images') }}</strong>
+                        </span>
+                    @endif
+                </div>
+                <p>You can upload preview images to let users see what they are getting. All images will be watermarked. Max 12 images.</p>
+                <br /><br />
 
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}" autofocus placeholder="Title" max="100">

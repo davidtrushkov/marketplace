@@ -14,7 +14,8 @@ class Upload extends Model
 	protected $fillable = [
 		'filename',
 		'size',
-		'approved'
+		'approved',
+		'preview'
 	];
 
 
