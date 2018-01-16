@@ -45,13 +45,13 @@ class PreviewGalleryController extends Controller {
 		// Insert the image above with the watermarked image, and center the watermark
 		$img->insert('images/home/watermark.png', 'center');
 
-		$relPath = '/images/previews/';
+		$relPath = 'images/previews/';
+
 		if (!file_exists(public_path($relPath))) {
 			mkdir(public_path($relPath), 777, true);
-			$img->save(public_path('/images/previews/'.$upload->filename));
+			$img->save(public_path('images/previews/'.$upload->filename));
 		} else {
-			// Save the image in the 'public/images/previews' directory
-			$img->save(public_path('/images/previews/'.$upload->filename));
+			$img->save(public_path('images/previews/'.$upload->filename));
 		}
 
 		// Store the files on the default Laravel 'Storage' (on disk)
