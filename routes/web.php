@@ -35,7 +35,7 @@ Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => '
 
 Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['auth', 'admin']], function() {
 	Route::get('/', 'AdminController@index')->name('admin.index');
-	Route::get('/{file}', 'FileController@show')->name('admin.files.show');
+	Route::get('/preview/{file}', 'PreviewFileController@show')->name('admin.files.show');
 
 	Route::group(['prefix' => '/files'], function() {
 		Route::group(['prefix' => '/new'], function() {
@@ -71,6 +71,7 @@ Route::delete('/{file}/destroy/{upload}', 'Upload\PreviewGalleryController@destr
 Route::get('/files', 'Files\FileController@index')->name('files.index');
 Route::get('/{file}', 'Files\FileController@show')->name('files.show');
 Route::get('/{file}/{sale}/download', 'Files\FileDownloadController@show')->name('files.download');
+Route::get('/{file}/download', 'Files\FileDownloadController@adminDownload')->name('files.admin.download');
 
 Route::group(['middleware' => ['auth']], function() {
 	Route::post('/store/comment/{id}', 'Files\FileController@storeComment')->name('store.comment');
