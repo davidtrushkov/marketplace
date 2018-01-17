@@ -56,6 +56,34 @@ class FileDownloadController extends Controller
 
 
 	/**
+	 * Download files for admin to preview them.
+	 *
+	 * @param File $file
+	 *
+	 * @return $this|\Illuminate\Http\RedirectResponse|void
+	 */
+	public function adminDownload(File $file) {
+
+		if (auth()->user() && auth()->user()->hasRole('admin')) {
+
+			// Check if the file is 'live' and 'approved' from database.
+			// -- "visible" coming from 'File' model
+			if ( ! $file->visible() ) {
+				return abort( 403 );
+			}
+
+			// Zip the files
+			$this->createZipForFileInPath( $file, $path = $this->generateTemporaryPath( $file ) );
+
+			// Download the files, and delete the files from the 'temp' directory after download has completed.
+			return response()->download( $path )->deleteFileAfterSend( true );
+		} else {
+			return back();
+		}
+	}
+
+
+	/**
 	 * @param File $file
 	 * @param $path
 	 */
