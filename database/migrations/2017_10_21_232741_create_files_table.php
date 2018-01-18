@@ -25,6 +25,8 @@ class CreateFilesTable extends Migration
             $table->boolean('approved')->default(false);
             $table->boolean('finished')->default(false);
 	        $table->string('avatar')->nullable();
+	        $table->string('youtube_url')->nullable();
+	        $table->string('vimeo_url')->nullable();
             $table->softDeletes();
             $table->timestamps();
 

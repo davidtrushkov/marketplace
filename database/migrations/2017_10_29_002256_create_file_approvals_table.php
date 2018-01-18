@@ -20,6 +20,8 @@ class CreateFileApprovalsTable extends Migration
 	        $table->string('title');
 	        $table->string('overview_short', 300);
 	        $table->text('overview');
+	        $table->string('youtube_url')->nullable();
+	        $table->string('vimeo_url')->nullable();
 	        $table->softDeletes();
             $table->timestamps();
         });

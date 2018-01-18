@@ -28,6 +28,26 @@
       font-size: 28px;
     }
 
+    #video-gallery {
+
+      @media screen and (min-width: 992px) {
+        .fa-3x {
+          color: #1e88e5;
+          top: 100px;
+          position: relative;
+          padding-top: 0;
+        }
+      }
+
+      @media screen and (max-width: 991px) {
+        .fa-3x {
+          color: #1e88e5;
+          top: 5px;
+          position: relative;
+        }
+      }
+    }
+
     .SINGLE-FILE-CART-BOX {
       background-color: #ffffff;
       padding: 15px;
@@ -115,6 +135,13 @@
     background-color: #ffffff;
     margin-bottom: 35px;
     @extend .SPECIAL-BOX-SHADOW;
+
+    img {
+      vertical-align: middle;
+      max-width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
     .OTHER-FILES-BY-USER-BOX:hover {
       opacity: 0.8;

@@ -11,7 +11,7 @@
                         <a href="{{ $file->identifier }}">
                             <div class="col-sm-4 col-md-3 no-padding">
                                 <div class="image">
-                                    <img class="img-box" src="/images/files/cover/{{ isset($file->avatar) ? $file->avatar : '' }}" alt="{{ $file->title }} cover image" />
+                                    <img class="img-box" src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" alt="{{ $file->title }} cover image" />
                                     <span class="label label-success price-tag">{{ $file->price > 0 ? '$' . $file->price : 'Free' }}</span>
                                 </div>
                             </div>

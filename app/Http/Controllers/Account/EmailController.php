@@ -23,8 +23,10 @@ class EmailController extends Controller {
 		// Get the user with token, or fail.
 		User::whereToken($token)->firstOrFail()->confirmEmail();
 
+		\Auth::logout();
+
 		// Flash a success message saying user has been confirmed.
-		return redirect('/')->withSuccess('You are now confirmed.');
+		return redirect('/login')->withSuccess('You are now confirmed. You can now login.');
 	}
 
 

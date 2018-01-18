@@ -8,4 +8,19 @@
         share: false,
         selector: '.item'
     });
+
+    $('#video-gallery').lightGallery({
+        download: false,
+        share: false,
+        youtubePlayerParams: {
+            modestbranding: 1,
+            showinfo: 0,
+            rel: 0,
+            controls: 1
+        },
+        vimeoPlayerParams: {
+            byline : 0,
+            portrait : 0,
+        },
+    });
 </script>
