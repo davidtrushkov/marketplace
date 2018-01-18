@@ -8955,6 +8955,10 @@ button.close {
   font-size: 1.3em;
 }
 
+.ACCOUNT-CONTENT .YOUR-FILEBOX-CRUD {
+  margin-bottom: 75px !important;
+}
+
 .ACCOUNT-CONTENT .YOUR-FILE-BOX {
   background-color: #ffffff;
   margin-bottom: 20px;
@@ -9065,6 +9069,23 @@ button.close {
   font-size: 28px;
 }
 
+@media screen and (min-width: 992px) {
+  #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER #video-gallery .fa-3x {
+    color: #1e88e5;
+    top: 100px;
+    position: relative;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER #video-gallery .fa-3x {
+    color: #1e88e5;
+    top: 5px;
+    position: relative;
+  }
+}
+
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-CART-BOX {
   background-color: #ffffff;
   padding: 15px;
@@ -9146,6 +9167,14 @@ button.close {
   padding: 25px;
   background-color: #ffffff;
   margin-bottom: 35px;
+}
+
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: 200px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER .OTHER-FILES-BY-USER-BOX:hover {

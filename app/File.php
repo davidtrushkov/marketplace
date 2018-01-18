@@ -19,7 +19,9 @@ class File extends Model
 	const APPROVAL_PROPERTIES = [
 		'title',
 		'overview_short',
-		'overview'
+		'overview',
+		'youtube_url',
+		'vimeo_url'
 	];
 
 	protected $fillable = [
@@ -30,7 +32,9 @@ class File extends Model
 		'live',
 		'approved',
 		'finished',
-		'avatar'
+		'avatar',
+		'youtube_url',
+		'vimeo_url'
 	];
 
 	/**
@@ -91,6 +95,7 @@ class File extends Model
 	public function deleteAllApprovals() {
 		$this->approvals()->delete();
 	}
+
 
 	/**
 	 * Approve file to be visible and approve all file uploads for this file
@@ -161,7 +166,7 @@ class File extends Model
 
 	/**
 	 * Check if the new data passed in matches the old file data.
-	 * If not, then return this method as true, whci will mean this file needs approval from admin.
+	 * If not, then return this method as true, which will mean this file needs approval from admin.
 	 * @param array $approvalProperties
 	 *
 	 * @return bool

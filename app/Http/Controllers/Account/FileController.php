@@ -82,6 +82,26 @@ class FileController extends Controller
 		// Make sure the user owns the file before we store it in database.
 		$this->authorize('touch', $file);
 
+		if(request('youtube_url')) {
+			$url = $request->input( 'youtube_url' );
+
+			if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ) {
+				$file->youtube_url = $url;
+			} else {
+				return redirect()->back()->withInput($request->input())->withError('Not valid Youtube URL');
+			}
+		}
+
+		if(request('vimeo_url')) {
+			$vimeoUrl = $request->input( 'vimeo_url' );
+
+			if ( preg_match( '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/', $vimeoUrl ) ) {
+				$file->vimeo_url = $vimeoUrl;
+			} else {
+				return redirect()->back()->withInput($request->input())->withError('Not valid Vimeo URL');
+			}
+		}
+
 		// Update the fields that we 'only' need
 		$file->fill($request->only(['avatar', 'title', 'overview', 'overview_short', 'price']));
 
@@ -119,6 +139,10 @@ class FileController extends Controller
 			$file->save();
 		}
 
+		// If ONLY the 'price' OR/AND 'live' checkbox have been updated, then
+		// update those two and redirect if we dont need approval.
+		$file->update($request->only(['live', 'price']));
+
 		// Data that needs checking for approval by admin.
 		// ** Referencing APPROVAL_PROPERTIES constant in 'File' model
 		$approvalProperties = $request->only(File::APPROVAL_PROPERTIES);
@@ -126,16 +150,34 @@ class FileController extends Controller
 		// If the file needs approval, then we need to create a approval column in database
 		if ($file->needsApproval($approvalProperties)) {
 
+			if(request('youtube_url')) {
+				$url = $request->input( 'youtube_url' );
+
+				if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ) {
+					$file->youtube_url = $url;
+					$file->save();
+				} else {
+					return redirect()->back()->withInput($request->input())->withError('Not valid Youtube URL');
+				}
+			}
+
+			if(request('vimeo_url')) {
+				$vimeoUrl = $request->input( 'vimeo_url' );
+
+				if ( preg_match( '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/', $vimeoUrl ) ) {
+					$file->vimeo_url = $vimeoUrl;
+					$file->save();
+				} else {
+					return redirect()->back()->withInput($request->input())->withError('Not valid Vimeo URL');
+				}
+			}
+
 			// Create the approvals column in table with data passed in
 			// ** 'createApprovals' on File model
 			$file->createApproval($approvalProperties);
 
 			return back()->withSuccess('We will review your changes soon.');
 		}
-
-		// If ONLY the 'price' OR/AND 'live' checkbox have been updated, then
-		// update those two and redirect if we dont need approval.
-		$file->update($request->only(['live', 'price']));
 
 		return back()->withSuccess('File Updated');
 	}

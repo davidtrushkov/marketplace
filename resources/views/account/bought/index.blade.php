@@ -8,7 +8,7 @@
                     <div class="col-sm-12 no-padding">
                         <a href="{{ route('files.show', $bought->file) }}">
                             <div class="col-sm-3 no-padding">
-                                <img src="{{ isset($bought->file->avatar) ? '/images/files/cover/'.$bought->file->avatar : '/images/icons/marketplace-logo.png' }}" alt="{{ $bought->title }} cover image" width="100%" />
+                                <img src="{{ isset($bought->file->avatar) ? '/images/files/cover/'.$bought->file->avatar : '/images/home/default.png' }}" alt="{{ $bought->title }} cover image" width="100%" />
                             </div>
                             <div class="col-sm-9">
                                 <h4><i>Purchased:</i> {{ $bought->file->title }}</h4>

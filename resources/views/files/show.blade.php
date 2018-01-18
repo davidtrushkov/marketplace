@@ -6,7 +6,37 @@
             <div class="container">
                 @include('layouts.partials._flash')
                 <div class="col-sm-4">
-                    <img src="/images/files/cover/{{ isset($file->avatar) ? $file->avatar : '' }}" alt="{{ $file->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
+                    @if($file->youtube_url && $file->vimeo_url)
+                        <div id="video-gallery">
+                            <a href="{{ $file->youtube_url }}" data-poster="" >
+                                <center>
+                                    <i class="fa fa-3x fa-play" aria-hidden="true"></i>
+                                </center>
+                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
+                            </a>
+                            <a href="{{ $file->vimeo_url }}" data-poster=""></a>
+                        </div>
+                    @elseif($file->youtube_url)
+                        <div id="video-gallery">
+                            <a href="{{ $file->youtube_url }}" data-poster="" >
+                                <center>
+                                    <i class="fa fa-3x fa-play" aria-hidden="true"></i>
+                                </center>
+                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
+                            </a>
+                        </div>
+                    @elseif($file->vimeo_url)
+                        <div id="video-gallery">
+                            <a href="{{ $file->vimeo_url }}" data-poster="" >
+                                <center>
+                                    <i class="fa fa-3x fa-play" aria-hidden="true"></i>
+                                </center>
+                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
+                            </a>
+                        </div>
+                    @else
+                        <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" alt="{{ $file->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
+                    @endif
 
                     <div class="SINGLE-FILE-CART-BOX">
                         @if($file->isFree())
@@ -83,7 +113,7 @@
                     @foreach($otherUsersCourses as $userCourses)
                         <div class="col-sm-4 OTHER-FILES-BY-USER-BOX">
                             <a href="{{ $userCourses->identifier }}">
-                                <img src="/images/files/cover/{{ isset($userCourses->avatar) ? $userCourses->avatar : '' }}" alt="{{ $userCourses->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
+                                <img src="{{ isset($userCourses->avatar) ? '/images/files/cover/'.$userCourses->avatar : 'images/home/default.png' }}" alt="{{ $userCourses->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
                                 <p>{{ $userCourses->title }}</p>
                             </a>
                         </div>

@@ -15,7 +15,9 @@ class FileApproval extends Model
 	protected $fillable = [
 		'title',
 		'overview_short',
-		'overview'
+		'overview',
+		'youtube_url',
+		'vimeo_url'
 	];
 
 
