@@ -243,6 +243,17 @@ class File extends Model
 		return $this->uploads()->approved()->withoutPreviewFiles()->get()->pluck('path')->toArray();
 	}
 
+
+	/**
+	 * Get uploaded files when user starts to download the files
+	 * @return mixed
+	 */
+	public function getUploadListWithoutApprovedFiles() {
+		// Access the 'uploads' relationship, make sure the files are 'approved' and pluck the "path" attribute coming from 'Upload' Model
+		return $this->uploads()->withoutPreviewFiles()->get()->pluck('path')->toArray();
+	}
+
+
 	/**
 	 * Check that the sale matches the sale passed in into this method.
 	 * @param Sale $sale

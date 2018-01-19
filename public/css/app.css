@@ -9046,6 +9046,27 @@ button.close {
   font-weight: 700;
 }
 
+#SINGLE-FILE-SHOW .UPDATED-CHANGES-CONTAINER {
+  border-top: 4px solid #bebebe;
+  padding-bottom: 25px;
+}
+
+#SINGLE-FILE-SHOW .UPDATED-CHANGES-CONTAINER .UPDATED-BOX {
+  padding-top: 20px;
+}
+
+#SINGLE-FILE-SHOW .UPDATED-CHANGES-CONTAINER .UPDATED-BOX td {
+  width: 50%;
+}
+
+#SINGLE-FILE-SHOW .UPDATED-CHANGES-CONTAINER .UPDATED-BOX-THREE {
+  padding-top: 20px;
+}
+
+#SINGLE-FILE-SHOW .UPDATED-CHANGES-CONTAINER .UPDATED-BOX-THREE td {
+  width: 33%;
+}
+
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER {
   padding-top: 50px;
   padding-bottom: 50px;
@@ -9065,6 +9086,10 @@ button.close {
   line-height: 1.4em;
 }
 
+#SINGLE-FILE-SHOW .SINGLE-FILE-HEADER .SINGLE-FILE-OVERVIEW-SHORT a {
+  color: inherit;
+}
+
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER h1 {
   font-size: 28px;
 }
@@ -9081,7 +9106,7 @@ button.close {
 @media screen and (max-width: 991px) {
   #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER #video-gallery .fa-3x {
     color: #1e88e5;
-    top: 5px;
+    top: 55px;
     position: relative;
   }
 }

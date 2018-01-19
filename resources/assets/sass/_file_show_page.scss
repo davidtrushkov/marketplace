@@ -5,6 +5,27 @@
     font-weight: 700;
   }
 
+  .UPDATED-CHANGES-CONTAINER {
+    border-top: 4px solid #bebebe;
+    padding-bottom: 25px;
+
+    .UPDATED-BOX {
+      padding-top: 20px;
+
+      td {
+        width: 50%;
+      }
+    }
+
+    .UPDATED-BOX-THREE {
+      padding-top: 20px;
+
+      td {
+        width: 33%;
+      }
+    }
+  }
+
   .SINGLE-FILE-HEADER {
     @extend .MAIN-BACKGROUND-OVERLAY;
     padding-top: 50px;
@@ -22,6 +43,10 @@
       padding-top: 20px;
       font-size: 16px;
       line-height: 1.4em;
+
+      a {
+        color: inherit;
+      }
     }
 
     h1 {
@@ -42,7 +67,7 @@
       @media screen and (max-width: 991px) {
         .fa-3x {
           color: #1e88e5;
-          top: 5px;
+          top: 55px;
           position: relative;
         }
       }

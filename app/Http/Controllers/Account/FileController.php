@@ -152,22 +152,16 @@ class FileController extends Controller
 
 			if(request('youtube_url')) {
 				$url = $request->input( 'youtube_url' );
-
-				if ( preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url ) ) {
-					$file->youtube_url = $url;
-					$file->save();
-				} else {
+				if (!preg_match( '%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url)) {
+					// $matches[1] <--- to get ID
 					return redirect()->back()->withInput($request->input())->withError('Not valid Youtube URL');
 				}
 			}
 
 			if(request('vimeo_url')) {
 				$vimeoUrl = $request->input( 'vimeo_url' );
-
-				if ( preg_match( '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/', $vimeoUrl ) ) {
-					$file->vimeo_url = $vimeoUrl;
-					$file->save();
-				} else {
+				if (!preg_match( '/\/\/(www\.)?vimeo.com\/(\d+)($|\/)/', $vimeoUrl)) {
+					// $matches[2] <--- to get ID
 					return redirect()->back()->withInput($request->input())->withError('Not valid Vimeo URL');
 				}
 			}
