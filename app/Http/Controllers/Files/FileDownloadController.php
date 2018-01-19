@@ -73,7 +73,7 @@ class FileDownloadController extends Controller
 			}
 
 			// Zip the files
-			$this->createZipForFileInPath( $file, $path = $this->generateTemporaryPath( $file ) );
+			$this->createZipForFileInPathForAdmin( $file, $path = $this->generateTemporaryPath( $file ) );
 
 			// Download the files, and delete the files from the 'temp' directory after download has completed.
 			return response()->download( $path )->deleteFileAfterSend( true );
@@ -89,6 +89,15 @@ class FileDownloadController extends Controller
 	 */
 	protected function createZipForFileInPath(File $file, $path) {
 		$this->zipper->make($path)->add($file->getUploadList())->close();
+	}
+
+
+	/**
+	 * @param File $file
+	 * @param $path
+	 */
+	protected function createZipForFileInPathForAdmin(File $file, $path) {
+		$this->zipper->make($path)->add($file->getUploadListWithoutApprovedFiles())->close();
 	}
 
 

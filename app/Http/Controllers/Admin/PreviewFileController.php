@@ -22,11 +22,13 @@ class PreviewFileController extends Controller {
 			return abort( 404 );
 		}
 
-		$uploads = $file->uploads()->withoutPreviewFiles()->latest()->get();
+		$fileUploads = $file->uploads()->withoutPreviewFiles()->latest()->get();
 
 		$uploadPreviews = $file->uploads()->withPreviewFiles()->latest()->get();
 
-		return view( 'admin.previews.index', compact('file', 'uploads', 'uploadPreviews'));
+		$updatedChanges = $approvals = $file->approvals->first();
+
+		return view( 'admin.previews.index', compact('file', 'fileUploads', 'uploadPreviews', 'updatedChanges'));
 	}
 
 }

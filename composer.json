@@ -19,7 +19,6 @@
         "ext-gd":" *"
     },
     "require-dev": {
-        "barryvdh/laravel-debugbar": "^3.1",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "laravel/homestead": "^6.2",
