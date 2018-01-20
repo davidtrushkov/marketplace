@@ -11,6 +11,7 @@
             data-image="/images/icons/marketplace-logo.png"
             data-locale="auto"
             data-currency="usd"
+            data-label="Buy Now"
     >
     </script>
     @if(auth()->user() && $currentUserOwnsThisFile > 0)

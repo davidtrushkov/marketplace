@@ -110,10 +110,6 @@ class UploadController extends Controller {
 //		    return response()->json(null, 422);
 //	    }
 
-	    $image_url = $upload->filename;
-
-	    Storage::delete('files/'.$file->identifier.'/'.$image_url);
-
 	    $upload->delete();
     }
 }

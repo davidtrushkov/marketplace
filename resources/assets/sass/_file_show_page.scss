@@ -28,7 +28,7 @@
 
   .SINGLE-FILE-HEADER {
     @extend .MAIN-BACKGROUND-OVERLAY;
-    padding-top: 50px;
+    padding-top: 25px;
     padding-bottom: 50px;
     color: #FFFFFF;
 
@@ -46,6 +46,19 @@
 
       a {
         color: inherit;
+      }
+    }
+
+    .breadcrumb {
+      background-color: #2479d2;
+      width: fit-content;
+
+      .active {
+        color: #b5aeae;
+      }
+
+      a {
+        color: #FFFFFF;
       }
     }
 

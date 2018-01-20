@@ -1,7 +1,40 @@
 .MAIN-FILES-CONTAINER {
-  padding-top: 50px;
+  padding-top: 0;
   @extend .MAIN-BACKGROUND-OVERLAY;
   padding-bottom: 50px;
+
+  .nav-filter {
+    background-color: #FFFFFF;
+    border-top: 2px solid #d7d7d7;
+    margin-bottom: 25px;
+
+    .nav > li > a:hover, .nav > li > a:focus {
+      background-color: transparent;
+    }
+
+    .nav-tabs {
+      border-bottom: 0;
+
+      li {
+        border-left: 1px solid #ddd;
+        margin-bottom: 0;
+        
+        a {
+          font-size: 16px;
+          color: #636b6f;
+          margin-right: 0;
+          border: none;
+          -webkit-border-radius: 0px;
+          -moz-border-radius: 0px;
+          border-radius: 0px;
+        }
+      }
+
+      li:last-child {
+        border-right: 1px solid #ddd;
+      }
+    }
+  }
 
   .FILES-BOX {
     @extend .SPECIAL-BOX-SHADOW;
