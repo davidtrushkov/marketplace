@@ -9,6 +9,7 @@ use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
 class FileController extends Controller  {
 
@@ -20,7 +21,28 @@ class FileController extends Controller  {
 	 */
 	public function index() {
 
-		$files = File::with(['user', 'uploads'])->readyToBeShown()->latest()->paginate(self::PERPAGE);
+		switch (request('filter')) {
+			case 'newest-files':
+				$files = File::with(['user', 'uploads'])->readyToBeShown()->latest()->paginate(self::PERPAGE);
+				break;
+			case 'oldest-files':
+				$files = File::with(['user', 'uploads'])->readyToBeShown()->oldest()->paginate(self::PERPAGE);
+				break;
+			case 'price-low':
+				$files = File::with(['user', 'uploads'])->readyToBeShown()->orderBy('price', 'asc')->latest()->paginate(self::PERPAGE);
+				break;
+			case 'price-high':
+				$files = File::with(['user', 'uploads'])->readyToBeShown()->orderBy('price', 'desc')->latest()->paginate(self::PERPAGE);
+				break;
+			case 'most-sales':
+				$files = File::leftJoin('sales', 'sales.file_id', '=', 'files.id')
+					->select(DB::raw('files.*, count(sales.id) AS count'))
+					->groupBy('files.id')->orderBy('count', 'desc')->paginate(self::PERPAGE);
+				break;
+			default;
+				$files = File::with(['user', 'uploads'])->readyToBeShown()->latest()->paginate(self::PERPAGE);
+				break;
+		}
 
 		return view('files.index', compact('files'));
 	}

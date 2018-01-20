@@ -118,10 +118,6 @@
             </div>
 
             <div class="col-sm-12 no-padding YOUR-FILE-BOX YOUR-FILEBOX-CRUD">
-                <ol class="breadcrumb">
-                    <li>*If both Youtube and Vimeo links are submitted, the Youtube link gets shown on the files page, else the Vimeo link gets shown, or none if not submitted.</li>
-                </ol>
-                <br />
                 <div class="form-group{{ $errors->has('youtube_url') ? ' has-error' : '' }}">
                     <label>Youtube Video URL</label>
                     <input type="text" class="form-control" name="youtube_url" value="{{ old('youtube_url') ? old('youtube_url') : $file->youtube_url }}">

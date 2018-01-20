@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container-fluid no-padding MAIN-FILES-CONTAINER">
+        @include('files.partials._top_filter_nav')
         <div class="container">
             @if($files->isEmpty())
                 <p>No files found</p>
@@ -16,12 +17,10 @@
                                 </div>
                             </div>
                             <div class="col-sm-8 col-md-9">
-                                <h4>{{ $file->title }}</h4>
+                                <h4>{{ $file->title }} <label class="label label-primary pull-right">{{ $file->sales->count() }} {{ str_plural('sale', $file->sales->count()) }}</label></h4>
                                 <p>{{ str_limit($file->overview_short, 175) }}</p>
                                 <small>
-                                    @if($file->user->avatar)
-                                        <img src="/images/avatars/{{ $file->user->avatar }}" alt="User avatar" class="user-avatar">
-                                    @endif
+                                    <img src="{{ $file->user->avatar ? '/images/avatars/'.$file->user->avatar : '/images/icons/avatar.svg' }}" alt="User avatar" class="user-avatar">
                                     {{ $file->user->name }}
                                 </small>
                             </div>
@@ -29,7 +28,7 @@
                     </div>
                 @endforeach
 
-                {{ $files->render() }}
+                {{ $files->appends(request()->input())->links() }}
             @endif
         </div>
     </div>

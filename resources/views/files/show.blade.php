@@ -5,6 +5,12 @@
         <div class="container-fluid no-padding SINGLE-FILE-HEADER">
             <div class="container">
                 @include('layouts.partials._flash')
+                <div class="col-sm-12">
+                    <ol class="breadcrumb">
+                        <li><a href="/files">Files</a></li>
+                        <li class="active">{{ str_limit($file->title, 50) }}</li>
+                    </ol>
+                </div>
                 <div class="col-sm-4">
                     @if($file->youtube_url && $file->vimeo_url)
                         <div id="video-gallery">
@@ -49,15 +55,16 @@
                 </div>
                 <div class="col-sm-8">
                     <h4>
-                        @if($file->user->avatar)
-                            <img src="/images/avatars/{{ $file->user->avatar }}" alt="User avatar" class="user-avatar">
-                        @endif
+                        <img src="{{ $file->user->avatar ? '/images/avatars/'.$file->user->avatar : '/images/icons/avatar.svg' }}" alt="User avatar" class="user-avatar">
                        {{ $file->user->name }} is selling
                     </h4>
                     <h1>{{ $file->title }}</h1>
                     <div class="SINGLE-FILE-OVERVIEW-SHORT">
                         {{ $file->overview_short }}
                     </div>
+                    @if($file->sales->count() > 0)
+                        <h4><span class="label label-success">{{ $file->sales->count() }} {{ str_plural('sale', $file->sales->count()) }}</span></h4>
+                    @endif
                 </div>
             </div>
         </div>
