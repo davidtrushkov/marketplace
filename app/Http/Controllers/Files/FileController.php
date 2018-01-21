@@ -39,6 +39,9 @@ class FileController extends Controller  {
 					->select(DB::raw('files.*, count(sales.id) AS count'))
 					->groupBy('files.id')->orderBy('count', 'desc')->paginate(self::PERPAGE);
 				break;
+			case 'with_videos':
+				$files = File::with(['user', 'uploads'])->readyToBeShown()->where('youtube_url', '!=', null)->orWhere('vimeo_url', '!=', null)->latest()->paginate(self::PERPAGE);
+				break;
 			default;
 				$files = File::with(['user', 'uploads'])->readyToBeShown()->latest()->paginate(self::PERPAGE);
 				break;
