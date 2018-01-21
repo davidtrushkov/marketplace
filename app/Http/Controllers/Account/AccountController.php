@@ -29,6 +29,17 @@ class AccountController extends Controller
 
 
 	/**
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+    public function filesSold() {
+
+    	$filesSold = Sale::where('user_id', auth()->user()->id)->latest()->paginate(15);
+
+    	return view('account.sold.index', compact('filesSold'));
+    }
+
+
+	/**
 	 *  Update user settings on account page.
 	 *
 	 * @param UpdateSettingsRequest $request

@@ -20,6 +20,7 @@ Route::get('/account/connect/complete', 'Account\MarketPlaceConnectController@st
 Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => 'Account'], function() {
 	Route::get('/', 'AccountController@index')->name('account');
 	Route::get('/bought/files', 'AccountController@boughtIndex')->name('bought.files');
+	Route::get('/files/sold', 'AccountController@filesSold')->name('files.sold');
 	Route::post('/upload/avatar', 'AvatarController@store')->name('account.user.avatar');
 	Route::post('/update/settings', 'AccountController@update')->name('account.update.settings');
 

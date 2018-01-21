@@ -35,6 +35,17 @@ class Sale extends Model
 
 
 	/**
+	 * Get the relationship of user who bought file for a particular Sale.
+	 *  -- References "id" on user table, and "bought_user_id" on sales table.
+	 *
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function boughtUser() {
+		return $this->hasMany(User::class, 'id','bought_user_id');
+	}
+
+
+	/**
 	 * A Sale belongs to a file.
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
