@@ -27,6 +27,16 @@
                     </li>
                 </ul>
             </li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Features <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="/files?filter=with_videos">Video</a>
+                    </li>
+                </ul>
+            </li>
             <li role="presentation">
                 <a href="/files?filter=most-sales">Most Sales</a>
             </li>
