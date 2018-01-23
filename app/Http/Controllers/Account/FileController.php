@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Category;
 use App\File;
 use App\Http\Requests\File\StoreFileRequest;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\File\UpdateFileRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class FileController extends Controller
 {
@@ -35,11 +38,15 @@ class FileController extends Controller
 		// Make sure the user owns the file before we store it in database.
 		$this->authorize('touch', $file);
 
+		$categories = Category::orderBy('name', 'asc')->get();
+
+		$cats = DB::table('category_file')->where('file_id', '=', $file->id)->get();
+
 		// Grab the latest approvals for the file being edited (if any),
 		// to show on edit page what needs approving by admin.
 		$approvals = $file->approvals->first();
 
-		return view('account.files.edit', compact('file', 'approvals'));
+		return view('account.files.edit', compact('file', 'approvals', 'categories', 'cats'));
 	}
 
 	/**
@@ -49,6 +56,8 @@ class FileController extends Controller
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
 	 */
 	public function create(File $file) {
+
+		$categories = Category::orderBy('name', 'asc')->get();
 
 		// If the file we passed in doesn't exist
 		if (!$file->exists) {
@@ -65,7 +74,7 @@ class FileController extends Controller
 		// the 'app/Polices/FilePolicy' directory.
 		$this->authorize('touch', $file);
 
-		return view('account.files.create', compact('file'));
+		return view('account.files.create', compact('file', 'categories'));
 
 	}
 
@@ -81,6 +90,10 @@ class FileController extends Controller
 
 		// Make sure the user owns the file before we store it in database.
 		$this->authorize('touch', $file);
+
+		if (request('categories_id')) {
+			$file->categories()->attach(request('categories_id'));
+		}
 
 		if(request('youtube_url')) {
 			$url = $request->input( 'youtube_url' );
@@ -138,6 +151,8 @@ class FileController extends Controller
 			$this->uploadAvatar($request, $file);
 			$file->save();
 		}
+
+		$file->categories()->sync(request('categories_id'));
 
 		// If ONLY the 'price' OR/AND 'live' checkbox have been updated, then
 		// update those two and redirect if we dont need approval.

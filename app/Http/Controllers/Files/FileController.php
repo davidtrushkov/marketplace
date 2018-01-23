@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Files;
 use App\File;
 use App\Sale;
 use App\Comment;
+use App\Category;
 use App\Rules\Recaptcha;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Illuminate\Support\Facades\DB;
 
 class FileController extends Controller  {
 
@@ -20,6 +21,8 @@ class FileController extends Controller  {
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index() {
+
+		$categories = Category::orderBy('name', 'asc')->get();
 
 		switch (request('filter')) {
 			case 'newest-files':
@@ -37,7 +40,7 @@ class FileController extends Controller  {
 			case 'most-sales':
 				$files = File::leftJoin('sales', 'sales.file_id', '=', 'files.id')
 					->select(DB::raw('files.*, count(sales.id) AS count'))
-					->groupBy('files.id')->orderBy('count', 'desc')->paginate(self::PERPAGE);
+					->groupBy('files.id')->orderBy('count', 'desc')->readyToBeShown()->paginate(self::PERPAGE);
 				break;
 			case 'with_videos':
 				$files = File::with(['user', 'uploads'])->readyToBeShown()->where('youtube_url', '!=', null)->orWhere('vimeo_url', '!=', null)->latest()->paginate(self::PERPAGE);
@@ -47,7 +50,32 @@ class FileController extends Controller  {
 				break;
 		}
 
-		return view('files.index', compact('files'));
+		return view('files.index', compact('files', 'categories'));
+	}
+
+
+	/**
+	 * @param $slug
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getFilesByCategory($slug) {
+
+		// Get the category that was selected.
+		$cat = Category::where('slug', $slug)->first();
+
+		// If no category found, redirect back the user.
+		if (!$cat) {
+			return redirect()->back();
+		}
+
+		// Grab all the categories for drop-down menu.
+		$categories = Category::orderBy('name', 'asc')->get();
+
+		// Filter files by category selected.
+		$files = File::leftJoin('category_file', 'category_file.file_id', '=', 'files.id')->where('category_id', $cat->id)->paginate(self::PERPAGE);
+
+		return view('files.index', compact('files', 'categories'));
 	}
 
 
@@ -75,6 +103,15 @@ class FileController extends Controller  {
 			$currentUserOwnsThisFile = Sale::where( 'file_id', '=', $file->id )->where( 'bought_user_id', '=', auth()->user()->id )->count();
 		}
 
+		// Get all the categories associated with this file
+		$cat = DB::table('category_file')->where('file_id', $file->id)->get();
+
+		// Pluck the category IDs
+		$pluck = $cat->pluck('category_id');
+
+		// Select all the categories where in thge "pluck" array above
+		$categories = Category::whereIn('id',$pluck )->take(15)->get();
+
 		// Get the users courses for this particular file, excluding the one that is being shown.
 		$otherUsersCourses = File::where('user_id', '=', $file->user_id)->where('id', '!=', $file->id)->approved()->take(3)->latest()->get();
 
@@ -97,7 +134,7 @@ class FileController extends Controller  {
 			);
 		}
 
-		return view('files.show',compact('file', 'uploads', 'uploadPreviews', 'currentUserOwnsThisFile', 'otherUsersCourses', 'comments'));
+		return view('files.show',compact('file', 'uploads', 'uploadPreviews', 'currentUserOwnsThisFile', 'otherUsersCourses', 'comments', 'categories'));
 	}
 
 

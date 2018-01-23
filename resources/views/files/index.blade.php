@@ -9,7 +9,7 @@
             @else
                 @foreach($files as $file)
                     <div class="col-sm-12 no-padding FILES-BOX">
-                        <a href="{{ $file->identifier }}">
+                        <a href="/{{ $file->identifier }}">
                             <div class="col-sm-4 col-md-3 no-padding">
                                 <div class="image">
                                     <img class="img-box" src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" alt="{{ $file->title }} cover image" />
@@ -17,7 +17,7 @@
                                 </div>
                             </div>
                             <div class="col-sm-8 col-md-9">
-                                <h4>{{ $file->title }} <label class="label label-primary pull-right">{{ $file->sales->count() }} {{ str_plural('sale', $file->sales->count()) }}</label></h4>
+                                <h4>{{ $file->title }}</h4>
                                 <p>{{ str_limit($file->overview_short, 175) }}</p>
                                 <small>
                                     <img src="{{ $file->user->avatar ? '/images/avatars/'.$file->user->avatar : '/images/icons/avatar.svg' }}" alt="User avatar" class="user-avatar">

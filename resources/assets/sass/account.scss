@@ -76,6 +76,19 @@
     margin-bottom: 20px;
     @extend .SPECIAL-BOX-SHADOW;
 
+    #muiltipleCategoriesSelect {
+      margin-top: 20px;
+
+      .ms-parent {
+        width: 100% !important;
+
+        .ms-choice {
+          height: 35px !important;
+          line-height: 33px !important;
+        }
+      }
+    }
+
     #priceDescription {
       padding-bottom: 10px;
 

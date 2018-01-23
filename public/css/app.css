@@ -4666,7 +4666,7 @@
   -webkit-box-shadow: none;
           box-shadow: none;
   color: #555;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
   border-radius: 2px;
 }
 
@@ -13612,6 +13612,19 @@ button.close {
   margin-bottom: 20px;
 }
 
+.ACCOUNT-CONTENT .YOUR-FILE-BOX #muiltipleCategoriesSelect {
+  margin-top: 20px;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX #muiltipleCategoriesSelect .ms-parent {
+  width: 100% !important;
+}
+
+.ACCOUNT-CONTENT .YOUR-FILE-BOX #muiltipleCategoriesSelect .ms-parent .ms-choice {
+  height: 35px !important;
+  line-height: 33px !important;
+}
+
 .ACCOUNT-CONTENT .YOUR-FILE-BOX #priceDescription {
   padding-bottom: 10px;
 }
@@ -13686,6 +13699,16 @@ button.close {
 
 .MAIN-FILES-CONTAINER .nav-filter .nav-tabs li:last-child {
   border-right: 1px solid #ddd;
+}
+
+.MAIN-FILES-CONTAINER .nav-filter .nav-tabs .dropdown-menu {
+  min-width: 202px;
+}
+
+.MAIN-FILES-CONTAINER .nav-filter .nav-tabs .dropdown-menu .active > a,
+.MAIN-FILES-CONTAINER .nav-filter .nav-tabs .dropdown-menu .active > a:hover,
+.MAIN-FILES-CONTAINER .nav-filter .nav-tabs .dropdown-menu .active > a:focus {
+  color: #ffffff !important;
 }
 
 .MAIN-FILES-CONTAINER .FILES-BOX {
@@ -13993,6 +14016,15 @@ p {
   color: #fff;
   background-color: #2d73ba !important;
   border-color: #2d73ba !important;
+  padding: 12px 18px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.btn-danger {
+  color: #fff !important;
+  background-color: #bf5329 !important;
+  border-color: #bf5329 !important;
   padding: 12px 18px;
   border-radius: 2px;
   font-size: 16px;

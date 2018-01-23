@@ -65,6 +65,16 @@
                     @if($file->sales->count() > 0)
                         <h4><span class="label label-success">{{ $file->sales->count() }} {{ str_plural('sale', $file->sales->count()) }}</span></h4>
                     @endif
+                    @if(!$categories->isEmpty())
+                        <div>
+                            <br /><br />
+                            @foreach($categories as $category)
+                                <a href="{{ route('file.categories', $category->slug) }}">
+                                    <span class="label label-primary">{{ $category->name }}</span>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

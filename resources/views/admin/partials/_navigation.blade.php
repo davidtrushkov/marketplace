@@ -14,5 +14,8 @@
         <li class="list-group-item">
             <a href="{{ route('admin.users.all') }}">Users</a>
         </li>
+        <li class="list-group-item">
+            <a href="{{ route('admin.categories') }}">File Categories</a>
+        </li>
     </ul>
 </div>
