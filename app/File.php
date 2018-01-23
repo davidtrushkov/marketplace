@@ -308,4 +308,9 @@ class File extends Model
 	public function comments() {
 		return $this->morphMany(Comment::class, 'commentable');
 	}
+
+
+	public function categories() {
+		return $this->belongsToMany(Category::class);
+	}
 }

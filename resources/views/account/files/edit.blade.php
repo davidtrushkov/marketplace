@@ -152,6 +152,26 @@
             </div>
 
             <div class="col-sm-12 no-padding YOUR-FILE-BOX YOUR-FILEBOX-CRUD">
+                <div class="col-sm-12 no-padding" id="muiltipleCategoriesSelect">
+                    <div class="form-group{{ $errors->has('overview_short') ? ' has-error' : '' }}">
+                        <label>What categories does this file belong to?</label>
+                        <select name="categories_id[]" multiple="multiple">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}"
+                                        @foreach($cats as $c) @if( collect($c->category_id)->contains($category->id) == $category->id) selected="selected" @endif @endforeach
+                                >{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12 no-padding">
+                    <ol class="breadcrumb">
+                        <li>You can choose multiple categories, which users can filter by.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="col-sm-12 no-padding YOUR-FILE-BOX YOUR-FILEBOX-CRUD">
                 <div class="checkbox">
                     <label>
                         <input type="checkbox" name="live" id="live" {{ $file->live ? ' checked' : '' }} value="1">
@@ -168,6 +188,7 @@
                         </span>
                     @endif
                 </div>
+
 
                 <div class="form-group{{ $errors->has('overview_short') ? ' has-error' : '' }}">
                     <label>Short Overview</label>
@@ -208,4 +229,12 @@
 
 @section('scripts')
     @include('account.partials._file_upload')
+
+    <script src="{{ asset('js/plugins/multiple-select.js') }}"></script>
+    <script>
+        $('select').multipleSelect({
+            placeholder: "Select categories",
+            selectAll: false,
+        });
+    </script>
 @endsection

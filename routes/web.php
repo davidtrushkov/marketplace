@@ -38,6 +38,12 @@ Route::group(['prefix' => '/admin', 'namespace' => 'Admin', 'middleware' => ['au
 	Route::get('/', 'AdminController@index')->name('admin.index');
 	Route::get('/preview/{file}', 'PreviewFileController@show')->name('admin.files.show');
 
+	Route::get('/categories', 'CategoriesController@index')->name('admin.categories');
+	Route::get('/categories/create', 'CategoriesController@create')->name('admin.category.create');
+	Route::get('/categories/edit/{slug}', 'CategoriesController@edit')->name('admin.category.edit');
+	Route::post('/categories/store', 'CategoriesController@store')->name('admin.category.store');
+	Route::post('/categories/update/{id}', 'CategoriesController@update')->name('admin.category.update');
+
 	Route::group(['prefix' => '/files'], function() {
 		Route::group(['prefix' => '/new'], function() {
 			Route::get('/', 'FileNewController@index')->name('admin.files.new.index');
@@ -70,6 +76,7 @@ Route::post('/{file}/preview/upload', 'Upload\PreviewGalleryController@store')->
 Route::delete('/{file}/destroy/{upload}', 'Upload\PreviewGalleryController@destroy')->name('preview.destroy');
 
 Route::get('/files', 'Files\FileController@index')->name('files.index');
+Route::get('/files/category/{slug}', 'Files\FileController@getFilesByCategory')->name('file.categories');
 Route::get('/{file}', 'Files\FileController@show')->name('files.show');
 Route::get('/{file}/{sale}/download', 'Files\FileDownloadController@show')->name('files.download');
 Route::get('/{file}/download', 'Files\FileDownloadController@adminDownload')->name('files.admin.download');

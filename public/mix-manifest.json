@@ -1,4 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/plugins/multiple-select.js": "/js/plugins/multiple-select.js",
+    "/css/plugins/multiple-select.css": "/css/plugins/multiple-select.css"
 }

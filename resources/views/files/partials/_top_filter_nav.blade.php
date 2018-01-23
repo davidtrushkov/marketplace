@@ -3,6 +3,18 @@
         <ul class="nav nav-tabs">
             <li role="presentation" class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                    Categories <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach($categories as $count => $category)
+                        <li class="{{ Request::is('files/category/'.$category->slug) ? 'active' : '' }}">
+                            <a href="{{ route('file.categories', $category->slug) }}">{{ $category->name }}</a>
+                        </li>
+                    @endforeach
+                </ul>
+            </li>
+            <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
                     Date <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">

@@ -136,6 +136,25 @@
                 </ol>
             </div>
 
+            <div class="col-sm-12 no-padding YOUR-FILE-BOX YOUR-FILEBOX-CRUD">
+                <div class="col-sm-12 no-padding" id="muiltipleCategoriesSelect">
+                    <div class="form-group{{ $errors->has('overview_short') ? ' has-error' : '' }}">
+                        <label>Categories</label>
+                        <select name="categories_id[]" multiple="multiple">
+                            @foreach($categories as $category)
+                                <option value="{{ $category->id }}" @if(old("categories_id")){{ (in_array($category->id, old("categories_id")) ? "selected":"") }}@endif>{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12 no-padding">
+                    <ol class="breadcrumb">
+                        <li>You can choose multiple categories, which users can filter by.</li>
+                    </ol>
+                </div>
+            </div>
+
+
             <div class="col-sm-12 no-padding YOUR-FILE-BOX">
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <label>Title</label>
@@ -185,4 +204,12 @@
 
 @section('scripts')
     @include('account.partials._file_upload')
+
+    <script src="{{ asset('js/plugins/multiple-select.js') }}"></script>
+    <script>
+        $('select').multipleSelect({
+            placeholder: "Select categories",
+            selectAll: false,
+        });
+    </script>
 @endsection
