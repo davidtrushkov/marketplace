@@ -2,17 +2,14 @@
 
 namespace App\Notifications;
 
-use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UpdatedFileRejection extends Notification
-{
-	use Queueable;
+class UpdatedFileRejection extends Notification {
 
 	protected $user;
 	protected $file;
+	protected $data;
 
 
 	/**
@@ -21,10 +18,10 @@ class UpdatedFileRejection extends Notification
 	 * @param $user
 	 * @param $file
 	 */
-	public function __construct($user, $file)
-	{
+	public function __construct($user, $file, $data) {
 		$this->user = $user;
 		$this->file = $file;
+		$this->data = $data;
 	}
 
 	/**
@@ -33,9 +30,8 @@ class UpdatedFileRejection extends Notification
 	 * @param  mixed  $notifiable
 	 * @return array
 	 */
-	public function via($notifiable)
-	{
-		return ['mail'];
+	public function via($notifiable) {
+		return ['mail', 'database'];
 	}
 
 	/**
@@ -44,8 +40,7 @@ class UpdatedFileRejection extends Notification
 	 * @param  mixed  $notifiable
 	 * @return \Illuminate\Notifications\Messages\MailMessage
 	 */
-	public function toMail($notifiable)
-	{
+	public function toMail($notifiable) {
 
 		$image = '/images/icons/rejected.svg';
 		$imageAlt = 'Your file updates has been rejected';
@@ -53,8 +48,10 @@ class UpdatedFileRejection extends Notification
 		return (new MailMessage)
 			->markdown('vendor.notifications.email', ['image' => $image, 'imageAlt' => $imageAlt])
 			->line('File name: ' . $this->file->title)
-			->line('Your file updates has been rejected');
+			->line('Your file updates has been rejected')
+			->line('You can check your notifications on Marketplace to see if the admin gave a reason on why your file was rejected');
 	}
+
 
 	/**
 	 * Get the array representation of the notification.
@@ -62,10 +59,11 @@ class UpdatedFileRejection extends Notification
 	 * @param  mixed  $notifiable
 	 * @return array
 	 */
-	public function toArray($notifiable)
-	{
+	public function toArray($notifiable) {
 		return [
-			//
+			'header' => 'File: "'.$this->file->title.'" has been rejected by admin',
+			'data'   => isset($this->data) ? $this->data : 'Admin gave no reason for file rejection.',
+			'file'   => $this->file->title,
 		];
 	}
 }

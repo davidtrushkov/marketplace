@@ -13494,6 +13494,44 @@ button.close {
   margin-left: 20px;
 }
 
+#NAVIGATION-SECTION .navbar-default .notification-dropdown {
+  width: 350px !important;
+  padding: 0 !important;
+}
+
+#NAVIGATION-SECTION .navbar-default .notification-dropdown .notification-a {
+  font-size: 12px;
+  padding: 10px 10px;
+  text-transform: none !important;
+}
+
+#NAVIGATION-SECTION .navbar-default .notification-dropdown .notification-footer {
+  background-color: #f7f8fa;
+  border-top: 1px solid #e1e2e4;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+#NAVIGATION-SECTION .navbar-default .notification-dropdown .notification-footer .notification-pad {
+  padding: 10px;
+}
+
+#NAVIGATION-SECTION .navbar-default .notification-dropdown .notification-footer .notification-pad a {
+  font-size: 12px !important;
+  color: #007791;
+  font-weight: 600;
+}
+
+#NAVIGATION-SECTION .navbar-default .notification-dropdown .notification-footer .notification-pad a:hover {
+  text-decoration: none;
+}
+
+#NAVIGATION-SECTION .navbar-default .notification-dropdown .notification-footer:hover {
+  background-color: #e8e9eb !important;
+  border-top: 1px solid #d4d5d7;
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   #NAVIGATION-SECTION .dropdown-menu img {
     margin-right: 8px;
@@ -13589,6 +13627,12 @@ button.close {
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active:hover a,
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active:focus a {
   color: #ffffff !important;
+}
+
+.ACCOUNT-CONTENT #ACCOUNT-NOTIFICATION .media-content {
+  background-color: #fff;
+  border: 1px solid #d3e0e9;
+  padding: 10px;
 }
 
 .ACCOUNT-CONTENT .ACCOUNT-FILE-FORM .panel-title {

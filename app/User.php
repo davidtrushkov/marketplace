@@ -4,7 +4,6 @@ namespace App;
 
 use App\Traits\HasRoles;
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 

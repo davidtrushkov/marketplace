@@ -18,6 +18,14 @@
         <li class="list-group-item {{ isActiveRoute('files.sold') }}">
             <a href="{{ route('files.sold') }}">Files Sold</a>
         </li>
+        <li class="list-group-item {{ isActiveRoute('get.unread.notifications') }}">
+            <a href="{{ route('get.unread.notifications') }}">
+                Notifications
+                @if(auth()->user()->unreadNotifications->count() > 0)
+                    <span class="badge badge-light pull-right">{{ auth()->user()->unreadNotifications->count() }}</span>
+                @endif
+            </a>
+        </li>
     </ul>
 
     <ul class="list-group">

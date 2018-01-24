@@ -17,4 +17,7 @@
     <span>
         <a href="{{ route('account.files.edit', $file) }}">Make changes</a>
     </span>
+    <span class="pull-right">
+        <a href="{{ route('account.files.create.notification', $file->identifier) }}">Notify Users</a>
+    </span>
 </div>

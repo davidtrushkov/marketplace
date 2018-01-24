@@ -13,6 +13,7 @@ class FileNewController extends Controller
 
 	use Notifiable;
 
+
 	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
@@ -28,6 +29,7 @@ class FileNewController extends Controller
 
 
 	/**
+	 * Approve the file and send email to user that it has been approved.
 	 * @param File $file
 	 *
 	 * @return mixed
@@ -49,12 +51,30 @@ class FileNewController extends Controller
 
 
 	/**
-	 * Destroy a file with its uploads
+	 * Show new file rejection page for admin to send notification to user of rejection.
+	 * @param $identifier
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function newFileRejectionNotification($identifier) {
+
+		// Get the file
+		$file = File::where('identifier', $identifier)->first();
+
+		return view('admin.files.new.rejection', compact('file'));
+	}
+
+
+	/**
+	 * Destroy a file with its uploads and send email and notification to user.
 	 * @param File $file
 	 *
 	 * @return mixed
 	 */
 	public function destroy (File $file) {
+
+		// Get the rejection message from admin
+		$data = request('data');
 
 		// Delete the main file
 		$file->delete();
@@ -65,9 +85,9 @@ class FileNewController extends Controller
 		// Get the user associated with this file rejection
 		$user = $file->filesUser($file);
 
-		// Send an email to the user notifying them that their file has been rejected.
-		$user->notify(new FileRejected($user, $file));
+		// Send an email to the user notifying them that their file has been rejected and a database notification.
+		$user->notify(new FileRejected($user, $file, $data));
 
-		return back()->withSuccess("{$file->title} has been rejected");
+		return redirect(route('admin.files.new.index'))->withSuccess("{$file->title} has been rejected and notification sent to user");
 	}
 }

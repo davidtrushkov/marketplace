@@ -7,8 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Notifications\UpdatedFileApproved;
 use App\Notifications\UpdatedFileRejection;
 
-class FileUpdatedController extends Controller
-{
+class FileUpdatedController extends Controller {
 
 
 	/**
@@ -55,12 +54,30 @@ class FileUpdatedController extends Controller
 
 
 	/**
-	 * Reject a file with its uploads.
+	 * Show updated file rejection page for admin to send notification to user of rejection.
+	 * @param $identifier
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function updatedFileRejectionNotification($identifier) {
+
+		// Get the file
+		$file = File::where('identifier', $identifier)->first();
+
+		return view('admin.files.updated.rejection', compact('file'));
+	}
+
+
+	/**
+	 * Reject a file with its uploads and send email and notification to user.
 	 * @param File $file
 	 *
 	 * @return mixed
 	 */
 	public function destroy(File $file) {
+
+		// Get the rejection message from admin
+		$data = request('data');
 
 		// delete all approvals
 		$file->deleteAllApprovals();
@@ -71,9 +88,9 @@ class FileUpdatedController extends Controller
 		// Get the user associated with this file updated rejection
 		$user = $file->filesUser($file);
 
-		// Send an email to the user notifying them that their updated file has been rejected.
-		$user->notify(new UpdatedFileRejection($user, $file));
+		// Send an email to the user notifying them that their updated file has been rejected and a database notification.
+		$user->notify(new UpdatedFileRejection($user, $file, $data));
 
-		return back()->withSuccess("{$file->title} changes have been rejected");
+		return redirect(route('admin.files.updated.index'))->withSuccess("{$file->title} changes got rejected and notification sent to user");
 	}
 }
