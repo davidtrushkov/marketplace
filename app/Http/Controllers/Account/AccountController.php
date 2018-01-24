@@ -18,6 +18,21 @@ class AccountController extends Controller
 
 
 	/**
+	 *  Update user settings on account page.
+	 *
+	 * @param UpdateSettingsRequest $request
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function update(UpdateSettingsRequest $request) {
+
+		$request->user()->update($request->only(['name']));
+
+		return redirect()->back()->withSuccess('Settings updated.');
+	}
+
+
+	/**
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
     public function boughtIndex() {
@@ -39,18 +54,44 @@ class AccountController extends Controller
     }
 
 
-	/**
-	 *  Update user settings on account page.
-	 *
-	 * @param UpdateSettingsRequest $request
-	 *
-	 * @return \Illuminate\Http\RedirectResponse
-	 */
-    public function update(UpdateSettingsRequest $request) {
+    public function getUnreadNotifications() {
 
-	    $request->user()->update($request->only(['name']));
+	    $unreadNotifications = auth()->user()->unreadNotifications()->paginate(15);
 
-	    return redirect()->back()->withSuccess('Settings updated.');
+    	return view('account.notifications.index', compact('unreadNotifications'));
     }
 
+
+	public function getAllNotifications() {
+
+		$notifications = auth()->user()->notifications()->paginate(15);
+
+		return view('account.notifications.all-notifications', compact('notifications'));
+	}
+
+
+	public function showNotification($id) {
+
+    	$notification = auth()->user()->notifications->where('id', $id)->first();
+
+    	if (!$notification) {
+    		return back();
+	    }
+
+    	return view('account.notifications.show', compact('notification'));
+	}
+
+
+	public function markAsRead($id) {
+
+		$notification = auth()->user()->notifications->where( 'id', $id )->first();
+
+		if (!$notification) {
+			return back();
+		} else {
+			$notification->update( [ 'read_at' => now() ] );
+		}
+
+		return redirect( route( 'get.all.notifications' ) )->withSuccess( 'Notification marked as read' );
+	}
 }

@@ -59,6 +59,41 @@
                                 </li>
                             </ul>
                         </li>
+                        @if(auth()->user()->unreadNotifications->count() > 0)
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
+                                <i class="fa fa-bell" aria-hidden="true"></i>
+                                @if(auth()->user()->unreadNotifications->count() > 0)
+                                    <span class="badge badge-light">{{ auth()->user()->unreadNotifications->count() }}</span>
+                                @endif
+                            </a>
+                            <ul class="dropdown-menu notification-dropdown" role="menu">
+                                @foreach(auth()->user()->unreadNotifications->take(10) as $notification)
+                                    <li>
+                                        <a href="{{ route('show.notification', $notification->id) }}" class="notification-a">
+                                            {{ str_limit($notification->data['header'], 50) }}
+                                            <div><small>{{ $notification->created_at->diffForHumans() }}</small></div>
+                                        </a>
+                                    </li>
+                                    @if(auth()->user()->unreadNotifications->count() > 10)
+                                        <li>
+                                            <a href="#" class="notification-a">+ {{ auth()->user()->unreadNotifications->count() - 10 }} more...</a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                                <li>
+                                    <div class="col-sm-12 no-padding notification-footer">
+                                        <div class="col-sm-7 notification-pad">
+                                            <a href="{{ route('notifications.mark.all.as.read') }}">Mark All as Read</a>
+                                        </div>
+                                        <div class="col-sm-5 notification-pad">
+                                            <a href="{{ route('get.all.notifications') }}" class="pull-right">See All</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        @endif
                     @endif
                 </ul>
             </div>

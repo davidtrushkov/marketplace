@@ -15,11 +15,6 @@
     </form>
 
     <span>
-        <a href="#" onclick="event.preventDefault(); document.getElementById('reject-{{ $file->id }}').submit();">Reject</a>
+        <a href="{{ route('admin.file.rejection', $file->identifier) }}">Reject</a>
     </span>
-
-    <form action="{{ route('admin.files.new.destroy', $file) }}" method="post" id="reject-{{ $file->id }}" class="hidden">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-    </form>
 </div>
