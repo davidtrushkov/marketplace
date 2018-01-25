@@ -1,5 +1,6 @@
 #NAVIGATION-SECTION {
   .navbar-default {
+    font-family: 'Montserrat', sans-serif;
     background-color: transparent;
     border-color: transparent;
     z-index: 1;
@@ -14,11 +15,9 @@
     .navbar-nav > li > a {
       color: #6a6a6a;
       font-size: 16px;
+      line-height: 26px;
     }
     .navbar-brand:hover {
-      color: #ff9538;
-    }
-    .navbar-nav > li > a:hover {
       color: #ff9538;
     }
     .navbar-nav > .open > a, .navbar-nav > .open > a:hover, .navbar-nav > .open > a:focus {

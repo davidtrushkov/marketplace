@@ -11,12 +11,6 @@
         .navbar-nav > li > a {
             color: #FFFFFF !important;
         }
-        .navbar-brand:hover {
-            color: #ff9538 !important;
-        }
-        .navbar-nav > li > a:hover {
-            color: #ff9538 !important;
-        }
     </style>
     @endif
 

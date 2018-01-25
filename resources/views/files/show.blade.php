@@ -125,7 +125,7 @@
 
         @if(!$otherUsersCourses->isEmpty())
             <div class="container">
-                <div class="container SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER">
+                <div class="col-sm-12 no-padding SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER">
                     <h4>Other files by {{ $file->user->name }}</h4>
                     @foreach($otherUsersCourses as $userCourses)
                         <div class="col-sm-4 OTHER-FILES-BY-USER-BOX">

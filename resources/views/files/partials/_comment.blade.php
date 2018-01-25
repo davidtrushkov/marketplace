@@ -1,4 +1,4 @@
-<div class="col-sm-12 no-padding" id="replyContainer">
+<div class="col-sm-12" id="replyContainer">
     @if ($file->comments->count() > 0)
         <i class="fa fa-comments" aria-hidden="true"></i> {{ $file->comments->count() }} {{ str_plural('comment', $file->comments->count()) }} <br />
         @foreach($comments as $comment)
@@ -7,8 +7,8 @@
                     <form action="{{ route('destroy.comment', [$comment->id, $comment->commentable_id]) }}" method="post">
                         {{ csrf_field() }}
                         {{ method_field('DELETE') }}
-                        <button type="submit" class="btn btn-xs btn-danger pull-right"
-                                @if ($comment->replies->count() > 0) onclick="return confirm('Are you sure you want to delete this comment? It will also delete all other sub-comments too.')" @endif >
+                        <button type="submit" class="btn pull-right"
+                            @if ($comment->replies->count() > 0) onclick="return confirm('Are you sure you want to delete this comment? It will also delete all other sub-comments too.')" @endif >
                             <i class="fa fa-times" aria-hidden="true"></i>
                         </button>
                     </form>
@@ -67,7 +67,7 @@
                             <form action="{{ route('destroy.comment', [$reply->id, $reply->commentable_id]) }}" method="post">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-xs btn-danger pull-right">
+                                <button type="submit" class="btn pull-right" style="margin-right: 50px;">
                                     <i class="fa fa-times" aria-hidden="true"></i>
                                 </button>
                             </form>
