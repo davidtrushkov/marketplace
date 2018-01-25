@@ -34,7 +34,7 @@
                         @if(auth()->user()->id !== $user->id)
                         <form action="{{ route('admin.impersonate', $user->id) }}" method="post">
                             {{ csrf_field() }}
-                            <button type="submit" class="btn btn-xs btn-info">
+                            <button type="submit" class="btn">
                                 <i class="fa fa-sign-in"></i>
                             </button>
                         </form>

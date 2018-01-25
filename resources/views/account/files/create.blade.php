@@ -2,9 +2,6 @@
 
 @section('account.content')
     <div class="ACCOUNT-FILE-FORM">
-        <div class="HEADER-BOX">
-            sell a file
-        </div>
         <form action="{{ route('account.files.store', $file) }}" method="post" enctype="multipart/form-data">
             {{ csrf_field() }}
 

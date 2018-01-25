@@ -41,7 +41,10 @@
                         </div>
                         <div class="login-link">
                             <a href="{{ route('password.request') }}">
-                                Forgot Your Password?
+                                Forgot Your Password? &nbsp; |
+                            </a>
+                            <a href="{{ route('register') }}">
+                                &nbsp; Register?
                             </a>
                         </div>
                     </form>
