@@ -5,7 +5,105 @@
         <h1>Buy And Sell Files</h1>
     </section>
 
-    {{--<div class="browser-mockup with-url">--}}
-        {{--<img src="/images/home/11.jpg" />--}}
-    {{--</div>--}}
+
+    <section class="HOME-PAGE-SECTION-TWO">
+        <div class="container">
+            <div class="col-sm-12 BORDER-LINE-BOX">
+                <h2>Browse through our selection of files, or upload your creation</h2>
+                <div class="col-sm-6">
+                    <a href="/files" class="btn btn-primary pull-right">Browse Files</a>
+                </div>
+                <div class="col-sm-6">
+                    <a href="/register" class="btn btn-info pull-left">Upload Your Files</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="HOME-PAGE-SECTION-THREE">
+        <div class="container">
+            <div class="col-sm-12 PROCESS-BOX">
+                <img src="/images/home/process/signup.svg" alt="Sign up" class="SVG-PROCESS" />
+                <div class="PROCESS-TEXT-BOX">
+                    <div class="col-sm-9 no-padding">
+                        <h4>
+                            Sign up with Marketplace
+                        </h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="/images/home/process/one.svg" alt="First Step" class="SVG-PROCESS-NUMBER" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 PROCESS-BOX">
+                <img src="/images/home/process/connect-stripe.svg" alt="Connect with Stripe" class="SVG-PROCESS" />
+                <div class="PROCESS-TEXT-BOX">
+                    <div class="col-sm-9 no-padding">
+                        <h4>
+                            Connect with Stripe through our website to receive payments
+                        </h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="/images/home/process/two.svg" alt="Seconds Step" class="SVG-PROCESS-NUMBER" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 PROCESS-BOX">
+                <img src="/images/home/process/create-files.svg" alt="Create files" class="SVG-PROCESS" />
+                <div class="PROCESS-TEXT-BOX">
+                    <div class="col-sm-9 no-padding">
+                        <h4>
+                            Upload all kinds of files from images, photoshop files, templates, code, to icons and fonts
+                        </h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="/images/home/process/three.svg" alt="Third Step" class="SVG-PROCESS-NUMBER" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 PROCESS-BOX">
+                <img src="/images/home/process/publish.svg" alt="Publish your creation" class="SVG-PROCESS" />
+                <div class="PROCESS-TEXT-BOX">
+                    <div class="col-sm-9 no-padding">
+                        <h4>
+                            Once created, your uploads will be published for review from our admins
+                        </h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="/images/home/process/four.svg" alt="Fourth Step" class="SVG-PROCESS-NUMBER" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 PROCESS-BOX">
+                <img src="/images/home/process/profits.svg" alt="Make revenue from sales" class="SVG-PROCESS" />
+                <div class="PROCESS-TEXT-BOX">
+                    <div class="col-sm-9 no-padding">
+                        <h4>
+                            Start making revenue from sales
+                        </h4>
+                    </div>
+                    <div class="col-sm-3">
+                        <img src="/images/home/process/five.svg" alt="Fifth Step" class="SVG-PROCESS-NUMBER" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="HOME-PAGE-SECTION-FOUR">
+           <div class="container">
+               <div class="col-sm-8 no-padding">
+                   <div class="browser-mockup with-url">
+                       <img src="http://placehold.it/500x300/fff/eee" />
+                   </div>
+               </div>
+               <div class="col-sm-4">
+
+
+               </div>
+           </div>
+    </section>
 @endsection
