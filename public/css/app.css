@@ -4684,6 +4684,7 @@
   -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   padding: 15px 20px 20px 20px;
+  border-radius: 4px;
 }
 
 /*!
@@ -13425,6 +13426,7 @@ button.close {
 }
 
 #NAVIGATION-SECTION .navbar-default {
+  font-family: 'Montserrat', sans-serif;
   background-color: transparent;
   border-color: transparent;
   z-index: 1;
@@ -13442,13 +13444,10 @@ button.close {
 #NAVIGATION-SECTION .navbar-default .navbar-nav > li > a {
   color: #6a6a6a;
   font-size: 16px;
+  line-height: 26px;
 }
 
 #NAVIGATION-SECTION .navbar-default .navbar-brand:hover {
-  color: #ff9538;
-}
-
-#NAVIGATION-SECTION .navbar-default .navbar-nav > li > a:hover {
   color: #ff9538;
 }
 
@@ -13609,7 +13608,6 @@ button.close {
 }
 
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item {
-  border-radius: 0px;
   border: none;
   text-transform: uppercase;
 }
@@ -13623,6 +13621,14 @@ button.close {
   color: #282828;
 }
 
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item:first-child {
+  border-radius: 4px;
+}
+
+.ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item:last-child {
+  border-radius: 4px;
+}
+
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active a,
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active:hover a,
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group .list-group-item.active:focus a {
@@ -13633,6 +13639,7 @@ button.close {
   background-color: #fff;
   border: 1px solid #d3e0e9;
   padding: 10px;
+  border-radius: 2px;
 }
 
 .ACCOUNT-CONTENT .ACCOUNT-FILE-FORM .panel-title {
@@ -13653,7 +13660,7 @@ button.close {
 
 .ACCOUNT-CONTENT .YOUR-FILE-BOX {
   background-color: #ffffff;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .ACCOUNT-CONTENT .YOUR-FILE-BOX #muiltipleCategoriesSelect {
@@ -13998,7 +14005,7 @@ button.close {
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-COMMENT-REPLY-BOX .comment:not(:first-child) {
-  margin: 20px 0 30px 50px;
+  margin: 20px 0 30px 30px;
   border-left: 4px solid #ccc;
   padding-left: 20px;
 }
@@ -14069,6 +14076,24 @@ p {
   color: #fff !important;
   background-color: #bf5329 !important;
   border-color: #bf5329 !important;
+  padding: 12px 18px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.btn-success {
+  color: #fff;
+  background-color: #2ab27b;
+  border-color: #2ab27b;
+  padding: 12px 18px;
+  border-radius: 2px;
+  font-size: 16px;
+}
+
+.btn-info {
+  color: #fff;
+  background-color: #8eb4cb;
+  border-color: #8eb4cb;
   padding: 12px 18px;
   border-radius: 2px;
   font-size: 16px;
