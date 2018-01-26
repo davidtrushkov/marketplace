@@ -27,6 +27,8 @@ Route::group(['prefix' => '/account', 'middleware' => ['auth'], 'namespace' => '
 	Route::get('/all-notifications', 'AccountController@getAllNotifications')->name('get.all.notifications');
 	Route::get('/notification/{id}', 'AccountController@showNotification')->name('show.notification');
 	Route::get('/notifications/mark/{id}/read', 'AccountController@markAsRead')->name('notification.mark.as.read');
+	Route::get('/change/password/', 'AccountController@changePassword')->name('change.password');
+	Route::post('/change/password', 'AccountController@changePasswordStore')->name('change.password.store');
 
 	Route::group(['prefix' => '/files', 'middleware' => ['needs.marketplace']], function() {
 		Route::get('/', 'FileController@index')->name('account.files.index');

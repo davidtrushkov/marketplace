@@ -29,11 +29,10 @@
     </ul>
 
     <ul class="list-group">
-        <li class="list-group-item">
-            General
-        </li>
-        <li class="list-group-item">
-            Change password
+        <li class="list-group-item {{ isActiveRoute('change.password') }}">
+            <a href="{{ route('change.password') }}">
+                Change password
+            </a>
         </li>
     </ul>
 </div>
