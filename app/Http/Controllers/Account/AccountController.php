@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Http\Requests\Account\PasswordStoreRequest;
 use App\Http\Requests\Account\UpdateSettingsRequest;
+use App\Notifications\PasswordChanged;
 use App\Sale;
 use App\Http\Controllers\Controller;
+use App\User;
+use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
@@ -93,5 +97,34 @@ class AccountController extends Controller
 		}
 
 		return redirect( route( 'get.all.notifications' ) )->withSuccess( 'Notification marked as read' );
+	}
+
+
+	/**
+	 * Get the view to chnage a users password.
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function changePassword() {
+    	return view('account.password.index');
+	}
+
+
+	/**
+	 * Change a users password.
+	 * @param PasswordStoreRequest $request
+	 *
+	 * @return mixed
+	 */
+	public function changePasswordStore(PasswordStoreRequest $request) {
+
+		$request->user()->update([
+			'password' => bcrypt($request->password)
+		]);
+
+		$user = $request->user();
+
+		$user->notify(new PasswordChanged($user));
+
+		return back()->withSuccess('Password updated successfully!');
 	}
 }
