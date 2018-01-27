@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    {{ config('app.name') }}
+                    <img src="/images/icons/marketplace-logo.png" alt="{{ config('app.name') }}" />
                 </a>
             </div>
 

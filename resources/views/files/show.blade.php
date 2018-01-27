@@ -54,10 +54,10 @@
                     </div>
                 </div>
                 <div class="col-sm-8">
-                    <h4>
+                    <h5>
                         <img src="{{ $file->user->avatar ? '/images/avatars/'.$file->user->avatar : '/images/icons/avatar.svg' }}" alt="User avatar" class="user-avatar">
                        {{ $file->user->name }} is selling
-                    </h4>
+                    </h5>
                     <h1>{{ $file->title }}</h1>
                     <div class="SINGLE-FILE-OVERVIEW-SHORT">
                         {{ $file->overview_short }}
@@ -126,12 +126,14 @@
         @if(!$otherUsersCourses->isEmpty())
             <div class="container">
                 <div class="col-sm-12 no-padding SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER">
-                    <h4>Other files by {{ $file->user->name }}</h4>
+                   <div class="col-sm-12">
+                       <h5>Other files by {{ $file->user->name }}</h5>
+                   </div>
                     @foreach($otherUsersCourses as $userCourses)
-                        <div class="col-sm-4 OTHER-FILES-BY-USER-BOX">
+                        <div class="col-sm-3 OTHER-FILES-BY-USER-BOX">
                             <a href="{{ $userCourses->identifier }}">
                                 <img src="{{ isset($userCourses->avatar) ? '/images/files/cover/'.$userCourses->avatar : 'images/home/default.png' }}" alt="{{ $userCourses->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
-                                <p>{{ $userCourses->title }}</p>
+                                <p>{{ str_limit($userCourses->title, 50) }}</p>
                             </a>
                         </div>
                     @endforeach

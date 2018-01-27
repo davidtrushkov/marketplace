@@ -16,6 +16,10 @@ class DatabaseNotificationsController extends Controller {
 
 		$file = File::where('identifier', $identifier)->first();
 
+		if (!$file->sales->count() > 0) {
+			return redirect(route('account.files.index'));
+		}
+
 		return view( 'account.files.notify.index', compact('file'));
 	}
 
