@@ -7,6 +7,13 @@
 
 <title>{{ config('app.name', 'Marketplace') }}</title>
 
+<script src="https://cdn.logrocket.io/LogRocket.min.js" crossorigin="anonymous"></script>
+<script>
+    if (isProduction) {
+        window.LogRocket && window.LogRocket.init('yuwzcd/marketplace');
+    }
+</script>
+
 <!-- Styles -->
 <link href="/css/app.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">

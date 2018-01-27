@@ -13603,6 +13603,10 @@ button.close {
   font-size: 1.3em;
 }
 
+.ACCOUNT-CONTENT .ACCOUNT-CHART-CONTAINER {
+  padding-bottom: 50px;
+}
+
 .ACCOUNT-CONTENT #ACCOUNT-SIDE-NAV .list-group {
   padding: 0;
 }
