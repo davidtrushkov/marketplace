@@ -1,4 +1,6 @@
 #SINGLE-FILE-SHOW {
+  font-family: 'Montserrat', sans-serif;
+
   .description-header {
     padding-bottom: 10px;
     color: #6b6b6b;
@@ -63,7 +65,7 @@
     }
 
     h1 {
-      font-size: 28px;
+      font-size: 24px;
     }
 
     #video-gallery {
@@ -174,19 +176,30 @@
     margin-bottom: 35px;
     @extend .SPECIAL-BOX-SHADOW;
 
-    img {
-      vertical-align: middle;
-      max-width: 100%;
-      height: 200px;
-      object-fit: cover;
+    @media (min-width: 768px) and (max-width: 1200px) {
+      img {
+        vertical-align: middle;
+        max-width: 100%;
+        height: 100px;
+        object-fit: cover;
+      }
+    }
+
+    @media (min-width: 1201px) {
+      img {
+        vertical-align: middle;
+        max-width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
     }
 
     .OTHER-FILES-BY-USER-BOX:hover {
       opacity: 0.8;
     }
 
-    h4 {
-      padding-bottom: 20px;
+    h5 {
+      padding-bottom: 15px;
     }
 
     a:hover {

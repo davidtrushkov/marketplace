@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group{{ $errors->has('uploads') ? ' has-error' : '' }}">
-                        <label>Uploads</label>
+                        <label><span class="text-danger">*</span>Uploads</label>
                         <div id="file" class="dropzone"></div>
                         @if ($errors->has('uploads'))
                             <span class="help-block">
@@ -72,7 +72,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
-                    <label>Price</label>
+                    <label><span class="text-danger">*</span>Price</label>
                     <input type="text" class="form-control" id="file-price" name="price" value="{{ old('price') ? old('price') : $file->price }}" placeholder="Price">
                     @if ($errors->has('price'))
                         <span class="help-block">
@@ -178,9 +178,10 @@
                        Live
                     </label>
                 </div>
+                <br />
 
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                    <label>Title</label>
+                    <label><span class="text-danger">*</span>Title</label>
                     <input type="text" class="form-control" id="title" name="title" value="{{ old('title') ? old('title') : $file->title }}" max="100">
                     @if ($errors->has('title'))
                         <span class="help-block">
@@ -191,7 +192,7 @@
 
 
                 <div class="form-group{{ $errors->has('overview_short') ? ' has-error' : '' }}">
-                    <label>Short Overview</label>
+                    <label><span class="text-danger">*</span>Short Overview</label>
                     <textarea class="form-control" id="overview_short" name="overview_short" rows="3" style="height: auto;">{{ old('overview_short') ? old('overview_short') : $file->overview_short }}</textarea>
                     @if ($errors->has('overview_short'))
                         <span class="help-block">
@@ -201,8 +202,7 @@
                 </div>
 
                 <div class="form-group{{ $errors->has('overview') ? ' has-error' : '' }} trix-editor">
-                    <label>Description</label>
-                    {{--<textarea class="form-control" name="overview" id="overview" rows="6" style="height: auto;" placeholder="Overview">{{ old('overview') ? old('overview') : $file->overview }}</textarea>--}}
+                    <label><span class="text-danger">*</span>Description</label>
                     <trix-editor input="trix"></trix-editor>
                     <br />
                     @if ($errors->has('overview'))

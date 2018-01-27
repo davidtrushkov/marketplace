@@ -13802,6 +13802,10 @@ button.close {
   font-size: 16px;
 }
 
+#SINGLE-FILE-SHOW {
+  font-family: 'Montserrat', sans-serif;
+}
+
 #SINGLE-FILE-SHOW .description-header {
   padding-bottom: 10px;
   color: #6b6b6b;
@@ -13868,7 +13872,7 @@ button.close {
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-HEADER h1 {
-  font-size: 28px;
+  font-size: 24px;
 }
 
 @media screen and (min-width: 992px) {
@@ -13971,20 +13975,32 @@ button.close {
   margin-bottom: 35px;
 }
 
-#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER img {
-  vertical-align: middle;
-  max-width: 100%;
-  height: 200px;
-  -o-object-fit: cover;
-     object-fit: cover;
+@media (min-width: 768px) and (max-width: 1200px) {
+  #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: 100px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
+}
+
+@media (min-width: 1201px) {
+  #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER img {
+    vertical-align: middle;
+    max-width: 100%;
+    height: 150px;
+    -o-object-fit: cover;
+       object-fit: cover;
+  }
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER .OTHER-FILES-BY-USER-BOX:hover {
   opacity: 0.8;
 }
 
-#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER h4 {
-  padding-bottom: 20px;
+#SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER h5 {
+  padding-bottom: 15px;
 }
 
 #SINGLE-FILE-SHOW .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER a:hover {

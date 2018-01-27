@@ -13,7 +13,7 @@ class AccountController extends Controller {
 
 
 	/**
-	 * Get the main view fro a users account area.
+	 * Get the main view from a users account area.
 	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
