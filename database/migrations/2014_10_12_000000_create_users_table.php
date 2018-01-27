@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
 	        $table->boolean('verified')->default(false);
 	        $table->string('token')->nullable();
 	        $table->string('avatar')->nullable();
+	        $table->boolean('user_notifications')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

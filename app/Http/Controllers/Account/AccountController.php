@@ -48,7 +48,10 @@ class AccountController extends Controller {
 	 */
 	public function update(UpdateSettingsRequest $request) {
 
-		$request->user()->update($request->only(['name']));
+		$request->user()->update([
+			'name' => $request->name,
+			'user_notifications' => request('user_notifications') == 1 ? true : false
+		]);
 
 		return redirect()->back()->withSuccess('Settings updated.');
 	}

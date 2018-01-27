@@ -8,7 +8,7 @@
         {{ $file->isFree() ? 'Free' : '$' . $file->price }}
     </span>
     @if(!$file->approved)
-        <span>
+        <span class="label label-danger">
             Pending approval
         </span>
     @endif

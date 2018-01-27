@@ -81,6 +81,23 @@
                        @endif
                    </div>
 
+                   <br />
+
+                   <div class="form-group{{ $errors->has('user_notifications') ? ' has-error' : '' }}">
+                       <div class="checkbox">
+                           <label>
+                               <input type="checkbox" name="user_notifications" value="1" {{ auth()->user()->user_notifications ? ' checked' : '' }}> Stop receiving notifications from other users on this site.
+                           </label>
+                       </div>
+                       @if ($errors->has('user_notifications'))
+                           <span class="help-block">
+                               <strong>{{ $errors->first('user_notifications') }}</strong>
+                           </span>
+                       @endif
+                   </div>
+
+                   <br />
+
                    <div class="col-sm-12 no-padding">
                        <button type="submit" class="btn btn-success pull-right">Save</button>
                    </div>
