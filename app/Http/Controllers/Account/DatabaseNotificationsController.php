@@ -42,7 +42,7 @@ class DatabaseNotificationsController extends Controller {
 
 		$userIds = $sales->pluck('bought_user_id');
 
-		$users = User::whereIn('id', $userIds)->get();
+		$users = User::whereIn('id', $userIds)->where('user_notifications', 0)->get();
 
 		\Notification::send($users, new FileChanges($data, $header, $owner, $file));
 
