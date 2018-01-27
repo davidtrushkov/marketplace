@@ -27,7 +27,10 @@ $factory->define(App\File::class, function (Faker $faker) {
 		'live' => $live,
 		'approved' => $live,
 		'finished' => $live,
-		'created_at' =>$faker->dateTimeBetween($startDate = '-3 years', $endDate = 'now', $timezone = null),
+		'avatar' => $faker->image('public/images/files/cover',1000,700, null, false),
+		'youtube_url' => 'https://www.youtube.com/watch?v=Ff6bi8rkLpg',
+		'vimeo_url' => 'https://vimeo.com/99232333',
+		'created_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null),
 		'updated_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
 	];
 });
@@ -36,8 +39,15 @@ $factory->define(App\File::class, function (Faker $faker) {
 
 $factory->define(App\Comment::class, function (Faker $faker) {
 
+	$file = rand(1, 30);
+
 	return [
-		'body' => $faker->sentence,
 		'user_id' => App\User::all()->random()->id,
+		'parent_id' => null,
+		'body' => $faker->sentence,
+		'commentable_id' => $file,
+		'commentable_type' => 'App\File',
+		'created_at' =>$faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
+		'updated_at' =>$faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null)
 	];
 });

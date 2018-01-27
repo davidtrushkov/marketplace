@@ -13,19 +13,20 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Upload::class, function (Faker $faker) {
+$factory->define(App\Sale::class, function (Faker $faker) {
 
-	$user_id = App\File::all()->random()->user_id;
+	$user_id =  App\User::all()->random()->id;
 
 	$file_id = \App\File::where('user_id', '=', $user_id)->first();
 
 	return [
+		'identifier' => uniqid(),
 		'user_id' => $user_id,
+		'bought_user_id' => App\User::all()->random()->id,
 		'file_id' => $file_id,
-		'filename' => $faker->image('public/images/fake',1000,700, null, false),
-		'size' => $faker->numberBetween($min = 1000, $max = 1000000),
-		'approved' => rand(0, 1),
-		'preview' => rand(0, 1),
+		'buyer_email' => $faker->email,
+		'sale_price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 125),
+		'sale_commission' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),
 		'created_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null),
 		'updated_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
 	];

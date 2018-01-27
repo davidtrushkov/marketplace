@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
 		    'remember_token' => str_random(10),
 		    'verified' => 1,
 		    'token' => '',
+		    'avatar' => '',
 		    'created_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
 		    'updated_at' => \Carbon\Carbon::now()->format('Y-m-d H:i:s'),
 	    ]);
@@ -34,5 +35,6 @@ class DatabaseSeeder extends Seeder
 	    $this->call(UserTableSeeder::class);
 	    $this->call(FilesTableSeeder::class);
 	    $this->call(FileUploadsTableSeeder::class);
+	    //$this->call(SalesTableSeeder::class);
     }
 }

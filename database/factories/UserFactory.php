@@ -14,6 +14,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+
     static $password;
 
     return [
@@ -22,6 +23,11 @@ $factory->define(App\User::class, function (Faker $faker) {
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
 	    'verified' => 1,
-	    'token' => ''
+	    'token' => '',
+	    'avatar' => '',
+	    'stripe_id' => '',
+	    'stripe_key' => '',
+        'created_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null),
+        'updated_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
     ];
 });

@@ -2,27 +2,45 @@
 
 namespace App\Http\Controllers\Account;
 
+use App\Sale;
+use Carbon\Carbon;
+use App\Http\Controllers\Controller;
+use App\Notifications\PasswordChanged;
 use App\Http\Requests\Account\PasswordStoreRequest;
 use App\Http\Requests\Account\UpdateSettingsRequest;
-use App\Notifications\PasswordChanged;
-use App\Sale;
-use App\Http\Controllers\Controller;
-use App\User;
-use Illuminate\Http\Request;
 
-class AccountController extends Controller
-{
+class AccountController extends Controller {
+
 
 	/**
+	 * Get the main view fro a users account area.
+	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
     public function index() {
-	    return view('account.index');
+
+	    // Get all sales from the beginning of the current month till now for current user.
+    	$salesThisMonth = Sale::where('user_id', '=', auth()->user()->id)
+	        ->where('created_at', '>', Carbon::now()->firstOfMonth())
+		    ->where('sale_price', '>', 0)
+		    ->selectRaw('DATE_FORMAT(created_at, "%m/%d") as day, sum(sale_price) as sale_price')
+		    ->groupBy('day')
+		    ->pluck('sale_price', 'day');
+
+	    // Get all the sales there ever was for this user (and limit to 24 months that user had sales so the bar chart doesn't overflow with too much data).
+	    $overallSales = Sale::where('user_id', '=', auth()->user()->id)
+	                 ->where('sale_price', '>', 0)
+		             ->selectRaw('DATE_FORMAT(created_at, "%Y/%m") as year, sum(sale_price) as sale_price')
+	                 ->groupBy('year')
+		             ->limit(24)
+	                 ->pluck('sale_price', 'year');
+
+	    return view('account.index', compact('salesThisMonth', 'overallSales'));
     }
 
 
 	/**
-	 *  Update user settings on account page.
+	 * Update user settings on account page.
 	 *
 	 * @param UpdateSettingsRequest $request
 	 *
@@ -37,6 +55,8 @@ class AccountController extends Controller
 
 
 	/**
+	 * Return the view for all the files the current user has bought.
+	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
     public function boughtIndex() {
@@ -48,6 +68,8 @@ class AccountController extends Controller
 
 
 	/**
+	 * Return the view for all the files the current user has sold.
+	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
     public function filesSold() {
@@ -58,6 +80,11 @@ class AccountController extends Controller
     }
 
 
+	/**
+	 * Get the view for all the unread notifications for current user.
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
     public function getUnreadNotifications() {
 
 	    $unreadNotifications = auth()->user()->unreadNotifications()->paginate(15);
@@ -66,6 +93,11 @@ class AccountController extends Controller
     }
 
 
+	/**
+	 * Get the view for all the notification's for the current user.
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function getAllNotifications() {
 
 		$notifications = auth()->user()->notifications()->paginate(15);
@@ -74,6 +106,12 @@ class AccountController extends Controller
 	}
 
 
+	/**
+	 * Get the view for a particular notification for the current user.
+	 * @param $id
+	 *
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+	 */
 	public function showNotification($id) {
 
     	$notification = auth()->user()->notifications->where('id', $id)->first();
@@ -86,6 +124,13 @@ class AccountController extends Controller
 	}
 
 
+	/**
+	 * Mark a notification as "read" in database.
+	 *
+	 * @param $id
+	 *
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
 	public function markAsRead($id) {
 
 		$notification = auth()->user()->notifications->where( 'id', $id )->first();
@@ -101,7 +146,8 @@ class AccountController extends Controller
 
 
 	/**
-	 * Get the view to chnage a users password.
+	 * Get the view to change a users password.
+	 *
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function changePassword() {
@@ -111,6 +157,7 @@ class AccountController extends Controller
 
 	/**
 	 * Change a users password.
+	 *
 	 * @param PasswordStoreRequest $request
 	 *
 	 * @return mixed
@@ -127,4 +174,5 @@ class AccountController extends Controller
 
 		return back()->withSuccess('Password updated successfully!');
 	}
+
 }
