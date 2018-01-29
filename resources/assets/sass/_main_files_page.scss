@@ -83,4 +83,66 @@
 
   .FILES-BOX:hover{
   }
+
+  @media screen and (max-width: 767px) {
+    #FILES-MOBILE-FILTER {
+      .btn-primary {
+        width: 100%;
+      }
+
+      #fileFilters {
+        background-color: #FFFFFF;
+      }
+
+      .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+        border-color: transparent;
+      }
+
+      .nav > li {
+        width: 100%;
+        border-bottom: 1px solid #ededed;
+
+        a {
+          color: #636b6f;
+          margin-right: 0px;
+        }
+      }
+
+      .dropdown-menu {
+        width: 100%;
+        border-radius: 0;
+        margin-top: 0;
+        border-left: none;
+        border-right: none;
+
+        a {
+          padding: 4px 20px;
+        }
+      }
+    }
+
+    .FILES-BOX {
+      background-color: #fff;
+      border-radius: 0;
+      margin-bottom: 0;
+      border-bottom: 1px solid #e0e0e0;
+
+      .img-box {
+        height: 100px;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      h4 {
+        color: #333333;
+        font-size: 14px;
+      }
+
+      .price-mobile {
+        text-align: left;
+        font-weight: bold;
+        left: 15px;
+      }
+    }
+  }
 }

@@ -40,9 +40,9 @@ class StoreFileRequest extends FormRequest
             'title'             => 'required|max:100',
 	        'overview_short'    => 'required|max:300',
 	        'overview'          => 'required',
-	        'price'             => 'required|numeric',
+	        'price'             => 'required|numeric|min:0|max:10000',
 	        'youtube_url'       => 'url|nullable',
-	        'vimeo_url'       => 'url|nullable',
+	        'vimeo_url'         => 'url|nullable',
 	        // Create a custom rule for if the "file_id" exists on the uploads table with the 'file_id'
 	        // we are passing in, and also that the row with the 'file_id' is = to NULl for deleted_at column
 	        // If it is, make it required
@@ -65,6 +65,7 @@ class StoreFileRequest extends FormRequest
 		    'overview.required'       => 'The overview is required',
 		    'price.required'          => 'The price field is required',
 		    'price.numeric'           => 'The price must be a numeric value',
+		    'price.max'               => 'The price may not be greater than $10,000',
 		    'uploads.exists'          => 'Please upload atleast one file',
 		    'youtube_url.url'         => 'The Youtube URL format is invalid.'
 	    ];

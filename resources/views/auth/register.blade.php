@@ -4,7 +4,7 @@
 <div class="AUTH-CONTAINER-SECTION">
     <div class="container">
         <div class="col-sm-2 col-md-3"></div>
-            <div class="col-sm-8 col-md-6">
+            <div class="col-sm-8 col-md-6 no-padding-xs">
                 <div class="auth-box">
                     <h1>
                         <a href="/">

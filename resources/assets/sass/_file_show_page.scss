@@ -264,4 +264,36 @@
       }
     }
   }
+
+
+  @media screen and (max-width: 767px) {
+    .SINGLE-FILE-HEADER {
+      h5 {
+        padding-top: 25px;
+      }
+
+      .label {
+        font-size: 100%;
+      }
+    }
+
+    .SINGLE-FILE-CONTENT-OTHER-FILES-BY-USER {
+       padding: 15px;
+       margin-bottom: 0;
+
+       img {
+         width: 100%;
+         height: 150px;
+         object-fit: cover;
+       }
+
+       p {
+         padding-bottom: 15px;
+       }
+    }
+
+    .SINGLE-FILE-CONTENT-COMMENT-BOX {
+      margin-top: 25px;
+    }
+  }
 }

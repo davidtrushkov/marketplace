@@ -5,12 +5,29 @@
     border-color: transparent;
     z-index: 1;
 
+    .badge {
+      display: inline-block;
+      min-width: 10px;
+      padding: 2px 5px;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+      line-height: 1;
+      vertical-align: middle;
+      white-space: nowrap;
+      text-align: center;
+      background-color: #d26464;
+      border-radius: 10px;
+      margin-left: -12px;
+      margin-top: -15px;
+      border: 1px solid #fff;
+    }
+
     .navbar-right {
       margin-top: 15px;
     }
     .navbar-brand {
       color: #6a6a6a;
-      margin-top: 15px;
     }
     .navbar-nav > li > a {
       color: #6a6a6a;
@@ -147,6 +164,28 @@
       top: -12px;
       right: 14px;
       z-index: 9;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+      background-color: transparent;
+    }
+
+    .navbar-default .navbar-toggle {
+      border: none;
+    }
+
+    .navbar-toggle {
+      margin-top: 12px;
+    }
+
+    .navbar {
+      margin-bottom: 10px;
+    }
+
+    .navbar-nav > li > a {
+      color: #777 !important;
     }
   }
 }

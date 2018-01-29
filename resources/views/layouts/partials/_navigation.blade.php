@@ -1,4 +1,4 @@
-<div class="container" id="NAVIGATION-SECTION">
+<div class="container no-padding-xs" id="NAVIGATION-SECTION">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -9,7 +9,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{{ route('home') }}">
-                    <img src="/images/icons/marketplace-logo.png" alt="{{ config('app.name') }}" />
+                    <span class="hidden-xs">
+                        <img src="/images/icons/marketplace-logo.png" alt="{{ config('app.name') }}" />
+                    </span>
+                    <span class="visible-xs">
+                        <img src="/images/icons/favicon-32x32.png" alt="{{ config('app.name') }}" />
+                    </span>
                 </a>
             </div>
 
@@ -17,8 +22,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="{{ route('files.index') }}">Files</a></li>
                     @if (Auth::guest())
-                        <li><a href="{{ route('login') }}" class="btn btn-info">Sign In</a></li>
-                        <li><a href="{{ route('register') }}" class="btn btn-primary">Start Selling</a></li>
+                            <li class="hidden-xs"><a href="{{ route('login') }}" class="btn btn-info">Sign In</a></li>
+                            <li class="hidden-xs"><a href="{{ route('register') }}" class="btn btn-primary">Start Selling</a></li>
+                            <li class="visible-xs"><a href="{{ route('login') }}">Sign In</a></li>
+                            <li class="visible-xs"><a href="{{ route('register') }}">Start Selling</a></li>
                     @else
                         @if(session()->has('impersonate'))
                             <li>
@@ -83,11 +90,16 @@
                                 @endforeach
                                 <li>
                                     <div class="col-sm-12 no-padding notification-footer">
-                                        <div class="col-sm-7 notification-pad">
+                                        <div class="col-xs-7 col-sm-7 notification-pad">
                                             <a href="{{ route('notifications.mark.all.as.read') }}">Mark All as Read</a>
                                         </div>
-                                        <div class="col-sm-5 notification-pad">
-                                            <a href="{{ route('get.all.notifications') }}" class="pull-right">See All</a>
+                                        <div class="col-xs-5 col-sm-5 notification-pad">
+                                           <span class="hidden-xs">
+                                                <a href="{{ route('get.all.notifications') }}" class="pull-right">See All</a>
+                                           </span>
+                                            <span class="visible-xs">
+                                                <a href="{{ route('get.all.notifications') }}">See All</a>
+                                           </span>
                                         </div>
                                     </div>
                                 </li>

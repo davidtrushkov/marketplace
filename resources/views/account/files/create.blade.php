@@ -186,12 +186,12 @@
 
                 <br />
 
-                <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 </div>
 
-                <div class="col-sm-12 no-padding">
-                    <small class="pull-right">We will review your file before it goes live.</small>
+                <div class="col-sm-12 no-padding clearfix">
+                    <small>We will review your file before it goes live.</small>
                 </div>
             </div>
         </form>

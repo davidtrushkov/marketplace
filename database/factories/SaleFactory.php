@@ -15,15 +15,15 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Sale::class, function (Faker $faker) {
 
-	$user_id =  App\User::all()->random()->id;
+	$userId = \App\File::all()->random()->user_id;
 
-	$file_id = \App\File::where('user_id', '=', $user_id)->first();
+	$fileId = \App\File::where('user_id', $userId)->first();
 
 	return [
 		'identifier' => uniqid(),
-		'user_id' => $user_id,
+		'user_id' => $userId,
 		'bought_user_id' => App\User::all()->random()->id,
-		'file_id' => $file_id,
+		'file_id' => $fileId->id,
 		'buyer_email' => $faker->email,
 		'sale_price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 125),
 		'sale_commission' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),

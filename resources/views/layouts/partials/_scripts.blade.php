@@ -4,9 +4,11 @@
 
 <script type="text/javascript">
     $('#lightgallery').lightGallery({
+//        width: '700px',
+//        height: '470px',
         download: false,
         share: false,
-        selector: '.item'
+        selector: '.item',
     });
 
     $('#video-gallery').lightGallery({

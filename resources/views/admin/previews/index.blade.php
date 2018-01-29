@@ -155,7 +155,7 @@
 
 
         <div class="container-fluid no-padding SINGLE-FILE-HEADER">
-            <div class="container">
+            <div class="container no-padding-xs">
                 @include('layouts.partials._flash')
                 <div class="col-sm-4">
                     @if($file->youtube_url && $file->vimeo_url)
@@ -164,7 +164,7 @@
                                 <center>
                                     <i class="fa fa-3x fa-play" aria-hidden="true"></i>
                                 </center>
-                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
+                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : '/images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
                             </a>
                             <a href="{{ $file->vimeo_url }}" data-poster=""></a>
                         </div>
@@ -174,7 +174,7 @@
                                 <center>
                                     <i class="fa fa-3x fa-play" aria-hidden="true"></i>
                                 </center>
-                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
+                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : '/images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
                             </a>
                         </div>
                     @elseif($file->vimeo_url)
@@ -183,11 +183,11 @@
                                 <center>
                                     <i class="fa fa-3x fa-play" aria-hidden="true"></i>
                                 </center>
-                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
+                                <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : '/images/home/default.png' }}" class="SINGLE-FILE-COVER-IMAGE" style="margin-top: -25px;" />
                             </a>
                         </div>
                     @else
-                        <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : 'images/home/default.png' }}" alt="{{ $file->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
+                        <img src="{{ isset($file->avatar) ? '/images/files/cover/'.$file->avatar : '/images/home/default.png' }}" alt="{{ $file->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
                     @endif
 
                     <div class="SINGLE-FILE-CART-BOX">
@@ -246,11 +246,11 @@
         </div>
         @if ($uploadPreviews->count() > 0)
             <div class="SINGLE-FILE-PREVIEW-GALLERY">
-                <div class="container">
+                <div class="container no-padding-xs">
                     <div class="col-sm-12" id="lightgallery">
                         <h4 class="description-header">Preview Uploads</h4>
                         @foreach($uploadPreviews->take(12) as $preview)
-                            <div class="item col-sm-2 col-md-1 no-padding" data-src="/images/previews/{{ $preview->filename }}">
+                            <div class="item col-xs-6 col-sm-2 col-md-1 no-padding" data-src="/images/previews/{{ $preview->filename }}">
                                 <img src="/images/previews/{{ $preview->filename }}" width="100%" />
                             </div>
                         @endforeach
@@ -258,7 +258,7 @@
                 </div>
             </div>
         @endif
-        <div class="container SINGLE-FILE-CONTENT">
+        <div class="container no-padding-xs SINGLE-FILE-CONTENT">
             <div class="col-sm-8">
                 <h4 class="description-header">Description</h4>
                 <p>{!! $file->overview !!}</p>
