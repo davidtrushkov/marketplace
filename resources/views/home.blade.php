@@ -7,22 +7,36 @@
 
 
     <section class="HOME-PAGE-SECTION-TWO">
-        <div class="container">
-            <div class="col-sm-12 BORDER-LINE-BOX">
-                <h2>Browse through our selection of files, or upload your creation</h2>
-                <div class="col-sm-6">
-                    <a href="/files" class="btn btn-primary pull-right">Browse Files</a>
+        <div class="container no-padding-xs">
+            <div class="col-sm-12 BORDER-LINE-BOX no-padding-xs">
+                <div class="col-sm-12">
+                    <h2>Browse through our selection of files, or upload your creation</h2>
                 </div>
-                <div class="col-sm-6">
-                    <a href="/register" class="btn btn-info pull-left">Upload Your Files</a>
-                </div>
+                <span class="hidden-xs">
+                    <div class="col-sm-6">
+                        <a href="/files" class="btn btn-primary pull-right">Browse Files</a>
+                    </div>
+                    <div class="col-sm-6">
+                        <a href="/register" class="btn btn-info pull-left">Upload Your Files</a>
+                    </div>
+                </span>
+                <span class="visible-xs">
+                    <div class="col-xs-12 no-padding">
+                         <div class="col-xs-6">
+                        <a href="/files" class="btn btn-primary pull-right">Browse Files</a>
+                    </div>
+                    <div class="col-xs-6">
+                        <a href="/register" class="btn btn-info">Upload Files</a>
+                    </div>
+                    </div>
+                </span>
             </div>
         </div>
     </section>
 
 
     <section class="HOME-PAGE-SECTION-THREE">
-        <div class="container">
+        <div class="container no-padding-xs">
             <div class="col-sm-12 PROCESS-BOX">
                 <img src="/images/home/process/signup.svg" alt="Sign up" class="SVG-PROCESS" />
                 <div class="PROCESS-TEXT-BOX">
@@ -31,7 +45,7 @@
                             Sign up with Marketplace
                         </h4>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 hidden-xs">
                         <img src="/images/home/process/one.svg" alt="First Step" class="SVG-PROCESS-NUMBER" />
                     </div>
                 </div>
@@ -44,7 +58,7 @@
                             Connect with Stripe through our website to receive payments
                         </h4>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 hidden-xs">
                         <img src="/images/home/process/two.svg" alt="Seconds Step" class="SVG-PROCESS-NUMBER" />
                     </div>
                 </div>
@@ -57,7 +71,7 @@
                             Upload all kinds of files from images, photoshop files, templates, code, to icons and fonts
                         </h4>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 hidden-xs">
                         <img src="/images/home/process/three.svg" alt="Third Step" class="SVG-PROCESS-NUMBER" />
                     </div>
                 </div>
@@ -70,7 +84,7 @@
                             Once created, your uploads will be published for review from our admins
                         </h4>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 hidden-xs">
                         <img src="/images/home/process/four.svg" alt="Fourth Step" class="SVG-PROCESS-NUMBER" />
                     </div>
                 </div>
@@ -83,7 +97,7 @@
                             Start making revenue from sales
                         </h4>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-3 hidden-xs">
                         <img src="/images/home/process/five.svg" alt="Fifth Step" class="SVG-PROCESS-NUMBER" />
                     </div>
                 </div>

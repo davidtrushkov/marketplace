@@ -1,4 +1,4 @@
-<div class="col-sm-12" id="replyContainer">
+<div class="col-sm-12 no-padding-xs" id="replyContainer">
     @if ($file->comments->count() > 0)
         <i class="fa fa-comments" aria-hidden="true"></i> {{ $file->comments->count() }} {{ str_plural('comment', $file->comments->count()) }} <br />
         @foreach($comments as $comment)

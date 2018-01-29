@@ -24,7 +24,7 @@
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">{{ $unread->data['header'] }}</h4>
-                            {{ str_limit($unread->data['data'], 80) }} <a href="{{ route('show.notification', $unread->id) }}">Read more...</a>
+                            <span class="hidden-xs">{{ str_limit($unread->data['data'], 80) }}</span> <a href="{{ route('show.notification', $unread->id) }}">Read more...</a>
                             <div>
                                 <br />
                                 @if(isset($unread->data['owner_name']))

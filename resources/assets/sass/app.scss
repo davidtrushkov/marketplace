@@ -67,6 +67,15 @@ h1, h2, h3, h4, h5, h6, p {
   padding-right: 0;
 }
 
+@media screen and (max-width: 767px) {
+  .no-padding-xs {
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .help-block {
  // margin-top: -15px !important;
   margin-bottom: 25px !important;
@@ -222,6 +231,82 @@ h1, h2, h3, h4, h5, h6, p {
         line-height: 26px;
         width: 100%;
       }
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .HOME-PAGE-SECTION {
+    height: 300px;
+    margin-top: 0 !important;
+    -webkit-clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 94%, 76% 89%, 60% 100%, 38% 90%, 20% 82%, 0 87%) !important;
+    clip-path: polygon(0% 15%, 0 0, 15% 0%, 85% 0%, 100% 0, 100% 15%, 100% 94%, 76% 89%, 60% 100%, 38% 90%, 20% 82%, 0 87%) !important;
+    background: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+    background-image: -ms-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+    background-image: -moz-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+    background-image: -o-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+    background-image: -webkit-linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+    background-image: linear-gradient(45deg, #0B4182 1%, #1e88e5 64%, #40BAF5 97%);
+
+    h1 {
+      font-size: 26px;
+      padding: 100px 15px 50px 15px;
+      margin-top: 0;
+    }
+  }
+
+  .HOME-PAGE-SECTION-TWO {
+    padding-top: 25px;
+
+    .BORDER-LINE-BOX {
+      padding-bottom: 75px;
+      border-bottom: 2px solid #2d73ba;
+    }
+
+    h2 {
+      text-align: center;
+      padding-bottom: 50px;
+      font-size: 20px;
+    }
+
+    .btn-info {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+
+    .btn-primary {
+      font-size: 14px;
+      padding: 10px 14px;
+    }
+  }
+
+  .HOME-PAGE-SECTION-THREE {
+    padding: 50px 0 50px 0;
+
+    .PROCESS-BOX {
+      padding-top: 0;
+
+      .SVG-PROCESS {
+        width: 75px;
+      }
+
+      .PROCESS-TEXT-BOX {
+        padding-top: 40px;
+        padding-left: 15px;
+
+        h4 {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .AUTH-CONTAINER-SECTION {
+    height: 100% !important;
+
+    .auth-box {
+      padding: 50px 0 50px 0 !important;
+      margin-bottom: 100px;
     }
   }
 }

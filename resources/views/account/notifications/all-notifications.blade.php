@@ -22,7 +22,7 @@
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">{{ $allNotifications->data['header'] }}</h4>
-                            {{ str_limit($allNotifications->data['data'], 80) }} <a href="{{ route('show.notification', $allNotifications->id) }}">Read more...</a>
+                            <span class="hidden-xs">{{ str_limit($allNotifications->data['data'], 80) }}</span> <a href="{{ route('show.notification', $allNotifications->id) }}">Read more...</a>
                             <div>
                                 <br />
                                 @if(isset($allNotifications->data['owner_name']))

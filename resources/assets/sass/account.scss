@@ -154,3 +154,49 @@
     }
   }
 }
+
+@media screen and (max-width: 767px) {
+  .ACCOUNT-CONTENT {
+    .btn-primary, .btn-info, .btn-success, .btn-danger {
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+
+    .account-email-verification-btn {
+      width: 100%;
+    }
+
+    .account-menu-button {
+      width: 100%;
+      margin-bottom: 25px;
+      margin-top: 15px;
+    }
+
+    .ACCOUNT-HEADER {
+      height: 100%;
+      background-color: #fff !important;
+      background-image: none !important;
+      border-top: 1px solid #cbcbcb;
+      margin: 15px 0 15px 0;
+
+      .ACCOUNT-HEADER-FOLD-CONTENT {
+        padding-top: 10px;
+
+        .STAT-BOX {
+          padding: 5px 15px;
+          border-bottom: 1px solid #dedede;
+          
+          p {
+            color: #636b6f;
+            text-align: left;
+          }
+        }
+      }
+    }
+
+    .YOUR-FILE-BOX {
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+  }
+}

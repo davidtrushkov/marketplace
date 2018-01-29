@@ -25,7 +25,7 @@
                     <a href="{{ route('admin.categories') }}" class="btn btn-danger">Back</a> &nbsp;
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
-
+                <span class="visible-xs"><br /><br /></span>
             </div>
         </form>
     </div>

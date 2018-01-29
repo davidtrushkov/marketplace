@@ -6,8 +6,8 @@
             <div class="panel-body">
                 <form action="{{ route('send.verification.code') }}" method="post">
                     {{ csrf_field() }}
-                    <p>Did not receive a email verification code? Send again.</p>
-                    <button type="submit" class="btn btn-info">Send Verification Code</button>
+                    <p class="hidden-xs">Did not receive a email verification code? Send again.</p>
+                    <button type="submit" class="btn btn-info account-email-verification-btn">Send Verification Code</button>
                 </form>
             </div>
         </div>

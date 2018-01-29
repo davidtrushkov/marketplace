@@ -214,12 +214,12 @@
 
                 <br />
 
-                <div class="form-group pull-right">
-                    <button type="submit" class="btn btn-primary">Update</button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-block">Update</button>
                 </div>
 
-                <div class="col-sm-12 no-padding">
-                    <small class="pull-right">Your file changes may be subject to review.</small>
+                <div class="col-sm-12 no-padding clearfix">
+                    <small>Your file changes may be subject to review.</small>
                 </div>
             </div>
         </form>

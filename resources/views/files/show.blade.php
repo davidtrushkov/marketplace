@@ -3,12 +3,12 @@
 @section('content')
     <div id="SINGLE-FILE-SHOW">
         <div class="container-fluid no-padding SINGLE-FILE-HEADER">
-            <div class="container">
+            <div class="container no-padding-xs">
                 @include('layouts.partials._flash')
                 <div class="col-sm-12">
                     <ol class="breadcrumb">
                         <li><a href="/files">Files</a></li>
-                        <li class="active">{{ str_limit($file->title, 50) }}</li>
+                        <li class="active hidden-xs">{{ str_limit($file->title, 50) }}</li>
                     </ol>
                 </div>
                 <div class="col-sm-4">
@@ -80,11 +80,11 @@
         </div>
         @if ($uploadPreviews->count() > 0)
             <div class="SINGLE-FILE-PREVIEW-GALLERY">
-                <div class="container">
+                <div class="container no-padding-xs">
                     <div class="col-sm-12" id="lightgallery">
                         <h4 class="description-header">Preview Uploads</h4>
                         @foreach($uploadPreviews->take(12) as $preview)
-                            <div class="item col-sm-2 col-md-1 no-padding" data-src="/images/previews/{{ $preview->filename }}">
+                            <div class="item col-xs-6 col-sm-2 col-md-1 no-padding" data-src="/images/previews/{{ $preview->filename }}">
                                 <img src="/images/previews/{{ $preview->filename }}" width="100%" />
                             </div>
                         @endforeach
@@ -92,7 +92,7 @@
                 </div>
             </div>
         @endif
-        <div class="container SINGLE-FILE-CONTENT">
+        <div class="container no-padding-xs SINGLE-FILE-CONTENT">
             <div class="col-sm-8">
                 <h4 class="description-header">Description</h4>
                 <p>{!! $file->overview !!}</p>
@@ -130,7 +130,7 @@
                        <h5>Other files by {{ $file->user->name }}</h5>
                    </div>
                     @foreach($otherUsersCourses as $userCourses)
-                        <div class="col-sm-3 OTHER-FILES-BY-USER-BOX">
+                        <div class="col-sm-3 no-padding-xs OTHER-FILES-BY-USER-BOX">
                             <a href="{{ $userCourses->identifier }}">
                                 <img src="{{ isset($userCourses->avatar) ? '/images/files/cover/'.$userCourses->avatar : 'images/home/default.png' }}" alt="{{ $userCourses->title }} cover image" class="SINGLE-FILE-COVER-IMAGE" />
                                 <p>{{ str_limit($userCourses->title, 50) }}</p>
@@ -165,6 +165,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-info pull-right">Submit</button>
+                        <span class="visible-xs"><br /><br /></span>
                     </form>
                 @else
                     <a href="/login">Login to post comments</a>

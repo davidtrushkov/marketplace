@@ -4,7 +4,7 @@
     <table class="table table-bordered table-condensed table-responsive table-striped">
         <thead>
             <tr>
-                <th>Avatar</th>
+                <th class="hidden-xs">Avatar</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Joined</th>
@@ -14,7 +14,7 @@
         <tbody>
             @foreach($users as $user)
                 <tr>
-                    <td>
+                    <td class="hidden-xs">
                         @if($user->avatar)
                             <img src="/images/avatars/{{ $user->avatar }}" alt="Users avatar" class="user-avatar">
                         @endif
