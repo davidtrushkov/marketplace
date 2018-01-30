@@ -8,7 +8,7 @@
                 <div class="auth-box">
                     <h1>
                         <a href="/">
-                            Marketplace
+                            <img src="/images/icons/favicon-128x128.png" alt="Marketplace logo" />
                         </a>
                     </h1>
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
@@ -44,6 +44,23 @@
                         <div class="form-group">
                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required placeholder="Password Confirm">
                         </div>
+
+                        <div class="form-group{{ $errors->has('terms') ? ' has-error' : '' }}">
+                            <div class="col-md-6 col-md-offset-2">
+                                <div class="checkbox">
+                                    <label class="control-label">
+                                        <input type="checkbox" name="terms">
+                                        <a href="{{ route('about') }}" target="_blank">Agree to Terms & Conditions</a>
+                                    </label>
+                                </div>
+                                @if ($errors->has('terms'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('terms') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <center>
                                 <button type="submit" class="btn btn-primary">

@@ -13,24 +13,10 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Sale::class, function (Faker $faker) {
-
-	$userId = \App\File::all()->random()->user_id;
-
-	$fileId = \App\File::where('user_id', $userId)->first();
-
-	$boughtUserId = App\User::all()->random()->id;
-
-	$buyerEmail = App\User::where('id', $boughtUserId)->first();
-
+$factory->define(App\Category::class, function (Faker $faker) {
 	return [
-		'identifier' => uniqid(),
-		'user_id' => $userId,
-		'bought_user_id' => App\User::all()->random()->id,
-		'file_id' => $fileId->id,
-		'buyer_email' => $buyerEmail->email,
-		'sale_price' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 125),
-		'sale_commission' => $faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 50),
+		'name' => $slug = $faker->unique()->randomElement($array = array ('Code', 'Templates', 'Photoshop', 'Images', 'Graphics', 'Icons', 'Fonts')),
+		'slug' => str_slug($slug),
 		'created_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null),
 		'updated_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null)
 	];

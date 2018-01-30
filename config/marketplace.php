@@ -2,7 +2,7 @@
 
 return [
 	'sales' => [
-		'commission' => 40,
-		'remaining' => 60
+		'commission' => 20,
+		'remaining' => 80
 	]
 ];

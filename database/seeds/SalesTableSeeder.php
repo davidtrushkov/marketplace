@@ -6,6 +6,6 @@ class SalesTableSeeder extends Seeder
 {
 	public function run()
 	{
-		factory(App\Sale::class, 200)->create();
+		factory(App\Sale::class, 300)->create();
 	}
 }

@@ -8,7 +8,7 @@
                 <div class="auth-box">
                     <h1>
                         <a href="/">
-                            Marketplace
+                            <img src="/images/icons/favicon-128x128.png" alt="Marketplace logo" />
                         </a>
                     </h1>
                     <form class="form-horizontal" method="POST" action="{{ route('password.request') }}">

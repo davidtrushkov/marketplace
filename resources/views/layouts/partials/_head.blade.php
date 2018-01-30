@@ -5,8 +5,9 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="application-name" content="{{ config('app.name') }}">
 
-<meta name="name" content="David Trushkov">
 <meta name="description" content="Browse through our selection of files, or upload your creation. Upload all kinds of files from images, photoshop files, templates, code, to icons and fonts.">
+<meta name="keywords" content="marketplace, files, file marketplace, upload, upload files, photos, images, open source, david, david trushkov, github, laravel, laravel 5, laravel 5.5" />
+<meta name="author" content="David Trushkov">
 
 <meta name="robots" content="index,follow">
 <meta name="googlebot" content="index,follow">
