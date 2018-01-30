@@ -36,5 +36,6 @@ class DatabaseSeeder extends Seeder
 	    $this->call(FilesTableSeeder::class);
 	    $this->call(FileUploadsTableSeeder::class);
 	    $this->call(SalesTableSeeder::class);
+	    $this->call(FileCategoryTableSeeder::class);
     }
 }

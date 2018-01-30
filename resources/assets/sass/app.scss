@@ -15,8 +15,16 @@
 @import "file_show_page";
 @import "~hover.css/css/hover.css";
 
+html {
+  height: 100%;
+}
+
 body {
   font-family: sans-serif;
+  position: relative;
+  margin: 0;
+  padding-bottom: 23rem;
+  min-height: 100%;
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -301,6 +309,18 @@ h1, h2, h3, h4, h5, h6, p {
     }
   }
 
+  .HOME-PAGE-SECTION-FOUR {
+    padding-bottom: 125px !important;
+
+    .RIGHT-TEXT {
+      padding-top: 25px !important;
+
+      p {
+        font-size: 18px;
+      }
+    }
+  }
+
   .AUTH-CONTAINER-SECTION {
     height: 100% !important;
 
@@ -309,10 +329,27 @@ h1, h2, h3, h4, h5, h6, p {
       margin-bottom: 100px;
     }
   }
+
+  .auth-box-v2 {
+    margin-top: 50px !important;
+    margin-bottom: 200px !important;
+  }
 }
 
 .HOME-PAGE-SECTION-FOUR {
-  background-color: #4f4f4f;
+  border-top: 2px solid #d6d6d6;
+  background-color: #e6e6e6;
+  margin-bottom: -45px;
+  font-family: 'Montserrat', sans-serif;
+  padding-bottom: 50px;
+
+  .RIGHT-TEXT {
+    padding-top: 100px;
+
+    p {
+      font-size: 18px;
+    }
+  }
 
   .browser-mockup {
     border-top: 2em solid rgba(230, 230, 230, 0.7);
@@ -363,7 +400,6 @@ h1, h2, h3, h4, h5, h6, p {
 
 
 .AUTH-CONTAINER-SECTION {
-  height: 115vh;
   margin-top: -118px;
   @extend .MAIN-BACKGROUND-OVERLAY;
 
@@ -382,6 +418,7 @@ h1, h2, h3, h4, h5, h6, p {
     background-color: #ffffff;
     padding: 50px 25px 50px 25px;
     border-radius: 4px;
+    margin-bottom: 100px;
 
     h1 {
       font-weight: bold;
@@ -431,4 +468,43 @@ h1, h2, h3, h4, h5, h6, p {
       width: 75%;
     }
   }
+}
+
+.FOOTER {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background-color: #2d73ba;
+  padding: 60px 0 30px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Montserrat', sans-serif;
+
+  ul {
+    li {
+      list-style: none;
+      line-height: 26px;
+
+      a {
+        color: #eeeeee;
+      }
+    }
+
+    .HEADER {
+      color: #FFFFFF;
+      font-weight: bold;
+      padding-bottom: 6px;
+    }
+  }
+}
+
+.auth-box-v2 {
+  margin-top: 15%;
+  padding: 15px !important;
+  background-color: #FFFFFF;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
 }

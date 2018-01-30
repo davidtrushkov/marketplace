@@ -18,13 +18,13 @@ $factory->define(App\User::class, function (Faker $faker) {
     static $password;
 
     return [
-        'name' => $faker->firstName,
+        'name' => $faker->unique()->firstName,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
 	    'verified' => 1,
 	    'token' => '',
-	    'avatar' => '',
+	    'avatar' => $faker->image('public/images/avatars',1000,700, null, false),
 	    'stripe_id' => '',
 	    'stripe_key' => '',
         'created_at' =>$faker->dateTimeBetween($startDate = '-2 years', $endDate = 'now', $timezone = null),

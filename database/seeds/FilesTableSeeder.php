@@ -12,7 +12,7 @@ class FilesTableSeeder extends Seeder {
      */
     public function run()
     {
-	    factory(App\File::class, 30)->create();
-	    factory(App\Comment::class, 300)->create();
+	    factory(App\File::class, 60)->create();
+	    factory(App\Comment::class, 400)->create();
     }
 }

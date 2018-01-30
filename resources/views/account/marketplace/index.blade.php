@@ -1,7 +1,7 @@
 @extends('account.layouts.default')
 
 @section('account.content')
-    <div class="col-sm-12">
+    <div class="col-sm-12 no-padding">
         <div class="panel panel-default">
             <div class="panel-heading"><h4>Please connect your Stripe account to start creating and selling files.</h4></div>
             <div class="panel-body">

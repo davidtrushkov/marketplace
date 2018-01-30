@@ -14,6 +14,8 @@ Route::post('/verification', [
 
 Route::get('/', 'HomeController@index')->name('home');
 
+Route::get('/about', 'HomeController@about')->name('about');
+
 Route::get('/account/connect', 'Account\MarketPlaceConnectController@index')->name('account.connect');
 Route::get('/account/connect/complete', 'Account\MarketPlaceConnectController@store')->name('account.complete');
 

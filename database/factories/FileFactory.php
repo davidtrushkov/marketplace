@@ -39,7 +39,7 @@ $factory->define(App\File::class, function (Faker $faker) {
 
 $factory->define(App\Comment::class, function (Faker $faker) {
 
-	$file = rand(1, 30);
+	$file = rand(1, 50);
 
 	return [
 		'user_id' => App\User::all()->random()->id,

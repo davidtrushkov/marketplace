@@ -108,15 +108,16 @@
 
 
     <section class="HOME-PAGE-SECTION-FOUR">
-           <div class="container">
+           <div class="container no-padding-xs">
                <div class="col-sm-8 no-padding">
                    <div class="browser-mockup with-url">
-                       <img src="http://placehold.it/500x300/fff/eee" />
+                       <img src="/images/home/dashboard.jpg" />
                    </div>
                </div>
-               <div class="col-sm-4">
-
-
+               <div class="col-sm-4 RIGHT-TEXT">
+                   <p>Manage your account and files associated with them.</p>
+                   <br /><br />
+                   <p>Find this open source project on <a href="" target="_blank">GitHub</a></p>
                </div>
            </div>
     </section>
