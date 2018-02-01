@@ -1,7 +1,5 @@
 .MAIN-FILES-CONTAINER {
   padding-top: 0;
-  @extend .MAIN-BACKGROUND-OVERLAY;
-  padding-bottom: 50px;
 
   .nav-filter {
     background-color: #FFFFFF;
@@ -48,7 +46,7 @@
   .FILES-BOX {
     @extend .SPECIAL-BOX-SHADOW;
     padding: 0;
-    background-color: #fff;
+    background-color: #FFFFFF;
     margin-bottom: 35px;
     border-radius: 4px;
 

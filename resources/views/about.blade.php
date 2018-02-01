@@ -44,7 +44,7 @@
                         </ul>
                     </p>
                     <p>
-                        Some of this website is based off a tutorial a followed then modified the website even more. Here is the link to it:
+                        Some of this website is based off a tutorial I followed then modified the website even more. Here is the link to it:
                         <ul>
                             <li>
                                 <a href="https://www.codecourse.com/lessons/build-a-file-marketplace" target="_blank">Codecourse: Build a File Marketplace with Laravel</a>

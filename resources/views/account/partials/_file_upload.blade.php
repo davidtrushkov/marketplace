@@ -2,6 +2,7 @@
     let drop = new Dropzone('#file', {
         createImageThumbnails: true,
         addRemoveLinks: true,
+        maxFiles: 50,
         url: '{{ route('upload.store', $file) }}',
         headers: {
             'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content

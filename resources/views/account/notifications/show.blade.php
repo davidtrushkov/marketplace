@@ -7,7 +7,7 @@
             <div class="media-left">
                 <a href="#">
                     <img class="media-object user-avatar"
-                         src="{{ isset($notification->data['owner_avatar']) ? '/images/files/cover/'.$notification->data['owner_avatar'] : '/images/icons/avatar.svg' }}"
+                         src="{{ isset($notification->data['owner_avatar']) ? '/images/avatars/'.$notification->data['owner_avatar'] : '/images/icons/avatar.svg' }}"
                          alt="{{ isset($notification->data['owner_name']) ? $notification->data['owner_name'] : 'Avatar Image' }}">
                 </a>
             </div>

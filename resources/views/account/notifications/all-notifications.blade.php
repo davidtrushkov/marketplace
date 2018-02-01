@@ -16,7 +16,7 @@
                         <div class="media-left">
                             <a href="{{ route('show.notification', $allNotifications->id) }}">
                                 <img class="media-object user-avatar"
-                                     src="{{ isset($allNotifications->data['owner_avatar']) ? '/images/files/cover/'.$allNotifications->data['owner_avatar'] : '/images/icons/avatar.svg' }}"
+                                     src="{{ $allNotifications->data['owner_avatar'] !== '' ? '/images/avatars/'.$allNotifications->data['owner_avatar'] : '/images/icons/avatar.svg' }}"
                                      alt="{{ isset($allNotifications->data['owner_name']) ? $allNotifications->data['owner_name'] : 'Avatar Image' }}">
                             </a>
                         </div>

@@ -38,9 +38,17 @@ class FileController extends Controller  {
 				$files = File::with(['user', 'uploads'])->readyToBeShown()->orderBy('price', 'desc')->latest()->paginate(self::PERPAGE);
 				break;
 			case 'most-sales':
+				$tableValues = \Schema::getColumnListing('files');
+				$string = 'files.';
+
+				foreach($tableValues as $value) {
+					$attributes[] = $string.$value;
+				}
+
 				$files = File::leftJoin('sales', 'sales.file_id', '=', 'files.id')
 					->select(DB::raw('files.*, count(sales.id) AS count'))
-					->groupBy('files.id')->orderBy('count', 'desc')->readyToBeShown()->paginate(self::PERPAGE);
+					->groupBy($attributes)->orderBy('count', 'desc')->readyToBeShown()->paginate(self::PERPAGE);
+
 				break;
 			case 'with_videos':
 				$files = File::with(['user', 'uploads'])->readyToBeShown()->where('youtube_url', '!=', null)->orWhere('vimeo_url', '!=', null)->latest()->paginate(self::PERPAGE);

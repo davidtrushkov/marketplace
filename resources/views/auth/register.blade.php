@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('terms') ? ' has-error' : '' }}">
-                            <div class="col-md-6 col-md-offset-2">
+                            <div class="col-xs-8 col-xs-offset-2 col-md-8">
                                 <div class="checkbox">
                                     <label class="control-label">
                                         <input type="checkbox" name="terms">
