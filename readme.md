@@ -21,6 +21,14 @@ php artisan key:generate
 Then you have to link your Stripe key, secret key and connect key. 
 * To get your STRIPE_KEY and STRIPE_SECRET, signup/login into [Stripe](https://stripe.com/), switch data to test data by clicking the "View Test Data" on the left side navigation on your Stripe dashboard, then go to API and you will see your keys. 
 
+* To get your STRIPE_CONNECT_KEY, go to Connect then Settings on your dashboard. There you will see the STRIPE_CONNECT_KEY.
+* One more thing you will need to do in Stripe is set up a Redirect URL for once a user connects their stripe account to this project. To do that, go to Connect, Settings and there you have an option to setup a redirect URL. The URL will be ``` <your-domain>/account/connect/complete ```
+For example:
++ ``` localhost:8080/account/connect/complete ```
++ ``` marketplace.dev/account/connect/complete ```
+
+If you want to test how the connect works, you will have to make a second account on Stripe, then once you make a new user, Connect that account with the second Stripe account you made.
+
 
 ## Security Vulnerabilities
 
