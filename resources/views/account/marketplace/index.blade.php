@@ -14,14 +14,12 @@
             </div>
         </div>
 
-        @if(App::environment() === 'local')
-            <div class="alert alert-warning alert-dismissable fade in" role="alert">
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                This app is on a local environment. When you hit the "Connect your Stripe account" button above, you can make a Stripe account, login into Stripe, or just skip by clicking the
-                "Skip this account form" on the top of the page.
-            </div>
-        @endif
+        <div class="alert alert-warning alert-dismissable fade in" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            This app is on a local environment. When you hit the "Connect your Stripe account" button above, you can make a Stripe account, login into Stripe, or just skip by clicking the
+            "Skip this account form" on the top of the page.
+        </div>
     </div>
 @endsection

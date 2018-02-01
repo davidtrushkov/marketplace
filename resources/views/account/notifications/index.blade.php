@@ -18,7 +18,7 @@
                         <div class="media-left">
                             <a href="{{ route('show.notification', $unread->id) }}">
                                 <img class="media-object user-avatar"
-                                     src="{{ isset($unread->data['owner_avatar']) ? '/images/files/cover/'.$unread->data['owner_avatar'] : '/images/icons/avatar.svg' }}"
+                                     src="{{ $unread->data['owner_avatar'] !== '' ? '/images/avatars/'.$unread->data['owner_avatar'] : '/images/icons/avatar.svg' }}"
                                      alt="{{ isset($unread->data['owner_name']) ? $unread->data['owner_name'] : 'Avatar Image' }}">
                             </a>
                         </div>

@@ -21,10 +21,17 @@ html {
 
 body {
   font-family: sans-serif;
-  position: relative;
-  margin: 0;
-  padding-bottom: 23rem;
   min-height: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    font-family: sans-serif;
+    position: relative;
+    margin: 0;
+    padding-bottom: 23rem;
+    min-height: 100%;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -437,6 +444,10 @@ h1, h2, h3, h4, h5, h6, p {
     }
 
     .form-control {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+
       width: 75%;
       margin: 0 auto;
       height: 50px;
@@ -500,10 +511,15 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
+@media screen and (max-width: 767px) {
+  .FOOTER {
+    position: inherit;
+  }
+}
+
 .auth-box-v2 {
   margin-top: 15%;
   padding: 15px !important;
-  background-color: #FFFFFF;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;

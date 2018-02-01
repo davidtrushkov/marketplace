@@ -48,6 +48,10 @@ $panel-default-heading-bg: #fff;
 }
 
 .FORM-INPUT {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
   height: 48px;
   border: 1px solid #cacbcc;
   font-size: 16px;

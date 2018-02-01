@@ -29,7 +29,7 @@
                     @endif
                 </div>
                 <ol class="breadcrumb">
-                    <li>Upload the files you are selling in here.</li>
+                    <li>Upload the files you are selling in here. 50 files max</li>
                 </ol>
                 <br /><br />
 

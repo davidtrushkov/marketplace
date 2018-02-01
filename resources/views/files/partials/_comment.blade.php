@@ -96,5 +96,6 @@
         {{ $comments->links() }}
     @else
         No comments yet
+        <br /><br /><br /><br /><br />
     @endif
 </div>
