@@ -117,7 +117,7 @@
                <div class="col-sm-4 RIGHT-TEXT">
                    <p>Manage your account and files associated with them.</p>
                    <br /><br />
-                   <p>Find this open source project on <a href="" target="_blank">GitHub</a></p>
+                   <p>Find this open source project on <a href="https://github.com/davidtrushkov/marketplace" target="_blank">GitHub</a></p>
                </div>
            </div>
     </section>

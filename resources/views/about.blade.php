@@ -23,7 +23,7 @@
                     </p>
                     <p>
                         <b>Links</b><br />
-                        Here is the GitHub repository for this project: <a href="" target="_blank"></a>
+                        Here is the GitHub repository for this project: <a href="https://github.com/davidtrushkov/marketplace" target="_blank"></a>
                         <br />
                         Here is my website <a href="http://davidtrushkov.com/" target="_blank">http://davidtrushkov.com/</a>
                     </p>
