@@ -6,6 +6,8 @@
 
 Marketplace is a file sharing website I made as an open source project where users can sign up, connect their accounts to Stripe and upload a file post along with its uploads to the site where guests and users can buy them (I use test data, and don't take real transactions for Stripe). This was made using Laravel 5.5 and used a mySQL database. The frontend was in Bootstrap 3.3.7.
 
+Here is the link to live website: [http://marketplace.davidtrushkov.com/](http://marketplace.davidtrushkov.com/)
+
 ## Setup
 
 If you decide to clone this project, you will need to make an .env file:
@@ -28,13 +30,13 @@ For example:
 + ``` localhost:8080/account/connect/complete ```
 + ``` marketplace.dev/account/connect/complete ```
 
-If you want to test how the connect works, you will have to make a second account on Stripe, then once you make a new user, Connect that account with the second Stripe account you made.
+If you want to test how the connect works, you will have to make a second account on Stripe, then once you make a new user, Connect that account with the second Stripe account you made. Additionally, you can upload a logo on Stripe for when users connect to this website under the Branding section.
 
 To control how much you take as the site owner, go to ``` config/marketplace.php ``` then you can edit what commission you get. Default set to 20 (%20)
 
 ## Security Vulnerabilities and Other Problems
 
-If you discover a security vulnerability or any other bugs within this app, please make a Issue on here.
+If you discover a security vulnerability or any other bugs within this app, please make a Issue on here. This website is not meant to be in production.
 
 ## License
 
