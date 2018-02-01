@@ -14,8 +14,12 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-Once you do that, link the dataabse credentials, and the mail credentials for email testing. I suggest using [mailtrap](https://mailtrap.io/)
-If you want to test using Sentry, link that up to SENTRY_DSN in.env file.
++ Once you do that, link the dataabse credentials, and the mail credentials for email testing. I suggest using [mailtrap](https://mailtrap.io/)
++ If you want to test using Sentry, link that up to SENTRY_DSN in.env file.
++ Link up the RECAPTCHA_SECRET by going to [Google Recaptcha](https://www.google.com/recaptcha/intro/) and getting a key.
+
+Then you have to link your Stripe key, secret key and connect key. 
+* To get your STRIPE_KEY and STRIPE_SECRET, signup/login into [Stripe](https://stripe.com/), switch data to test data by clicking the "View Test Data" on the left side navigation on your Stripe dashboard, then go to API and you will see your keys. 
 
 
 ## Security Vulnerabilities
