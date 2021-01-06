@@ -6,7 +6,6 @@
 
 Marketplace is a file sharing website I made as an open source project where users can sign up, connect their accounts to Stripe and upload a file post along with its uploads to the site where guests and users can buy them (I use test data, and don't take real transactions for Stripe). This was made using Laravel 5.5 and used a mySQL database. The frontend was in Bootstrap 3.3.7.
 
-Here is the link to live website: [http://marketplace.davidtrushkov.com/](http://marketplace.davidtrushkov.com/)
 
 ## Setup
 
